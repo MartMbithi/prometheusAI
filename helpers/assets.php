@@ -70,6 +70,19 @@
 
 
 /* Update Asset Category */
+if (isset($_POST['Update_Asset_Category'])) {
+    $category_id = mysqli_real_escape_string($mysqli, $_POST['category_id']);
+    $category_code = mysqli_real_escape_string($mysqli, $_POST['category_code']);
+    $category_name = mysqli_real_escape_string($mysqli, $_POST['category_name']);
+
+    /* Persist Update */
+    $update_sql = "UPDATE assets_category SET category_code = '{$category_code}', category_name = '{$category_name}' WHERE category_id = '{$category_id}'";
+    if (mysqli_query($mysqli, $update_sql)) {
+        $success = "Asset category updated";
+    } else {
+        $err = "Failed, please try again";
+    }
+}
 
 /* Delete Asset Category */
 if (isset($_POST['Delete_Asset_Category'])) {
