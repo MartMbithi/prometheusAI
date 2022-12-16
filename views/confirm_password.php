@@ -77,15 +77,23 @@ require_once('../partials/head.php');
         <div class="login">
             <div class="login-content">
                 <form method="POST" name="login_form">
-                    <h1 class="text-center">Financial-AI <br>Reset Password</h1>
+                    <h1 class="text-center">Financial-AI <br>Confirm Password</h1>
                     <div class="text-white text-opacity-50 text-center mb-4">
-                        Forgot your password?, worry not just provide your email. We will reset it for you
+                        Enter your new password and confirm it.
                     </div>
                     <div class="mb-3">
-                        <label class="form-label">Email Address <span class="text-danger">*</span></label>
-                        <input type="email" class="form-control form-control-lg bg-white bg-opacity-5" name="user_email" required />
+                        <div class="d-flex">
+                            <label class="form-label">New password <span class="text-danger">*</span></label>
+                        </div>
+                        <input type="password" class="form-control form-control-lg bg-white bg-opacity-5" name="new_password" required />
                     </div>
-                    <button type="submit" name="Reset_Password_Step_1" class="btn btn-outline-theme btn-lg d-block w-100 fw-500 mb-3">Reset</button>
+                    <div class="mb-3">
+                        <div class="d-flex">
+                            <label class="form-label">Confirm password <span class="text-danger">*</span></label>
+                        </div>
+                        <input type="password" class="form-control form-control-lg bg-white bg-opacity-5" name="confirm_password" required />
+                    </div>
+                    <button type="submit" name="Reset_Password_Step_2" class="btn btn-outline-theme btn-lg d-block w-100 fw-500 mb-3">Reset</button>
                     <div class="text-center text-white text-opacity-50">
                         Remember password? <a href="../">Login</a>.
                     </div>
