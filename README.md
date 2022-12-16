@@ -1,2 +1,3 @@
-# Mobile Wrapper For WCF
-A mobile friendly Site for wcf.
+# My Finances Helper AI
+
+Just another project to help my head stay in the game

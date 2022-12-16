@@ -1,6 +1,6 @@
 <?php
 /*
- *   Crafted On Fri Nov 11 2022
+ *   Crafted On Fri Dec 16 2022
  *
  * 
  *   www.devlan.co.ke
@@ -66,6 +66,7 @@
  */
 
 
+
 /* Register Your Application Logic Here */
 
 if (!empty($_SERVER['HTTPS']) && ('on' == $_SERVER['HTTPS'])) {
@@ -75,5 +76,5 @@ if (!empty($_SERVER['HTTPS']) && ('on' == $_SERVER['HTTPS'])) {
 }
 $uri .= $_SERVER['HTTP_HOST'];
 /* Redirect To Index Under Views */
-header('Location: ' . $uri . '/WCF_MOBILE/views/');
+header('Location: ' . $uri . '/financialAI/views/login');
 exit;
