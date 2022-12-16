@@ -1,6 +1,6 @@
 <?php
 /*
- *   Crafted On Fri Nov 11 2022
+ *   Crafted On Fri Dec 16 2022
  *
  * 
  *   www.devlan.co.ke
@@ -64,7 +64,6 @@
  *   TORT OR ANY OTHER THEORY OF LIABILITY, EXCEED THE LICENSE FEE PAID BY YOU, IF ANY.
  *
  */
-
 
 
 function check_login()

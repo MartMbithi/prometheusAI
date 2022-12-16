@@ -1,6 +1,6 @@
 <?php
 /*
- *   Crafted On Fri Nov 11 2022
+ *   Crafted On Fri Dec 16 2022
  *
  * 
  *   www.devlan.co.ke
@@ -65,12 +65,10 @@
  *
  */
 
+
 /* Procedural Database Connecrions */
 $dbuser = "root"; /* Database Username */
 $dbpass = ""; /* Database Username Password */
 $host = "localhost"; /* Database Host */
-$db = "wcf";  /* Database Name */
+$db = "my_billing";  /* Database Name */
 $mysqli = new mysqli($host, $dbuser, $dbpass, $db); /* Connection Function */
-
-/* Current Date */
-$current_date = strtotime(date('Y-m-d g:ia'));
