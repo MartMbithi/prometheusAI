@@ -65,201 +65,33 @@
  *
  */
 
-/* Login */
-if (isset($_SESSION['user_id'])) {
-    /* Check If User Cookie Has Been Already Set */
-    header('Location:home');
-    exit;
-} else if (isset($_COOKIE['wcf_auto_auth'])) {
-    /* Decrypt User Cookie Variable */
-    $user_id = decryptCookie($_COOKIE['wcf_auto_auth']);
-
-    $sql_query = "SELECT COUNT(*) AS UserCount, user_id FROM user WHERE user_id = '{$user_id}'";
-    $result = mysqli_query($mysqli, $sql_query);
-    $row = mysqli_fetch_array($result);
-
-    $count = $row['UserCount'];
-
-    if ($count > 0) {
-        $_SESSION['user_id'] = mysqli_real_escape_string($mysqli, $user_id);
-        header('Location: home');
-        exit;
-    }
-}
-function encryptCookie($value)
-{
-    /* Encrypt User Cookie */
-    $key = hex2bin(openssl_random_pseudo_bytes(4));
-
-    $cipher = "aes-256-cbc";
-    $ivlen = openssl_cipher_iv_length($cipher);
-    $iv = openssl_random_pseudo_bytes($ivlen);
-
-    $ciphertext = openssl_encrypt($value, $cipher, $key, 0, $iv);
-
-    return (base64_encode($ciphertext . '::' . $iv . '::' . $key));
-}
-
-function decryptCookie($ciphertext)
-{
-    /* Decrypt User Cookie */
-
-    $cipher = "aes-256-cbc";
-
-    list($encrypted_data, $iv, $key) = explode('::', base64_decode($ciphertext));
-    return openssl_decrypt($encrypted_data, $cipher, $key, 0, $iv);
-}
 
 /* Sign In */
-if (isset($_POST['Sign_In'])) {
+if (isset($_POST['Login'])) {
 
     $user_email = mysqli_real_escape_string($mysqli, $_POST['user_email']);
     $user_password = mysqli_real_escape_string($mysqli, sha1(md5($_POST['user_password'])));
 
-    if (!empty($user_email) && !empty($user_password)) {
-        $sql_query = "SELECT COUNT(*) AS UserCount, user_id, user_set_theme FROM user 
-        WHERE (user_email = '{$user_email}' || user_phone_number = '{$user_email}') AND user_password = '{$user_password}'";
-        $result = mysqli_query($mysqli, $sql_query);
-        $row = mysqli_fetch_array($result);
-
-        $count = $row['UserCount'];
-        if ($count > 0) {
-            $user_id = $row['user_id'];
-            $user_set_theme = $row['user_set_theme'];
-            if (isset($_POST['wcf_auto_auth'])) {
-                /* Set Cookies */
-                $days = 20;
-                $value = encryptCookie($user_id);
-                setcookie("wcf_auto_auth", $value, time() + ($days *  24 * 60 * 60 * 1000));
-            }
-
-            $_SESSION['user_id'] = $user_id;
-            $_SESSION['user_set_theme'] = $user_set_theme;
-            header('Location:home');
-            exit;
-        } else {
-            $err = "Incorrect login credentials, please try again";
-        }
-    } else {
-        $err = 'Enter email and password';
-    }
-}
-
-/* Sign Up */
-if (isset($_POST['SignUp'])) {
-    $user_id = mysqli_real_escape_string($mysqli, $ID);
-    $user_full_name = mysqli_real_escape_string($mysqli, $_POST['user_full_name']);
-    $user_email = mysqli_real_escape_string($mysqli, $_POST['user_email']);
-    $new_password = sha1(md5(mysqli_real_escape_string($mysqli, $_POST['new_password'])));
-    $confirm_password = sha1(md5(mysqli_real_escape_string($mysqli, $_POST['confirm_password'])));
-    $user_phone_number = mysqli_real_escape_string($mysqli, $_POST['user_phone_number']);
-    $user_city = mysqli_real_escape_string($mysqli, $_POST['user_city']);
-    $user_church_name = mysqli_real_escape_string($mysqli, $_POST['user_church_name']);
-    $user_date_joined  = mysqli_real_escape_string($mysqli, date('d M Y'));
-    include('../mailers/welcome.php');
-
-    /* Check Passwords If Match */
-    if ($confirm_password != $new_password) {
-        $err = "Password does not match";
-    } else {
-        /* Check If This Email Or Password Exists */
-        $sql = "SELECT * FROM  user WHERE user_email = '{$user_email}' || user_phone_number = '{$user_phone_number}'";
-        $res = mysqli_query($mysqli, $sql);
-        if (mysqli_num_rows($res) > 0) {
-            $err = "Email address or phone number already exists";
-        } else {
-            /* Compress User Image By Scale Factor Of .35 */
-            if (!empty(mysqli_real_escape_string($mysqli, $_FILES['user_profile_picture']['name']))) {
-                $userimage = "WCF_MEMBER_" . (round(microtime(true))) . $_FILES['user_profile_picture']['name'];
-                $source = $_FILES['user_profile_picture']['tmp_name'];
-                $destination = "https://wcf.co.ke/storage/user_profile_images/" . $userimage;
-                $response = compressImage($source, $destination, 35);
-                if (!empty($response)) {
-                    /* Persist Record */
-                    $new_user_sql = "INSERT INTO user (user_id, user_full_name, user_email, user_password, user_phone_number, user_city, user_church_name, user_profile_picture)
-                    VALUES('{$user_id}', '{$user_full_name}', '{$user_email}', '{$confirm_password}', '{$user_phone_number}', '{$user_city}', '{$user_church_name}', '{$userimage}')";
-
-                    if (mysqli_query($mysqli, $new_user_sql) && $mail->send()) {
-                        $success = "Account created, proceed to sign in";
-                    } else {
-                        $err = "Please try again later";
-                    }
-                } else {
-                    $info = "Failed to compress image, please try again";
-                }
-            } else {
-                /* Persist User Record Without No Profile Picture */
-                $new_user_sql = "INSERT INTO user (user_id, user_full_name, user_email, user_password, user_phone_number, user_city, user_church_name)
-                VALUES('{$user_id}', '{$user_full_name}', '{$user_email}', '{$confirm_password}', '{$user_phone_number}', '{$user_city}', '{$user_church_name}')";
-
-                if (mysqli_query($mysqli, $new_user_sql) && $mail->send()) {
-                    $success = "Account created, proceed to sign in";
-                } else {
-                    $err = "Please try again later";
-                }
-            }
-        }
-    }
+    /* Handle Auth */
 }
 
 /* Reset Password */
 if (isset($_POST['Reset_Password_Step_1'])) {
     $user_email = mysqli_real_escape_string($mysqli, $_POST['user_email']);
-    $reset_token = mysqli_real_escape_string($mysqli, $tk);
-    $one_time_password = mysqli_real_escape_string($mysqli, $otp);
 
     /* Check If This Account Exists */
     $sql = "SELECT * FROM  user WHERE user_email = '{$user_email}'";
     $res = mysqli_query($mysqli, $sql);
     if (mysqli_num_rows($res) > 0) {
-        /*Persist Reset Token & One Time Password */
-        $reset_token_sql = "UPDATE user SET user_password_reset_token = '{$reset_token}',
-        user_otp_code = '{$one_time_password}' WHERE user_email = '{$user_email}'";
-
-        /* Load Mailer */
-        include('../mailers/reset_password.php');
-
-        if (mysqli_query($mysqli, $reset_token_sql) && $mail->send()) {
-            /* Pass This Alert Via Session */
-            $_SESSION['user_email'] = $user_email;
-            $_SESSION['success'] = 'Password reset instructions sent to your email';
-            header('Location: confirm_otp');
-            exit;
-        } else {
-            $info = "We cannot send this email now, try again later";
-        }
+        /* Handle Password Reset */
     } else {
         $err = "Email does not exist";
     }
 }
 
-/* Reset Passsword Step 2 */
+
+/* Password Reset Step 2 */
 if (isset($_POST['Reset_Password_Step_2'])) {
-    $user_otp_code = mysqli_real_escape_string($mysqli, $_POST['user_otp_code']);
-    $user_email = mysqli_real_escape_string($mysqli, $_SESSION['user_email']);
-
-    /* Check If This Account Exists */
-    $sql = "SELECT * FROM  user WHERE user_otp_code = '{$user_otp_code}'";
-    $res = mysqli_query($mysqli, $sql);
-    if (mysqli_num_rows($res) > 0) {
-        /*Persist Reset Token & One Time Password */
-        $token_update_sql = "UPDATE user SET user_otp_code = '' WHERE user_email = '{$user_email}'";
-        if (mysqli_query($mysqli, $token_update_sql)) {
-            /* Pass This Alert Via Session */
-            $_SESSION['success'] = 'Password reset code confirmed, proceed to reset password';
-            header('Location: confirm_password');
-            exit;
-        } else {
-            $info = "We cannot process your code for the moment, try again later";
-        }
-    } else {
-        $err = "This code does not exist, kindly resend again";
-    }
-}
-
-
-/* Password Reset Step 3 */
-if (isset($_POST['Reset_Password_Step_3'])) {
     $user_email = mysqli_real_escape_string($mysqli, $_SESSION['user_email']);
     $new_password = sha1(md5(mysqli_real_escape_string($mysqli, $_POST['new_password'])));
     $confirm_password = sha1(md5(mysqli_real_escape_string($mysqli, $_POST['confirm_password'])));
@@ -271,7 +103,7 @@ if (isset($_POST['Reset_Password_Step_3'])) {
         if (mysqli_query($mysqli, $update_password_sql)) {
             $_SESSION['success'] = 'Password updated successfully';
             unset($_SESSION['email']);
-            header('Location: index');
+            header('Location: ../');
             exit;
         }
     }
