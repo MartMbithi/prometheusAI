@@ -105,6 +105,8 @@ if (isset($_POST['Reset_Password_Step_2'])) {
             unset($_SESSION['email']);
             header('Location: ../');
             exit;
+        } else {
+            $err = "Password reset failed, please try again";
         }
     }
 }
