@@ -1,0 +1,7 @@
+{
+    "require": {
+        "cloudinary/cloudinary_php": "^2",
+        "lavary/crunz": "^3.2",
+        "crunzphp/crunz": "^3.4"
+    }
+}
