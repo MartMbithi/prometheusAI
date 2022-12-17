@@ -73,7 +73,7 @@ if (isset($_POST['Login'])) {
     $user_password = mysqli_real_escape_string($mysqli, sha1(md5($_POST['user_password'])));
 
     /* Handle Auth */
-    $stmt = $mysqli->prepare("SELECT user_id, user_email, user_password FROM login 
+    $stmt = $mysqli->prepare("SELECT user_id, user_email, user_password FROM user 
     WHERE user_email = '{$user_email}' AND user_password = '{$user_password}'");
     $stmt->execute();
     $stmt->bind_result($user_email, $user_password, $user_id);
