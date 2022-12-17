@@ -94,9 +94,6 @@ require_once('../partials/head.php');
                         <input type="password" class="form-control form-control-lg bg-white bg-opacity-5" name="confirm_password" required />
                     </div>
                     <button type="submit" name="Reset_Password_Step_2" class="btn btn-outline-theme btn-lg d-block w-100 fw-500 mb-3">Reset</button>
-                    <div class="text-center text-white text-opacity-50">
-                        Remember password? <a href="../">Login</a>.
-                    </div>
                 </form>
             </div>
 

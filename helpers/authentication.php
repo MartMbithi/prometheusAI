@@ -103,7 +103,7 @@ if (isset($_POST['Reset_Password_Step_1'])) {
         /*
         This system will be used offline so just redirect user to password reset 
          */
-        $_SESSION['success'] = 'You have successfully logged in';
+        $_SESSION['success'] = 'Email confirmed, proceed to reset password';
         $_SESSION['user_email'] = $user_email;
         header('Location: confirm_password');
         exit;
