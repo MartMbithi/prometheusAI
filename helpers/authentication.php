@@ -100,7 +100,13 @@ if (isset($_POST['Reset_Password_Step_1'])) {
     $sql = "SELECT * FROM  user WHERE user_email = '{$user_email}'";
     $res = mysqli_query($mysqli, $sql);
     if (mysqli_num_rows($res) > 0) {
-        /* Handle Password Reset */
+        /*
+        This system will be used offline so just redirect user to password reset 
+         */
+        $_SESSION['success'] = 'You have successfully logged in';
+        $_SESSION['user_email'] = $user_email;
+        header('Location: confirm_password');
+        exit;
     } else {
         $err = "Email does not exist";
     }
@@ -110,20 +116,26 @@ if (isset($_POST['Reset_Password_Step_1'])) {
 /* Password Reset Step 2 */
 if (isset($_POST['Reset_Password_Step_2'])) {
     $user_email = mysqli_real_escape_string($mysqli, $_SESSION['user_email']);
-    $new_password = sha1(md5(mysqli_real_escape_string($mysqli, $_POST['new_password'])));
-    $confirm_password = sha1(md5(mysqli_real_escape_string($mysqli, $_POST['confirm_password'])));
+    if (!empty($user_email)) {
+        $new_password = sha1(md5(mysqli_real_escape_string($mysqli, $_POST['new_password'])));
+        $confirm_password = sha1(md5(mysqli_real_escape_string($mysqli, $_POST['confirm_password'])));
 
-    if ($new_password != $confirm_password) {
-        $err = "Passwords does not match";
-    } else {
-        $update_password_sql = "UPDATE user SET user_password = '{$confirm_password}' WHERE user_email ='{$user_email}'";
-        if (mysqli_query($mysqli, $update_password_sql)) {
-            $_SESSION['success'] = 'Password updated successfully';
-            unset($_SESSION['email']);
-            header('Location: ../');
-            exit;
+        if ($new_password != $confirm_password) {
+            $err = "Passwords does not match";
         } else {
-            $err = "Password reset failed, please try again";
+            $update_password_sql = "UPDATE user SET user_password = '{$confirm_password}' WHERE user_email ='{$user_email}'";
+            if (mysqli_query($mysqli, $update_password_sql)) {
+                $_SESSION['success'] = 'Password updated successfully';
+                unset($_SESSION['email']);
+                header('Location: ../');
+                exit;
+            } else {
+                $err = "Password reset failed, please try again";
+            }
         }
+    } else {
+        $_SESSION['err'] = 'Kindly enter a valid password';
+        header('Location: reset_password');
+        exit;
     }
 }

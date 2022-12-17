@@ -76,7 +76,7 @@ if (isset($success)) { ?>
             theme: 'metroui',
             timeout: '2000',
             progressBar: false,
-            layout: 'bottomCenter',
+            layout: 'topRight',
             animation: {
                 open: function(promise) {
                     var n = this;
@@ -189,7 +189,7 @@ if (isset($err)) { ?>
             theme: 'metroui',
             timeout: '2000',
             progressBar: false,
-            layout: 'bottomCenter',
+            layout: 'topRight',
             animation: {
                 open: function(promise) {
                     var n = this;
@@ -301,7 +301,7 @@ if (isset($info)) { ?>
             theme: 'metroui',
             timeout: '2000',
             progressBar: false,
-            layout: 'bottomCenter',
+            layout: 'topRight',
             animation: {
                 open: function(promise) {
                     var n = this;
