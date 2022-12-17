@@ -73,6 +73,23 @@ if (isset($_POST['Login'])) {
     $user_password = mysqli_real_escape_string($mysqli, sha1(md5($_POST['user_password'])));
 
     /* Handle Auth */
+    $stmt = $mysqli->prepare("SELECT user_id, user_email, user_password FROM login 
+    WHERE user_email = '{$user_email}' AND user_password = '{$user_password}'");
+    $stmt->execute();
+    $stmt->bind_result($user_email, $user_password, $user_id);
+    $rs = $stmt->fetch();
+
+    /* Session Variables */
+    $_SESSION['user_id'] = $user_id;
+
+    if ($rs) {
+        /* Pass This Alert Via Session */
+        $_SESSION['success'] = 'You have successfully logged in';
+        header('Location: dashboard');
+        exit;
+    } else {
+        $err = "Access denied please check your email or password";
+    }
 }
 
 /* Reset Password */
