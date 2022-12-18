@@ -73,14 +73,15 @@ if (isset($_POST['Login'])) {
     $user_password = mysqli_real_escape_string($mysqli, sha1(md5($_POST['user_password'])));
 
     /* Handle Auth */
-    $stmt = $mysqli->prepare("SELECT user_id, user_email, user_password FROM user 
+    $stmt = $mysqli->prepare("SELECT user_id, user_name, user_email, user_password FROM user 
     WHERE user_email = '{$user_email}' AND user_password = '{$user_password}'");
     $stmt->execute();
-    $stmt->bind_result($user_email, $user_password, $user_id);
+    $stmt->bind_result($user_id, $user_name, $user_email, $user_password);
     $rs = $stmt->fetch();
 
     /* Session Variables */
     $_SESSION['user_id'] = $user_id;
+    $_SESSION['user_name'] = $user_name;
 
     if ($rs) {
         /* Pass This Alert Via Session */
