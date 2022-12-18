@@ -97,9 +97,9 @@ require_once('../partials/head.php');
             <div class="brand">
                 <a href="index.html" class="brand-logo">
                     <span class="brand-img">
-                        <span class="brand-img-text text-theme">H</span>
+                        <span class="brand-img-text text-theme">F</span>
                     </span>
-                    <span class="brand-text">HUD ADMIN</span>
+                    <span class="brand-text">Financial AI</span>
                 </a>
             </div>
 
