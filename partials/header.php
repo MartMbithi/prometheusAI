@@ -97,12 +97,25 @@
                 </div>
             </a>
             <div class="dropdown-menu dropdown-menu-end me-lg-3 fs-11px mt-1">
-                <div class="dropdown-divider"></div>
-                <a class="dropdown-item d-flex align-items-center" href="logout">LOGOUT <i class="bi bi-toggle-off ms-auto text-theme fs-16px my-n1"></i></a>
+                <button class="dropdown-item d-flex align-items-center" data-bs-toggle="modal" data-bs-target="#logout_modal">End Session <i class="bi bi-lock  ms-auto text-theme fs-16px my-n1"></i></button>
             </div>
         </div>
     </div>
-
-
-
+</div>
+<!-- Logout Confirmation Modal -->
+<div class="modal fade" id="logout_modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <form method="POST" action="logout">
+                <div class="modal-body text-center text-danger">
+                    <h4>
+                        Heads Up😉! <br><br>
+                        Are You Sure You Want To Terminate This Session?
+                    </h4>
+                    <button type="button" class="text-center btn btn-success" data-bs-dismiss="modal">No</button>
+                    <input type="submit" value="Yes, Terminate" class="text-center btn btn-danger">
+                </div>
+            </form>
+        </div>
+    </div>
 </div>
