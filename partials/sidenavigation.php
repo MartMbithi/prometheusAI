@@ -11,53 +11,45 @@
                 </a>
             </div>
             <div class="menu-item">
-                <a href="assetss" class="menu-link">
+                <a href="assets_category" class="menu-link">
+                    <span class="menu-icon"><i class="bi bi-bar-chart"></i></span>
+                    <span class="menu-text">Asset Categories</span>
+                </a>
+            </div>
+            <div class="menu-item">
+                <a href="assets" class="menu-link">
                     <span class="menu-icon"><i class="bi bi-bar-chart"></i></span>
                     <span class="menu-text">Assets</span>
                 </a>
             </div>
-            <div class="menu-item has-sub">
-                <a href="#" class="menu-link">
-                    <span class="menu-icon">
-                        <i class="bi bi-envelope"></i>
-                    </span>
-                    <span class="menu-text">Email</span>
-                    <span class="menu-caret"><b class="caret"></b></span>
+            <div class="menu-item">
+                <a href="bills" class="menu-link">
+                    <span class="menu-icon"><i class="bi bi-bar-chart"></i></span>
+                    <span class="menu-text">Bills</span>
                 </a>
-                <div class="menu-submenu">
-                    <div class="menu-item">
-                        <a href="email_inbox.html" class="menu-link">
-                            <span class="menu-text">Inbox</span>
-                        </a>
-                    </div>
-                    <div class="menu-item">
-                        <a href="email_compose.html" class="menu-link">
-                            <span class="menu-text">Compose</span>
-                        </a>
-                    </div>
-                    <div class="menu-item">
-                        <a href="email_detail.html" class="menu-link">
-                            <span class="menu-text">Detail</span>
-                        </a>
-                    </div>
-                </div>
+            </div>
+            <div class="menu-item">
+                <a href="savings" class="menu-link">
+                    <span class="menu-icon"><i class="bi bi-bar-chart"></i></span>
+                    <span class="menu-text">Savings</span>
+                </a>
             </div>
             <div class="menu-divider"></div>
             <div class="menu-header">Reports</div>
             <div class="menu-item">
-                <a href="profile.html" class="menu-link">
+                <a href="assets" class="menu-link">
                     <span class="menu-icon"><i class="bi bi-people"></i></span>
                     <span class="menu-text">Assets</span>
                 </a>
             </div>
             <div class="menu-item">
-                <a href="calendar.html" class="menu-link">
+                <a href="bills" class="menu-link">
                     <span class="menu-icon"><i class="bi bi-calendar4"></i></span>
                     <span class="menu-text">Bills</span>
                 </a>
             </div>
             <div class="menu-item">
-                <a href="settings.html" class="menu-link">
+                <a href="savings" class="menu-link">
                     <span class="menu-icon"><i class="bi bi-gear"></i></span>
                     <span class="menu-text">Savings</span>
                 </a>
