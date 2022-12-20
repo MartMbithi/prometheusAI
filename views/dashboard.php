@@ -165,12 +165,12 @@ require_once('../partials/head.php');
                     <div class="card mb-3">
                         <div class="card-body">
                             <div class="d-flex fw-bold small mb-3">
-                                <span class="flex-grow-1">CURRENT ASSETS</span>
+                                <span class="flex-grow-1">CURRENT FINANCIAL STATUS</span>
                                 <a href="#" data-toggle="card-expand" class="text-white text-opacity-50 text-decoration-none"><i class="bi bi-fullscreen"></i></a>
                             </div>
                             <div class="row align-items-center mb-2">
                                 <div class="col-7">
-                                    <h3 class="mb-0"><?php echo $my_assets; ?></h3>
+                                    <h3 class="mb-0"><?php echo $my_curent_financial_status; ?></h3>
                                 </div>
                             </div>
                         </div>
