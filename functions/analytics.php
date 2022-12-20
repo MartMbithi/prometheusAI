@@ -66,10 +66,31 @@
  */
 
 
- /* Total Assets Owned */
+/* Total Assets Owned */
+$query = "SELECT COUNT(*)  FROM assets ";
+$stmt = $mysqli->prepare($query);
+$stmt->execute();
+$stmt->bind_result($my_assets);
+$stmt->fetch();
+$stmt->close();
 
- /* Current Expenditure  - Bills*/
 
- /* Savings */
- 
- /* Current Status - Either Loss Or Profit */
+/* Current Expenditure  - Bills*/
+$query = "SELECT SUM(purchase_amount)  FROM purchases";
+$stmt = $mysqli->prepare($query);
+$stmt->execute();
+$stmt->bind_result($my_purchases);
+$stmt->fetch();
+$stmt->close();
+
+
+/* Savings */
+$query = "SELECT SUM(saving_amount)  FROM savings";
+$stmt = $mysqli->prepare($query);
+$stmt->execute();
+$stmt->bind_result($my_saving_amount);
+$stmt->fetch();
+$stmt->close();
+
+/* Current Status - Either Loss Or Profit */
+$my_curent_financial_status = abs($my_saving_amount - $my_purchases);
