@@ -93,4 +93,4 @@ $stmt->fetch();
 $stmt->close();
 
 /* Current Status - Either Loss Or Profit */
-/* Compute This On Runtime */
+$my_curent_financial_status = abs($my_saving_amount - $my_purchases);

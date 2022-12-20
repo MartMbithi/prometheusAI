@@ -169,8 +169,20 @@ require_once('../partials/head.php');
                                 <a href="#" data-toggle="card-expand" class="text-white text-opacity-50 text-decoration-none"><i class="bi bi-fullscreen"></i></a>
                             </div>
                             <div class="row align-items-center mb-2">
-                                <div class="col-7">
-                                    <h3 class="mb-0"><?php echo $my_curent_financial_status; ?></h3>
+                                <div class="col-12">
+                                    <?php if ($my_saving_amount >= $my_purchases) { ?>
+                                        <h3 class="mb-0 text-success">
+                                            Savings: Ksh <?php echo number_format($my_curent_financial_status); ?>
+                                        </h3>
+
+                                    <?php } else if ($my_saving_amount <= $my_purchases) { ?>
+                                        <h3 class="mb-0 text-warning">
+                                            Overdraft: Ksh <?php echo number_format($my_curent_financial_status); ?>
+                                        </h3>
+
+                                    <?php } else { ?>
+                                        <h3 class="mb-0 text-danger">Please Audit Your Finances</h3>
+                                    <?php } ?>
                                 </div>
                             </div>
                         </div>
