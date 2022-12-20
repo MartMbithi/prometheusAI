@@ -113,7 +113,7 @@ require_once('../partials/head.php');
                         </div>
                     </div>
                 </div>
-                
+
                 <!-- My Bills -->
                 <div class="col-xl-3 col-lg-6">
                     <div class="card mb-3">
@@ -124,7 +124,7 @@ require_once('../partials/head.php');
                             </div>
                             <div class="row align-items-center mb-2">
                                 <div class="col-7">
-                                    <h3 class="mb-0">ksh <?php echo number_format($my_purchases); ?></h3>
+                                    <h3 class="mb-0">Ksh <?php echo number_format($my_purchases, 2); ?></h3>
                                 </div>
                             </div>
                         </div>
@@ -137,17 +137,17 @@ require_once('../partials/head.php');
                     </div>
                 </div>
 
-                <!-- My Assets -->
+                <!-- My Savings -->
                 <div class="col-xl-3 col-lg-6">
                     <div class="card mb-3">
                         <div class="card-body">
                             <div class="d-flex fw-bold small mb-3">
-                                <span class="flex-grow-1">CURRENT ASSETS</span>
+                                <span class="flex-grow-1">CURRENT SAVINGS</span>
                                 <a href="#" data-toggle="card-expand" class="text-white text-opacity-50 text-decoration-none"><i class="bi bi-fullscreen"></i></a>
                             </div>
                             <div class="row align-items-center mb-2">
                                 <div class="col-7">
-                                    <h3 class="mb-0"><?php echo $my_assets; ?></h3>
+                                    <h3 class="mb-0">Ksh <?php echo number_format($my_saving_amount, 2); ?></h3>
                                 </div>
                             </div>
                         </div>
