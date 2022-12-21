@@ -172,12 +172,12 @@ require_once('../partials/head.php');
                                 <div class="col-12">
                                     <?php if ($my_saving_amount >= $my_purchases) { ?>
                                         <h4 class="mb-0 text-success">
-                                            Savings: Ksh <?php echo number_format($my_curent_financial_status); ?>
+                                            Ksh <?php echo number_format($my_curent_financial_status); ?>
                                         </h4>
 
                                     <?php } else if ($my_saving_amount <= $my_purchases) { ?>
                                         <h4 class="mb-0 text-warning">
-                                            Overdraft: Ksh <?php echo number_format($my_curent_financial_status); ?>
+                                            Ksh <?php echo number_format($my_curent_financial_status); ?>
                                         </h4>
 
                                     <?php } else { ?>
