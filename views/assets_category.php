@@ -114,12 +114,25 @@ require_once('../partials/head.php');
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                <tr>
-                                                    <td>1.</td>
-                                                    <td>Tiger Nixon</td>
-                                                    <td>System Architect</td>
-                                                    <td>System Architect</td>
-                                                </tr>
+                                                <?php
+                                                /* Fetch Assets*/
+                                                $assets_category_sql = mysqli_query(
+                                                    $mysqli,
+                                                    "SELECT * FROM assets_category"
+                                                );
+                                                if (mysqli_num_rows($assets_category_sql) > 0) {
+                                                    while ($assets_category = mysqli_fetch_array($assets_category_sql)) {
+                                                ?>
+                                                        <tr>
+                                                            <td><?php echo $cnt; ?></td>
+                                                            <td><?php echo $assets_category['category_code']; ?></td>
+                                                            <td><?php echo $assets_category['category_name']; ?></td>
+                                                            <td>
+
+                                                            </td>
+                                                        </tr>
+                                                <?php }
+                                                } ?>
                                             </tbody>
                                         </table>
                                     </div>
