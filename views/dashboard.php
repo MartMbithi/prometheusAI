@@ -266,24 +266,23 @@ require_once('../partials/head.php');
                                     <tbody>
                                         <?php
                                         /* Fetch Recent Bills */
-                                        $recent_bills_sql = mysqli_query(
+                                        $recent_incomes_sql = mysqli_query(
                                             $mysqli,
-                                            "SELECT * FROM purchases  ORDER BY purchase_date_made DESC LIMIT 20"
+                                            "SELECT * FROM savings  ORDER BY saving_date DESC LIMIT 20"
                                         );
-                                        if (mysqli_num_rows($recent_bills_sql) > 0) {
-                                            while ($recent_bills = mysqli_fetch_array($recent_bills_sql)) {
+                                        if (mysqli_num_rows($recent_incomes_sql) > 0) {
+                                            while ($recent_income = mysqli_fetch_array($recent_incomes_sql)) {
                                         ?>
                                                 <tr>
                                                     <td>
                                                         <span class="d-flex align-items-center">
                                                             <i class="bi bi-circle-fill fs-6px text-theme me-2"></i>
-                                                            <?php echo $recent_bills['purchase_item']; ?>
+                                                            <?php echo $recent_income['saving_account']; ?>
                                                         </span>
                                                     </td>
-                                                    <td>QTY: <?php echo $recent_bills['purchase_quantity']; ?></td>
-                                                    <td>Total Amount: Ksh<?php echo number_format($recent_bills['purchase_amount']); ?></td>
+                                                    <td>Total amount in Ksh<?php echo number_format($recent_income['saving_amount']); ?></td>
                                                     <td>
-                                                        <span class="badge d-block bg-theme text-theme-900 rounded-0 pt-5px w-70px" style="min-height: 18px"><?php echo date('d M Y', strtotime($recent_bills['purchase_date_made'])); ?></span>
+                                                        <span class="badge d-block bg-theme text-theme-900 rounded-0 pt-5px w-70px" style="min-height: 18px"><?php echo date('d M Y', strtotime($recent_income['saving_date'])); ?></span>
                                                     </td>
                                                 </tr>
                                             <?php }
@@ -292,7 +291,7 @@ require_once('../partials/head.php');
                                                 <td>
                                                     <span class="d-flex align-items-center text-warning">
                                                         <i class="bi bi-circle-fill fs-6px text-danger me-2"></i>
-                                                        No Recent Bills & Expenditures
+                                                        No Savings & Expenditures Registered
                                                     </span>
                                                 </td>
                                             </tr>
@@ -300,9 +299,7 @@ require_once('../partials/head.php');
                                     </tbody>
                                 </table>
                             </div>
-
                         </div>
-
 
                         <div class="card-arrow">
                             <div class="card-arrow-top-left"></div>
