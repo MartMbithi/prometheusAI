@@ -97,10 +97,6 @@ require_once('../partials/head.php');
                         <div class="row">
 
                             <div class="col-xl-12">
-                                <ul class="breadcrumb">
-                                    <li class="breadcrumb-item"><a href="#">Dashboard</a></li>
-                                    <li class="breadcrumb-item active">Assets Categories</li>
-                                </ul>
                                 <h1 class="page-header text-right">
                                     Assets Categories
                                 </h1>
