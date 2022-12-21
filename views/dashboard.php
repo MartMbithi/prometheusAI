@@ -220,12 +220,13 @@ require_once('../partials/head.php');
                                                     <td>
                                                         <span class="d-flex align-items-center">
                                                             <i class="bi bi-circle-fill fs-6px text-theme me-2"></i>
-                                                            You have sold an item - $1,299
+                                                            <?php echo $recent_bills['purchase_item']; ?>
                                                         </span>
                                                     </td>
-                                                    <td><small>just now</small></td>
+                                                    <td>QTY: <?php echo $recent_bills['purchase_quantity']; ?></td>
+                                                    <td>Total Amount: Ksh<?php echo number_format($recent_bills['purchase_amount']); ?></td>
                                                     <td>
-                                                        <span class="badge d-block bg-theme text-theme-900 rounded-0 pt-5px w-70px" style="min-height: 18px">PRODUCT</span>
+                                                        <span class="badge d-block bg-theme text-theme-900 rounded-0 pt-5px w-70px" style="min-height: 18px"><?php echo date('d M Y', strtotime($recent_bills['purchase_date_made'])); ?></span>
                                                     </td>
                                                 </tr>
                                             <?php }
