@@ -224,7 +224,7 @@ require_once('../partials/head.php');
                                                         </span>
                                                     </td>
                                                     <td>QTY: <?php echo $recent_bills['purchase_quantity']; ?></td>
-                                                    <td>Total Amount: Ksh<?php echo number_format($recent_bills['purchase_amount']); ?></td>
+                                                    <td>Amount in Ksh <?php echo number_format($recent_bills['purchase_amount']); ?></td>
                                                     <td>
                                                         <span class="badge d-block bg-theme text-theme-900 rounded-0 pt-5px w-70px" style="min-height: 18px"><?php echo date('d M Y', strtotime($recent_bills['purchase_date_made'])); ?></span>
                                                     </td>
@@ -253,7 +253,6 @@ require_once('../partials/head.php');
                     </div>
                 </div>
 
-
                 <div class="col-xl-6">
                     <div class="card mb-3">
                         <div class="card-body">
@@ -265,18 +264,39 @@ require_once('../partials/head.php');
                             <div class="table-responsive">
                                 <table class="table table-striped table-borderless mb-2px small text-nowrap">
                                     <tbody>
-                                        <tr>
-                                            <td>
-                                                <span class="d-flex align-items-center">
-                                                    <i class="bi bi-circle-fill fs-6px text-theme me-2"></i>
-                                                    You have sold an item - $1,299
-                                                </span>
-                                            </td>
-                                            <td><small>just now</small></td>
-                                            <td>
-                                                <span class="badge d-block bg-theme text-theme-900 rounded-0 pt-5px w-70px" style="min-height: 18px">PRODUCT</span>
-                                            </td>
-                                        </tr>
+                                        <?php
+                                        /* Fetch Recent Bills */
+                                        $recent_bills_sql = mysqli_query(
+                                            $mysqli,
+                                            "SELECT * FROM purchases  ORDER BY purchase_date_made DESC LIMIT 20"
+                                        );
+                                        if (mysqli_num_rows($recent_bills_sql) > 0) {
+                                            while ($recent_bills = mysqli_fetch_array($recent_bills_sql)) {
+                                        ?>
+                                                <tr>
+                                                    <td>
+                                                        <span class="d-flex align-items-center">
+                                                            <i class="bi bi-circle-fill fs-6px text-theme me-2"></i>
+                                                            <?php echo $recent_bills['purchase_item']; ?>
+                                                        </span>
+                                                    </td>
+                                                    <td>QTY: <?php echo $recent_bills['purchase_quantity']; ?></td>
+                                                    <td>Total Amount: Ksh<?php echo number_format($recent_bills['purchase_amount']); ?></td>
+                                                    <td>
+                                                        <span class="badge d-block bg-theme text-theme-900 rounded-0 pt-5px w-70px" style="min-height: 18px"><?php echo date('d M Y', strtotime($recent_bills['purchase_date_made'])); ?></span>
+                                                    </td>
+                                                </tr>
+                                            <?php }
+                                        } else { ?>
+                                            <tr>
+                                                <td>
+                                                    <span class="d-flex align-items-center text-warning">
+                                                        <i class="bi bi-circle-fill fs-6px text-danger me-2"></i>
+                                                        No Recent Bills & Expenditures
+                                                    </span>
+                                                </td>
+                                            </tr>
+                                        <?php } ?>
                                     </tbody>
                                 </table>
                             </div>
