@@ -91,47 +91,45 @@ require_once('../partials/head.php');
             <div class="container">
 
                 <div class="row justify-content-center">
+                    <div class="row">
+                        <div class="col-xl-12">
+                            <h1 class="page-header text-right">
+                                Assets Categories
+                            </h1>
+                            <div class="text-center">
+                                <button type="button" data-bs-toggle="modal" data-bs-target="#add_modal" class="btn btn-success"><span>Register Asset Category</button>
+                            </div>
+                            <hr class="mb-4" />
 
-                    <div class="col-xl-12">
-
-                        <div class="row">
-
-                            <div class="col-xl-12">
-                                <h1 class="page-header text-right">
-                                    Assets Categories
-                                </h1>
-                                <hr class="mb-4" />
-
-                                <div id="datatable" class="mb-5">
-                                    <div class="card">
-                                        <div class="card-body">
-                                            <table id="datatableDefault" class="table text-nowrap w-100">
-                                                <thead>
-                                                    <tr>
-                                                        <th>#</th>
-                                                        <th>Code</th>
-                                                        <th>Name</th>
-                                                        <th>Manage</th>
-                                                    </tr>
-                                                </thead>
-                                                <tbody>
-                                                    <tr>
-                                                        <td>1.</td>
-                                                        <td>Tiger Nixon</td>
-                                                        <td>System Architect</td>
-                                                        <td>System Architect</td>
-                                                    </tr>
-                                                </tbody>
-                                            </table>
-                                        </div>
-                                        <div class="card-arrow">
-                                            <div class="card-arrow-top-left"></div>
-                                            <div class="card-arrow-top-right"></div>
-                                            <div class="card-arrow-bottom-left"></div>
-                                            <div class="card-arrow-bottom-right"></div>
-                                        </div>
-
+                            <div id="datatable" class="mb-5">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <table id="datatableDefault" class="table text-nowrap w-100">
+                                            <thead>
+                                                <tr>
+                                                    <th>#</th>
+                                                    <th>Code</th>
+                                                    <th>Name</th>
+                                                    <th>Manage</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>1.</td>
+                                                    <td>Tiger Nixon</td>
+                                                    <td>System Architect</td>
+                                                    <td>System Architect</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
                                     </div>
+                                    <div class="card-arrow">
+                                        <div class="card-arrow-top-left"></div>
+                                        <div class="card-arrow-top-right"></div>
+                                        <div class="card-arrow-bottom-left"></div>
+                                        <div class="card-arrow-bottom-right"></div>
+                                    </div>
+
                                 </div>
                             </div>
                         </div>
@@ -139,7 +137,6 @@ require_once('../partials/head.php');
                 </div>
             </div>
         </div>
-    </div>
 
     </div>
     <!-- Scripts -->
