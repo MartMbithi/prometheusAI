@@ -207,20 +207,38 @@ require_once('../partials/head.php');
                             <div class="table-responsive">
                                 <table class="table table-striped table-borderless mb-2px small text-nowrap">
                                     <tbody>
-                                        <tr>
-                                            <td>
-                                                <span class="d-flex align-items-center">
-                                                    <i class="bi bi-circle-fill fs-6px text-theme me-2"></i>
-                                                    You have sold an item - $1,299
-                                                </span>
-                                            </td>
-                                            <td><small>just now</small></td>
-                                            <td>
-                                                <span class="badge d-block bg-theme text-theme-900 rounded-0 pt-5px w-70px" style="min-height: 18px">PRODUCT</span>
-                                            </td>
-                                            <td><a href="#" class="text-decoration-none text-white"><i class="bi bi-search"></i></a></td>
-                                        </tr>
-                                        
+                                        <?php
+                                        /* Fetch Recent Bills */
+                                        $recent_bills_sql = mysqli_query(
+                                            $mysqli,
+                                            "SELECT * FROM purchases  ORDER BY purchase_date_made DESC LIMIT 20"
+                                        );
+                                        if (mysqli_num_rows($recent_bills_sql) > 0) {
+                                            while ($recent_bills = mysqli_fetch_array($recent_bills_sql)) {
+                                        ?>
+                                                <tr>
+                                                    <td>
+                                                        <span class="d-flex align-items-center">
+                                                            <i class="bi bi-circle-fill fs-6px text-theme me-2"></i>
+                                                            You have sold an item - $1,299
+                                                        </span>
+                                                    </td>
+                                                    <td><small>just now</small></td>
+                                                    <td>
+                                                        <span class="badge d-block bg-theme text-theme-900 rounded-0 pt-5px w-70px" style="min-height: 18px">PRODUCT</span>
+                                                    </td>
+                                                </tr>
+                                            <?php }
+                                        } else { ?>
+                                            <tr>
+                                                <td>
+                                                    <span class="d-flex align-items-center text-warning">
+                                                        <i class="bi bi-circle-fill fs-6px text-danger me-2"></i>
+                                                        No Recent Bills & Expenditures
+                                                    </span>
+                                                </td>
+                                            </tr>
+                                        <?php } ?>
                                     </tbody>
                                 </table>
                             </div>
@@ -257,124 +275,6 @@ require_once('../partials/head.php');
                                             <td>
                                                 <span class="badge d-block bg-theme text-theme-900 rounded-0 pt-5px w-70px" style="min-height: 18px">PRODUCT</span>
                                             </td>
-                                            <td><a href="#" class="text-decoration-none text-white"><i class="bi bi-search"></i></a></td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                <span class="d-flex align-items-center">
-                                                    <i class="bi bi-circle-fill fs-6px text-white-transparent-3 me-2"></i>
-                                                    Firewall upgrade
-                                                </span>
-                                            </td>
-                                            <td><small>1 min ago</small></td>
-                                            <td>
-                                                <span class="badge d-block bg-white bg-opacity-25 rounded-0 pt-5px w-70px" style="min-height: 18px">SERVER</span>
-                                            </td>
-                                            <td><a href="#" class="text-decoration-none text-white"><i class="bi bi-search"></i></a></td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                <span class="d-flex align-items-center">
-                                                    <i class="bi bi-circle-fill fs-6px text-white-transparent-3 me-2"></i>
-                                                    Push notification v2.0 installation
-                                                </span>
-                                            </td>
-                                            <td><small>1 mins ago</small></td>
-                                            <td>
-                                                <span class="badge d-block bg-white bg-opacity-25 rounded-0 pt-5px w-70px" style="min-height: 18px">ANDROID</span>
-                                            </td>
-                                            <td><a href="#" class="text-decoration-none text-white"><i class="bi bi-search"></i></a></td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                <span class="d-flex align-items-center">
-                                                    <i class="bi bi-circle-fill fs-6px text-theme me-2"></i>
-                                                    New Subscription - 1yr Plan
-                                                </span>
-                                            </td>
-                                            <td><small>1 min ago</small></td>
-                                            <td>
-                                                <span class="badge d-block bg-theme text-theme-900 rounded-0 pt-5px w-70px" style="min-height: 18px">SALES</span>
-                                            </td>
-                                            <td><a href="#" class="text-decoration-none text-white"><i class="bi bi-search"></i></a></td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                <span class="d-flex align-items-center">
-                                                    <i class="bi bi-circle-fill fs-6px text-white text-opacity-25 me-2"></i>
-                                                    2 Unread enquiry
-                                                </span>
-                                            </td>
-                                            <td><small>2 mins ago</small></td>
-                                            <td>
-                                                <span class="badge d-block bg-white bg-opacity-25 rounded-0 pt-5px w-70px" style="min-height: 18px">ENQUIRY</span>
-                                            </td>
-                                            <td><a href="#" class="text-decoration-none text-white"><i class="bi bi-search"></i></a></td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                <span class="d-flex align-items-center">
-                                                    <i class="bi bi-circle-fill fs-6px text-theme me-2"></i>
-                                                    $30,402 received from Paypal
-                                                </span>
-                                            </td>
-                                            <td><small>2 mins ago</small></td>
-                                            <td>
-                                                <span class="badge d-block bg-theme text-theme-900 rounded-0 pt-5px w-70px" style="min-height: 18px">PAYMENT</span>
-                                            </td>
-                                            <td><a href="#" class="text-decoration-none text-white"><i class="bi bi-search"></i></a></td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                <span class="d-flex align-items-center">
-                                                    <i class="bi bi-circle-fill fs-6px text-theme me-2"></i>
-                                                    3 payment received
-                                                </span>
-                                            </td>
-                                            <td><small>5 mins ago</small></td>
-                                            <td>
-                                                <span class="badge d-block bg-theme text-theme-900 rounded-0 pt-5px w-70px" style="min-height: 18px">PAYMENT</span>
-                                            </td>
-                                            <td><a href="#" class="text-decoration-none text-white"><i class="bi bi-search"></i></a></td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                <span class="d-flex align-items-center">
-                                                    <i class="bi bi-circle-fill fs-6px text-white text-opacity-25 me-2"></i>
-                                                    1 pull request from github
-                                                </span>
-                                            </td>
-                                            <td><small>5 mins ago</small></td>
-                                            <td>
-                                                <span class="badge d-block bg-white bg-opacity-25 rounded-0 pt-5px w-70px" style="min-height: 18px">GITHUB</span>
-                                            </td>
-                                            <td><a href="#" class="text-decoration-none text-white"><i class="bi bi-search"></i></a></td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                <span class="d-flex align-items-center">
-                                                    <i class="bi bi-circle-fill fs-6px text-white-transparent-3 me-2"></i>
-                                                    3 pending invoice to generate
-                                                </span>
-                                            </td>
-                                            <td><small>5 mins ago</small></td>
-                                            <td>
-                                                <span class="badge d-block bg-white bg-opacity-25 rounded-0 pt-5px w-70px" style="min-height: 18px">INVOICE</span>
-                                            </td>
-                                            <td><a href="#" class="text-decoration-none text-white"><i class="bi bi-search"></i></a></td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                <span class="d-flex align-items-center">
-                                                    <i class="bi bi-circle-fill fs-6px text-white text-opacity-25 me-2"></i>
-                                                    2 new message from fb messenger
-                                                </span>
-                                            </td>
-                                            <td><small>7 mins ago</small></td>
-                                            <td>
-                                                <span class="badge d-block bg-white bg-opacity-25 rounded-0 pt-5px w-70px" style="min-height: 18px">INBOX</span>
-                                            </td>
-                                            <td><a href="#" class="text-decoration-none text-white"><i class="bi bi-search"></i></a></td>
                                         </tr>
                                     </tbody>
                                 </table>
