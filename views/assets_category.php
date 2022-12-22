@@ -99,6 +99,36 @@ require_once('../partials/head.php');
                             <div class="text-center">
                                 <button type="button" data-bs-toggle="modal" data-bs-target="#add_modal" class="btn btn-success"><span>Register Asset Category</button>
                             </div>
+
+                            <div class="modal fade fixed-right" id="add_modal" tabindex="-1" role="dialog" aria-hidden="true">
+                                <div class="modal-dialog  modal-xl" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header align-items-center">
+                                            <div class="modal-title">
+                                                <h6 class="mb-0">Register New Asset Category</h6>
+                                            </div>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                                        </div>
+                                        <form method="post" enctype="multipart/form-data" role="form">
+                                            <div class="modal-body">
+                                                <div class="row">
+                                                    <div class="form-group col-md-6">
+                                                        <label for="">Asset Category Code</label>
+                                                        <input type="text" required name="category_code" class="form-control">
+                                                    </div>
+                                                    <div class="form-group col-md-6">
+                                                        <label for="">Asset Category Name</label>
+                                                        <input type="text" required name="category_name" class="form-control">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="submit" name="Add_Asset_Category" class="btn btn-outline-theme">Add</button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
                             <hr class="mb-4" />
 
                             <div id="datatable" class="mb-5">
