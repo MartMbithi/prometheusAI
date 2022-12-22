@@ -150,6 +150,7 @@ require_once('../partials/head.php');
                                                     $mysqli,
                                                     "SELECT * FROM assets_category"
                                                 );
+                                                $cnt = 1;
                                                 if (mysqli_num_rows($assets_category_sql) > 0) {
                                                     while ($assets_category = mysqli_fetch_array($assets_category_sql)) {
                                                 ?>
@@ -162,7 +163,8 @@ require_once('../partials/head.php');
                                                                 <button data-toggle="modal" href="#delete_<?php echo $assets_category['category_id']; ?>" class="btn btn-sm btn-outline-danger"><i class="fas fa-trash"></i> Delete</button>
                                                             </td>
                                                         </tr>
-                                                <?php }
+                                                <?php $cnt = $cnt + 1;
+                                                    }
                                                 } ?>
                                             </tbody>
                                         </table>
