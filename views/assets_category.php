@@ -164,6 +164,8 @@ require_once('../partials/head.php');
                                                             </td>
                                                         </tr>
                                                 <?php $cnt = $cnt + 1;
+                                                        /* Load Modals */
+                                                        include('../modals/assets_category.php');
                                                     }
                                                 } ?>
                                             </tbody>
