@@ -97,7 +97,7 @@ require_once('../partials/head.php');
                                 Assets Categories
                             </h1>
                             <div class="text-center">
-                                <button type="button" data-bs-toggle="modal" data-bs-target="#add_modal" class="btn btn-success"><span>Register Asset Category</button>
+                                <button type="button" data-bs-toggle="modal" data-bs-target="#add_modal" class="btn btn-outline-lime"><span>Register Asset Category</button>
                             </div>
 
                             <div class="modal fade fixed-right" id="add_modal" tabindex="-1" role="dialog" aria-hidden="true">
@@ -123,7 +123,7 @@ require_once('../partials/head.php');
                                                 </div>
                                             </div>
                                             <div class="modal-footer">
-                                                <button type="submit" name="Add_Asset_Category" class="btn btn-outline-theme">Add</button>
+                                                <button type="submit" name="Add_Asset_Category" class="btn btn-outline-lime">Add</button>
                                             </div>
                                         </form>
                                     </div>
@@ -158,7 +158,7 @@ require_once('../partials/head.php');
                                                             <td><?php echo $assets_category['category_code']; ?></td>
                                                             <td><?php echo $assets_category['category_name']; ?></td>
                                                             <td>
-
+                                                                <button data-toggle="modal" href="#update_<?php echo $assets_category['category_id']; ?>" class="btn btn-sm btn-outline-warning"><i class="fas fa-edit"></i> Edit</button>
                                                             </td>
                                                         </tr>
                                                 <?php }
