@@ -13,11 +13,12 @@
                     <div class="row">
                         <div class="form-group col-md-6">
                             <label for="">Asset Category Code</label>
-                            <input type="text" required name="category_code" class="form-control">
+                            <input type="hidden" value="<?php echo $assets_category['category_id']; ?>" required name="category_id" class="form-control">
+                            <input type="text" value="<?php echo $assets_category['category_code']; ?>" required name="category_code" class="form-control">
                         </div>
                         <div class="form-group col-md-6">
                             <label for="">Asset Category Name</label>
-                            <input type="text" required name="category_name" class="form-control">
+                            <input type="text" value="<?php echo $assets_category['category_name']; ?>" required name="category_name" class="form-control">
                         </div>
                     </div>
                 </div>
