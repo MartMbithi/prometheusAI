@@ -131,54 +131,52 @@ require_once('../partials/head.php');
                             </div>
                             <hr class="mb-4" />
 
-                            <div id="datatable" class="mb-5">
-                                <div class="card">
-                                    <div class="card-body">
-                                        <table id="datatableDefault" class="table text-nowrap w-100">
-                                            <thead>
-                                                <tr>
-                                                    <th>#</th>
-                                                    <th>Code</th>
-                                                    <th>Name</th>
-                                                    <th>Manage</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                <?php
-                                                /* Fetch Assets*/
-                                                $assets_category_sql = mysqli_query(
-                                                    $mysqli,
-                                                    "SELECT * FROM assets_category"
-                                                );
-                                                $cnt = 1;
-                                                if (mysqli_num_rows($assets_category_sql) > 0) {
-                                                    while ($assets_category = mysqli_fetch_array($assets_category_sql)) {
-                                                ?>
-                                                        <tr>
-                                                            <td><?php echo $cnt; ?></td>
-                                                            <td><?php echo $assets_category['category_code']; ?></td>
-                                                            <td><?php echo $assets_category['category_name']; ?></td>
-                                                            <td>
-                                                                <button data-bs-toggle="modal" data-bs-target="#update_<?php echo $assets_category['category_id']; ?>" class="btn btn-sm btn-outline-warning"><i class="fas fa-edit"></i> Edit</button>
-                                                                <button data-bs-toggle="modal" data-bs-target="#delete_<?php echo $assets_category['category_id']; ?>" class="btn btn-sm btn-outline-danger"><i class="fas fa-trash"></i> Delete</button>
-                                                            </td>
-                                                        </tr>
-                                                <?php $cnt = $cnt + 1;
-                                                        /* Load Modals */
-                                                        include('../modals/assets_category.php');
-                                                    }
-                                                } ?>
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                    <div class="card-arrow">
-                                        <div class="card-arrow-top-left"></div>
-                                        <div class="card-arrow-top-right"></div>
-                                        <div class="card-arrow-bottom-left"></div>
-                                        <div class="card-arrow-bottom-right"></div>
-                                    </div>
-
+                            <div class="card">
+                                <div class="card-body">
+                                    <table id="datatableDefault" class="table text-nowrap w-100">
+                                        <thead>
+                                            <tr>
+                                                <th>#</th>
+                                                <th>Code</th>
+                                                <th>Name</th>
+                                                <th>Manage</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <?php
+                                            /* Fetch Assets*/
+                                            $assets_category_sql = mysqli_query(
+                                                $mysqli,
+                                                "SELECT * FROM assets_category"
+                                            );
+                                            $cnt = 1;
+                                            if (mysqli_num_rows($assets_category_sql) > 0) {
+                                                while ($assets_category = mysqli_fetch_array($assets_category_sql)) {
+                                            ?>
+                                                    <tr>
+                                                        <td><?php echo $cnt; ?></td>
+                                                        <td><?php echo $assets_category['category_code']; ?></td>
+                                                        <td><?php echo $assets_category['category_name']; ?></td>
+                                                        <td>
+                                                            <button data-bs-toggle="modal" data-bs-target="#update_<?php echo $assets_category['category_id']; ?>" class="btn btn-sm btn-outline-warning"><i class="fas fa-edit"></i> Edit</button>
+                                                            <button data-bs-toggle="modal" data-bs-target="#delete_<?php echo $assets_category['category_id']; ?>" class="btn btn-sm btn-outline-danger"><i class="fas fa-trash"></i> Delete</button>
+                                                        </td>
+                                                    </tr>
+                                            <?php $cnt = $cnt + 1;
+                                                    /* Load Modals */
+                                                    include('../modals/assets_category.php');
+                                                }
+                                            } ?>
+                                        </tbody>
+                                    </table>
                                 </div>
+                                <div class="card-arrow">
+                                    <div class="card-arrow-top-left"></div>
+                                    <div class="card-arrow-top-right"></div>
+                                    <div class="card-arrow-bottom-left"></div>
+                                    <div class="card-arrow-bottom-right"></div>
+                                </div>
+
                             </div>
                         </div>
                     </div>

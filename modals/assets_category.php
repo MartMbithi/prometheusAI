@@ -1,10 +1,10 @@
 <!-- Update Modal -->
-<div class="modal fade fixed-right" id="add_modal" tabindex="-1" role="dialog" aria-hidden="true">
+<div class="modal fade" id="update_<?php echo $assets_category['category_id']; ?>" role="dialog" aria-hidden="true">
     <div class="modal-dialog  modal-xl" role="document">
         <div class="modal-content">
             <div class="modal-header align-items-center">
                 <div class="modal-title">
-                    <h6 class="mb-0">Register New Asset Category</h6>
+                    <h6 class="mb-0">Update Assets Categories</h6>
                 </div>
                 <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
             </div>
