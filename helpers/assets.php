@@ -66,13 +66,23 @@
  */
 
 
- /* Add Asset Category */
+/* Add Asset Category */
 
 
- /* Update Asset Category */
+/* Update Asset Category */
 
- /* Delete Asset Category */
+/* Delete Asset Category */
+if (isset($_POST['Delete_Asset_Category'])) {
+    $category_id = mysqli_real_escape_string($mysqli, $_POST['category_id']);
 
+    /* Persist Delete */
+    $delete_sql = "DELETE FROM assets_category WHERE category_id = '{$category_id}'";
+    if (mysqli_query($mysqli, $delete_sql)) {
+        $success = "Asset category deleted";
+    } else {
+        $err = "Failed, please try again";
+    }
+}
 
  /* Add Asset */
 
