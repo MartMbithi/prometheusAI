@@ -1,5 +1,5 @@
 <!-- Update Modal -->
-<div class="modal fade" id="update_<?php echo $assets_category['category_id']; ?>" role="dialog" aria-hidden="true">
+<div class="modal fade" id="update_<?php echo $assets_category['category_id']; ?>">
     <div class="modal-dialog  modal-xl" role="document">
         <div class="modal-content">
             <div class="modal-header align-items-center">
@@ -33,4 +33,21 @@
 
 
 <!-- Delete Modal -->
+<div class="modal fade" id="delete_<?php echo $assets_category['category_id']; ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <form method="POST">
+                <div class="modal-body text-center text-danger">
+                    <h4>
+                        Heads Up! <br><br>
+                        Are You Sure You Want To Delete This Record?
+                    </h4>
+                    <input type="hidden" value="<?php echo $assets_category['category_id']; ?>" required name="category_id" class="form-control">
+                    <button type="button" class="text-center btn btn-success" data-bs-dismiss="modal">No</button>
+                    <input type="submit" value="Yes, Delete" name="Delete_Asset_Category" class="text-center btn btn-danger">
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
 <!-- End Modal -->
