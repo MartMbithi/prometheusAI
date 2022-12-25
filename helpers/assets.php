@@ -78,6 +78,7 @@ if (isset($_POST['Update_Asset_Category'])) {
     /* Persist Update */
     $update_sql = "UPDATE assets_category SET category_code = '{$category_code}', category_name = '{$category_name}' WHERE category_id = '{$category_id}'";
     if (mysqli_query($mysqli, $update_sql)) {
+        
         $success = "Asset category updated";
     } else {
         $err = "Failed, please try again";
