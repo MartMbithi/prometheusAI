@@ -67,6 +67,18 @@
 
 
 /* Add Asset Category */
+if (isset($_POST['Add_Asset_Category'])) {
+    $category_code = mysqli_real_escape_string($mysqli, $_POST['category_code']);
+    $category_name = mysqli_real_escape_string($mysqli, $_POST['category_name']);
+
+    /* Persist Register */
+    $add_category = "INSERT INTO assets_category(category_code, category_name) VALUES('{$category_code}', '{$category_name}')";
+    if (mysqli_query($mysqli, $add_category)) {
+        $success = "Asset category registered";
+    } else {
+        $err = "Failed, please try again";
+    }
+}
 
 
 /* Update Asset Category */
