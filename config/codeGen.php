@@ -72,9 +72,4 @@ $tk = substr(str_shuffle("qwertyuioplkjhgfdsazxcvbnmQWERTYUIOPLKJHGFDSAZXCVBNM12
 
 
 /* OTP */
-$otp = substr(str_shuffle("1234567890"), 1, 5);
-
-
-// ------- ID--------------------------------------------------------------------//
-$length = date('y');
-$ID = bin2hex(random_bytes($length));
+$code = substr(str_shuffle("QWERTYUIOPLKJHGFDSAZXCVBNM1234567890"), 1, 5);
