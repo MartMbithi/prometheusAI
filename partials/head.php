@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="description" content="" />
     <meta name="author" content="" />
-
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.10.25/datatables.min.css" />
     <link href="../public/css/vendor.min.css" rel="stylesheet" />
     <link href="../public/css/app.min.css" rel="stylesheet" />
     <!-- Custom Stylesheet -->
