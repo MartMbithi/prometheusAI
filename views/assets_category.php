@@ -135,7 +135,7 @@ require_once('../partials/head.php');
 
                             <div class="card">
                                 <div class="card-body">
-                                    <table id="datatableDefault" class="table text-nowrap w-100">
+                                    <table class="table text-nowrap w-100">
                                         <thead>
                                             <tr>
                                                 <th>#</th>
