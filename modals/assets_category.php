@@ -1,5 +1,5 @@
 <!-- Update Modal -->
-<div class="modal fade" id="update_<?php echo $assets_category['category_id']; ?>" data-backdrop="false">
+<div class="modal fade" id="update_<?php echo $assets_category['category_id']; ?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" data-backdrop="false" style="background-color: rgba(0, 0, 0, 0.5);">
     <div class="modal-dialog  modal-xl" role="document">
         <div class="modal-content">
             <div class="modal-header align-items-center">
@@ -33,7 +33,7 @@
 
 
 <!-- Delete Modal -->
-<div class="modal fade" id="delete_<?php echo $assets_category['category_id']; ?>" data-backdrop="false">
+<div class="modal fade" id="delete_<?php echo $assets_category['category_id']; ?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" data-backdrop="false" style="background-color: rgba(0, 0, 0, 0.5);">
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
             <form method="POST">
