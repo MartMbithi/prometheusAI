@@ -178,18 +178,15 @@ require_once('../partials/head.php');
                                     <div class="card-arrow-bottom-left"></div>
                                     <div class="card-arrow-bottom-right"></div>
                                 </div>
-
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-
     </div>
     <!-- Scripts -->
     <?php require_once('../partials/scripts.php'); ?>
     <!-- End Scripts -->
 </body>
-
 </html>
