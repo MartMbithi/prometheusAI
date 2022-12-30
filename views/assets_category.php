@@ -135,7 +135,7 @@ require_once('../partials/head.php');
 
                             <div class="card">
                                 <div class="card-body">
-                                    <table class="table text-nowrap w-100">
+                                    <table class="table">
                                         <thead>
                                             <tr>
                                                 <th>#</th>
@@ -171,6 +171,23 @@ require_once('../partials/head.php');
                                                 }
                                             } ?>
                                         </tbody>
+                                        <div class="modal fade" id="delete" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" data-backdrop="false" style="background-color: rgba(0, 0, 0, 0.5);">
+                                            <div class="modal-dialog modal-dialog-centered" role="document">
+                                                <div class="modal-content">
+                                                    <form method="POST">
+                                                        <div class="modal-body text-center text-danger">
+                                                            <h4>
+                                                                Heads Up! <br><br>
+                                                                Are You Sure You Want To Delete This Record?
+                                                            </h4>
+                                                            <input type="hidden" value="<?php echo $assets_category['category_id']; ?>" required name="category_id" class="form-control">
+                                                            <button type="button" class="text-center btn btn-success" data-bs-dismiss="modal">No</button>
+                                                            <input type="submit" value="Yes, Delete" name="Delete_Asset_Category" class="text-center btn btn-danger">
+                                                        </div>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </table>
                                 </div>
                                 <div class="card-arrow">
@@ -180,23 +197,7 @@ require_once('../partials/head.php');
                                     <div class="card-arrow-bottom-right"></div>
                                 </div>
                             </div>
-                            <div class="modal fade" id="delete" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" data-backdrop="false" style="background-color: rgba(0, 0, 0, 0.5);">
-                                <div class="modal-dialog modal-dialog-centered" role="document">
-                                    <div class="modal-content">
-                                        <form method="POST">
-                                            <div class="modal-body text-center text-danger">
-                                                <h4>
-                                                    Heads Up! <br><br>
-                                                    Are You Sure You Want To Delete This Record?
-                                                </h4>
-                                                <input type="hidden" value="<?php echo $assets_category['category_id']; ?>" required name="category_id" class="form-control">
-                                                <button type="button" class="text-center btn btn-success" data-bs-dismiss="modal">No</button>
-                                                <input type="submit" value="Yes, Delete" name="Delete_Asset_Category" class="text-center btn btn-danger">
-                                            </div>
-                                        </form>
-                                    </div>
-                                </div>
-                            </div>
+
                         </div>
                     </div>
                 </div>
