@@ -161,12 +161,13 @@ require_once('../partials/head.php');
                                                         <td><?php echo $assets_category['category_name']; ?></td>
                                                         <td>
                                                             <button data-bs-toggle="modal" data-bs-target="#update_<?php echo $assets_category['category_id']; ?>" class="btn btn-sm btn-outline-warning"><i class="fas fa-edit"></i> Edit</button>
-                                                            <button data-bs-toggle="modal" data-bs-target="#delete_<?php echo $assets_category['category_id']; ?>" class="btn btn-sm btn-outline-danger"><i class="fas fa-trash"></i> Delete</button>
+                                                            <button data-bs-toggle="modal" data-bs-target="#delete" class="btn btn-sm btn-outline-danger"><i class="fas fa-trash"></i> Delete</button>
                                                         </td>
                                                     </tr>
-                                            <?php $cnt = $cnt + 1;
+                                            <?php
                                                     /* Load Modals */
                                                     include('../modals/assets_category.php');
+                                                    $cnt = $cnt + 1;
                                                 }
                                             } ?>
                                         </tbody>
@@ -179,6 +180,23 @@ require_once('../partials/head.php');
                                     <div class="card-arrow-bottom-right"></div>
                                 </div>
                             </div>
+                            <div class="modal fade" id="delete" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" data-backdrop="false" style="background-color: rgba(0, 0, 0, 0.5);">
+                                <div class="modal-dialog modal-dialog-centered" role="document">
+                                    <div class="modal-content">
+                                        <form method="POST">
+                                            <div class="modal-body text-center text-danger">
+                                                <h4>
+                                                    Heads Up! <br><br>
+                                                    Are You Sure You Want To Delete This Record?
+                                                </h4>
+                                                <input type="hidden" value="<?php echo $assets_category['category_id']; ?>" required name="category_id" class="form-control">
+                                                <button type="button" class="text-center btn btn-success" data-bs-dismiss="modal">No</button>
+                                                <input type="submit" value="Yes, Delete" name="Delete_Asset_Category" class="text-center btn btn-danger">
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -189,4 +207,5 @@ require_once('../partials/head.php');
     <?php require_once('../partials/scripts.php'); ?>
     <!-- End Scripts -->
 </body>
+
 </html>
