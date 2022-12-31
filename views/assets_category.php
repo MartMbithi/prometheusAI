@@ -92,16 +92,12 @@ require_once('../partials/head.php');
 
             <div class="container">
 
-                <div class="row justify-content-center">
+                <div class="row">
                     <div class="row">
                         <div class="col-xl-12">
-                            <h1 class="page-header text-right">
-                                Assets Categories
-                            </h1>
-                            <div class="text-center">
+                            <div class="d-flex justify-content-end">
                                 <button type="button" data-bs-toggle="modal" data-bs-target="#add_modal" class="btn btn-outline-lime"><span>Register Asset Category</button>
                             </div>
-
                             <div class="modal fade fixed-right" id="add_modal" tabindex="-1" role="dialog" aria-hidden="true">
                                 <div class="modal-dialog  modal-xl" role="document">
                                     <div class="modal-content">
@@ -135,60 +131,7 @@ require_once('../partials/head.php');
 
                             <div class="card">
                                 <div class="card-body">
-                                    <table class="table">
-                                        <thead>
-                                            <tr>
-                                                <th>#</th>
-                                                <th>Code</th>
-                                                <th>Name</th>
-                                                <th>Manage</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <?php
-                                            /* Fetch Assets*/
-                                            $assets_category_sql = mysqli_query(
-                                                $mysqli,
-                                                "SELECT * FROM assets_category"
-                                            );
-                                            $cnt = 1;
-                                            if (mysqli_num_rows($assets_category_sql) > 0) {
-                                                while ($assets_category = mysqli_fetch_array($assets_category_sql)) {
-                                            ?>
-                                                    <tr>
-                                                        <td><?php echo $cnt; ?></td>
-                                                        <td><?php echo $assets_category['category_code']; ?></td>
-                                                        <td><?php echo $assets_category['category_name']; ?></td>
-                                                        <td>
-                                                            <button data-bs-toggle="modal" data-bs-target="#update_<?php echo $assets_category['category_id']; ?>" class="btn btn-sm btn-outline-warning"><i class="fas fa-edit"></i> Edit</button>
-                                                            <button data-bs-toggle="modal" data-bs-target="#delete" class="btn btn-sm btn-outline-danger"><i class="fas fa-trash"></i> Delete</button>
-                                                        </td>
-                                                    </tr>
-                                            <?php
-                                                    /* Load Modals */
-                                                    include('../modals/assets_category.php');
-                                                    $cnt = $cnt + 1;
-                                                }
-                                            } ?>
-                                        </tbody>
-                                        <div class="modal fade" id="delete" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" data-backdrop="false" style="background-color: rgba(0, 0, 0, 0.5);">
-                                            <div class="modal-dialog modal-dialog-centered" role="document">
-                                                <div class="modal-content">
-                                                    <form method="POST">
-                                                        <div class="modal-body text-center text-danger">
-                                                            <h4>
-                                                                Heads Up! <br><br>
-                                                                Are You Sure You Want To Delete This Record?
-                                                            </h4>
-                                                            <input type="hidden" value="<?php echo $assets_category['category_id']; ?>" required name="category_id" class="form-control">
-                                                            <button type="button" class="text-center btn btn-success" data-bs-dismiss="modal">No</button>
-                                                            <input type="submit" value="Yes, Delete" name="Delete_Asset_Category" class="text-center btn btn-danger">
-                                                        </div>
-                                                    </form>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </table>
+
                                 </div>
                                 <div class="card-arrow">
                                     <div class="card-arrow-top-left"></div>
