@@ -142,7 +142,19 @@ require_once('../partials/head.php');
                             <br>
                             <div class="card">
                                 <div class="card-body">
+                                    <?php
+                                    $assets_category_sql = mysqli_query(
+                                        $mysqli,
+                                        "SELECT * FROM assets_category"
+                                    );
+                                    $cnt = 1;
+                                    if (mysqli_num_rows($assets_category_sql) > 0) {
+                                        while ($assets_category = mysqli_fetch_array($assets_category_sql)) {
+                                    ?>
 
+
+                                    <?php }
+                                    } ?>
                                 </div>
                                 <div class="card-arrow">
                                     <div class="card-arrow-top-left"></div>
