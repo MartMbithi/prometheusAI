@@ -19,6 +19,8 @@
         let input = document.getElementById('Asset_Category_Search').value
         input = input.toLowerCase();
         let x = document.getElementsByClassName('
+
+        
         Asset_Category_Name');
         /* Perform Magic Here */
         for (i = 0; i < x.length; i++) {
