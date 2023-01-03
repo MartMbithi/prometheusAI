@@ -140,39 +140,48 @@ require_once('../partials/head.php');
                                 </div>
                             </div>
                             <br>
-                            <div class="card">
-                                <div class="card-body">
-                                    <?php
-                                    $assets_category_sql = mysqli_query(
-                                        $mysqli,
-                                        "SELECT * FROM assets_category"
-                                    );
-                                    $cnt = 1;
-                                    if (mysqli_num_rows($assets_category_sql) > 0) {
-                                        while ($assets_category = mysqli_fetch_array($assets_category_sql)) {
-                                    ?>
+                            <div class="row">
+                                <?php
+                                $assets_category_sql = mysqli_query(
+                                    $mysqli,
+                                    "SELECT * FROM assets_category"
+                                );
+                                $cnt = 1;
+                                if (mysqli_num_rows($assets_category_sql) > 0) {
+                                    while ($assets_category = mysqli_fetch_array($assets_category_sql)) {
+                                ?>
+                                        <div class="col-4">
+                                            <div class="card">
+                                                <div class="card-header fw-bold small"><?php echo $</div>
+                                                <div class="card-body">
+                                                    <h5 class="card-title">Card title</h5>
+                                                    <h6 class="card-subtitle mb-3 text-white text-opacity-50">Card subtitle</h6>
+                                                    <p class="card-text mb-3">...</p>
+                                                    <div>
+                                                        <a href="#" class="card-link">Card link</a>
+                                                        <a href="#" class="card-link">Another link</a>
+                                                    </div>
+                                                </div>
+                                                <div class="card-arrow">
+                                                    <div class="card-arrow-top-left"></div>
+                                                    <div class="card-arrow-top-right"></div>
+                                                    <div class="card-arrow-bottom-left"></div>
+                                                    <div class="card-arrow-bottom-right"></div>
+                                                </div>
+                                            </div>
+                                        </div>
 
-
-                                    <?php }
-                                    } ?>
-                                </div>
-                                <div class="card-arrow">
-                                    <div class="card-arrow-top-left"></div>
-                                    <div class="card-arrow-top-right"></div>
-                                    <div class="card-arrow-bottom-left"></div>
-                                    <div class="card-arrow-bottom-right"></div>
-                                </div>
+                                <?php }
+                                } ?>
                             </div>
-
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-    <!-- Scripts -->
-    <?php require_once('../partials/scripts.php'); ?>
-    <!-- End Scripts -->
+        <!-- Scripts -->
+        <?php require_once('../partials/scripts.php'); ?>
+        <!-- End Scripts -->
 </body>
 
 </html>
