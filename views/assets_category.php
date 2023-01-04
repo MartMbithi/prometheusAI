@@ -95,15 +95,15 @@ require_once('../partials/head.php');
                 <div class="row">
                     <div class="row">
                         <div class="col-xl-12">
-                            <div class="d-flex justify-content-between">
-                                <h1 class="page-header">
-                                    Assets Categories
-                                </h1>
+                            <h1 class="page-header">
+                                Assets Categories
+                            </h1>
+                            <div class="d-flex justify-content-end">
                                 <button type="button" data-bs-toggle="modal" data-bs-target="#add_modal" class="btn-sm btn btn-outline-lime"><span>Register Asset Category</button>
                             </div>
 
                             <div class="modal fade fixed-right" id="add_modal" tabindex="-1" role="dialog" aria-hidden="true">
-                                <div class="modal-dialog  modal-xl" role="document">
+                                <div class="modal-dialog modal-xl modal-dialog-centered" role="document">
                                     <div class="modal-content">
                                         <div class="modal-header align-items-center">
                                             <div class="modal-title">
