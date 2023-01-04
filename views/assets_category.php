@@ -140,7 +140,7 @@ require_once('../partials/head.php');
                                 </div>
                             </div>
                             <br>
-                            <div class="row">
+                            <div class="row row-cols-1 row-cols-md-2 g-3">
                                 <?php
                                 $assets_category_sql = mysqli_query(
                                     $mysqli,
