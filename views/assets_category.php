@@ -172,7 +172,10 @@ require_once('../partials/head.php');
                                             </div>
                                         </div>
 
-                                <?php }
+                                <?php
+                                        /* Modals  */
+                                        include('../modals/assets_category.php');
+                                    }
                                 } ?>
                             </div>
                         </div>
