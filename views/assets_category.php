@@ -150,7 +150,7 @@ require_once('../partials/head.php');
                                 if (mysqli_num_rows($assets_category_sql) > 0) {
                                     while ($assets_category = mysqli_fetch_array($assets_category_sql)) {
                                 ?>
-                                        <div class="col-4">
+                                        <div class="col-sm-12 col-lg-4 col-xl-4">
                                             <div class="card Asset_Category_Name">
                                                 <div class="card-header fw-bold small"><?php echo $assets_category['category_code']; ?></div>
                                                 <div class="card-body">
@@ -159,8 +159,8 @@ require_once('../partials/head.php');
                                                         <?php echo $assets_category['category_name']; ?>
                                                     </h6>
                                                     <div class="card-footer">
-                                                        <a href="#" class="card-link">Card link</a>
-                                                        <a href="#" class="card-link">Another link</a>
+                                                        <button data-bs-toggle="modal" data-bs-target="#update_<?php echo $assets_category['category_id']; ?>" class="btn btn-sm btn-outline-warning"><i class="fas fa-edit"></i> Edit</button>
+                                                        <button data-bs-toggle="modal" data-bs-target="#delete" class="btn btn-sm btn-outline-danger"><i class="fas fa-trash"></i> Delete</button>
                                                     </div>
                                                 </div>
                                                 <div class="card-arrow">
