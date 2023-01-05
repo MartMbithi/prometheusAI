@@ -13,7 +13,7 @@
             <div class="menu-item">
                 <a href="assets_category" class="menu-link">
                     <span class="menu-icon"><i class="bi bi-collection-play"></i></span>
-                    <span class="menu-text">Asset Categories</span>
+                    <span class="menu-text">Categories</span>
                 </a>
             </div>
             <div class="menu-item">
