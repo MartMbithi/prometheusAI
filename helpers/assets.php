@@ -130,7 +130,26 @@ if (isset($_POST['Add_Asset'])) {
 }
 
 /* Update Asset */
+if (isset($_POST['Update_Asset'])) {
+    $asset_category_id = mysqli_real_escape_string($mysqli, $_POST['asset_category_id']);
+    $asset_name = mysqli_real_escape_string($mysqli, $_POST['asset_name']);
+    $asset_details = mysqli_real_escape_string($mysqli, $_POST['asset_details']);
+    $asset_cost = mysqli_real_escape_string($mysqli, $_POST['asset_cost']);
+    $asset_date_purchased = mysqli_real_escape_string($mysqli, $_POST['asset_date_purchased']);
+    $asset_status = mysqli_real_escape_string($mysqli, $_POST['asset_status']);
+    $asset_id = mysqli_real_escape_string($mysqli, $_POST['asset_id']);
 
+    /* Persist Details */
+    $update_sql = "UPDATE asset SET asset_name = '{$asset_name}', asset_details  = '{$asset_details}', asset_category_id = '{$asset_category_id}',
+    asset_cost = '{$asset_cost}', asset_date_purchased = '{$asset_date_purchased}', asset_status = '{$asset_status}' 
+    WHERE asset_id = '{$asset_id}'";
+
+    if (mysqli_query($mysqli, $update_sql)) {
+        $success = "Asset updated";
+    } else {
+        $err = "Failed, please try again";
+    }
+}
 
 /* Delete Asset */
 if (isset($_POST['Delete_Asset'])) {

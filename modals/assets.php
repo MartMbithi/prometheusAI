@@ -53,6 +53,7 @@
                         </div>
                         <div class="form-group col-md-8 mb-3">
                             <label for="">Asset Name</label>
+                            <input type="hidden" required name="asset_id" value="<?php echo $assets['asset_id']; ?>" class="form-control">
                             <input type="text" required name="asset_name" value="<?php echo $assets['asset_name']; ?>" class="form-control">
                         </div>
                         <div class="form-group col-md-4 mb-3">
