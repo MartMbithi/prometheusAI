@@ -177,27 +177,27 @@ require_once('../partials/head.php');
                             <br>
                             <div class="row row-cols-1 row-cols-md-2 g-3">
                                 <?php
-                                $assets_category_sql = mysqli_query(
+                                $assets_sql = mysqli_query(
                                     $mysqli,
-                                    "SELECT * FROM assets_category 
-                                    ORDER BY  category_name ASC"
+                                    "SELECT * FROM assets a INNER JOIN 
+                                    assets_category ac ON a.asset_category_id = ac.category_id
+                                    ORDER BY  asset_name ASC"
                                 );
                                 $cnt = 1;
-                                if (mysqli_num_rows($assets_category_sql) > 0) {
-                                    while ($assets_category = mysqli_fetch_array($assets_category_sql)) {
+                                if (mysqli_num_rows($assets_sql) > 0) {
+                                    while ($assets = mysqli_fetch_array($assets_sql)) {
                                 ?>
                                         <div class="col-sm-12 col-lg-4 col-xl-4">
                                             <div class="card Asset_Category_Name">
-                                                <div class="card-header fw-bold small"><?php echo $assets_category['category_code']; ?></div>
+                                                <div class="card-header fw-bold small"><?php echo $cnt; ?></div>
                                                 <div class="card-body">
                                                     <h5 class="card-title"></h5>
                                                     <h6 class="card-subtitle mb-3 text-white text-opacity-50">
-                                                        <?php echo $assets_category['category_name']; ?>
+                                                        <?php echo $assets['category_name']; ?>
                                                     </h6>
                                                     <div class="card-footer">
-                                                        <a href="assets_under_category?category=<?php echo $assets_category['category_id']; ?>" class="btn btn-sm btn-outline-lime"><i class="fas fa-eye"></i> View</a>
-                                                        <button data-bs-toggle="modal" data-bs-target="#update_<?php echo $assets_category['category_id']; ?>" class="btn btn-sm btn-outline-warning"><i class="fas fa-edit"></i> Edit</button>
-                                                        <button data-bs-toggle="modal" data-bs-target="#delete_<?php echo $assets_category['category_id']; ?>" class="btn btn-sm btn-outline-danger"><i class="fas fa-trash"></i> Delete</button>
+                                                        <button data-bs-toggle="modal" data-bs-target="#update_<?php echo $assets['asset_id']; ?>" class="btn btn-sm btn-outline-warning"><i class="fas fa-edit"></i> Edit</button>
+                                                        <button data-bs-toggle="modal" data-bs-target="#delete_<?php echo $assets['asset_id']; ?>" class="btn btn-sm btn-outline-danger"><i class="fas fa-trash"></i> Delete</button>
                                                     </div>
                                                 </div>
                                                 <div class="card-arrow">
@@ -209,6 +209,7 @@ require_once('../partials/head.php');
                                             </div>
                                         </div>
                                 <?php
+                                        $cnt = $cnt + 1;
                                         /* Modals  */
                                         include('../modals/assets.php');
                                     }
