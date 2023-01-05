@@ -136,7 +136,7 @@ require_once('../partials/head.php');
                                                     </div>
                                                     <div class="form-group col-md-8 mb-3">
                                                         <label for="">Asset Name</label>
-                                                        <input type="text" required name="assets_name" class="form-control">
+                                                        <input type="text" required name="asset_name" class="form-control">
                                                     </div>
                                                     <div class="form-group col-md-4 mb-3">
                                                         <label for="">Asset Price</label>
@@ -193,7 +193,7 @@ require_once('../partials/head.php');
                                                 <div class="card-body">
                                                     <h5 class="card-title"></h5>
                                                     <h6 class="card-subtitle mb-3 text-white text-opacity-50">
-                                                        <?php echo $assets['category_name']; ?>
+                                                        <?php echo $assets['asset_name']; ?>
                                                     </h6>
                                                     <div class="card-footer">
                                                         <button data-bs-toggle="modal" data-bs-target="#update_<?php echo $assets['asset_id']; ?>" class="btn btn-sm btn-outline-warning"><i class="fas fa-edit"></i> Edit</button>
