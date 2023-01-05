@@ -198,9 +198,9 @@ require_once('../partials/head.php');
                                                         Status:
                                                         <?php
                                                         if ($assets['asset_status'] == 'Operational') { ?>
-                                                            <span class="text-lime">Operational</span>
+                                                            <span class="text-lime">Operational 😎 </span>
                                                         <?php } else { ?>
-                                                            <span class="text-danger">Faulty</span>
+                                                            <span class="text-danger">Faulty 🙁 </span>
                                                         <?php } ?>
                                                         <br>
                                                     </h6>
