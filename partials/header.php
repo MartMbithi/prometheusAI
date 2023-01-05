@@ -21,9 +21,9 @@
     <div class="brand">
         <a href="dashboard" class="brand-logo">
             <span class="brand-img">
-                <span class="brand-img-text text-theme">F</span>
+                <span class="brand-img-text text-theme">P</span>
             </span>
-            <span class="brand-text">Financial AI</span>
+            <span class="brand-text">PrometheusAI</span>
         </a>
     </div>
 

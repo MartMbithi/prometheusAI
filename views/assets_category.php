@@ -160,6 +160,7 @@ require_once('../partials/head.php');
                                                         <?php echo $assets_category['category_name']; ?>
                                                     </h6>
                                                     <div class="card-footer">
+                                                        <a href="assets_under_category?category=<?php echo $assets_category['category_id']; ?>" class="btn btn-sm btn-outline-lime"><i class="fas fa-eye"></i> View</a>
                                                         <button data-bs-toggle="modal" data-bs-target="#update_<?php echo $assets_category['category_id']; ?>" class="btn btn-sm btn-outline-warning"><i class="fas fa-edit"></i> Edit</button>
                                                         <button data-bs-toggle="modal" data-bs-target="#delete_<?php echo $assets_category['category_id']; ?>" class="btn btn-sm btn-outline-danger"><i class="fas fa-trash"></i> Delete</button>
                                                     </div>
