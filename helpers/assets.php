@@ -140,7 +140,7 @@ if (isset($_POST['Update_Asset'])) {
     $asset_id = mysqli_real_escape_string($mysqli, $_POST['asset_id']);
 
     /* Persist Details */
-    $update_sql = "UPDATE asset SET asset_name = '{$asset_name}', asset_details  = '{$asset_details}', asset_category_id = '{$asset_category_id}',
+    $update_sql = "UPDATE assets SET asset_name = '{$asset_name}', asset_details  = '{$asset_details}', asset_category_id = '{$asset_category_id}',
     asset_cost = '{$asset_cost}', asset_date_purchased = '{$asset_date_purchased}', asset_status = '{$asset_status}' 
     WHERE asset_id = '{$asset_id}'";
 
