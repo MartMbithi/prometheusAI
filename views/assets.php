@@ -191,9 +191,9 @@ require_once('../partials/head.php');
                                             <div class="card Asset_Category_Name">
                                                 <div class="card-header fw-bold small"><?php echo $cnt; ?></div>
                                                 <div class="card-body">
-                                                    <h5 class="card-title"></h5>
+                                                    <h5 class="card-title"><?php echo $assets['asset_name']; ?></h5>
                                                     <h6 class="card-subtitle mb-3 text-white text-opacity-50">
-                                                        <?php echo $assets['asset_name']; ?>
+                                                        <?php echo $assets['asset_details']; ?>
                                                     </h6>
                                                     <div class="card-footer">
                                                         <button data-bs-toggle="modal" data-bs-target="#update_<?php echo $assets['asset_id']; ?>" class="btn btn-sm btn-outline-warning"><i class="fas fa-edit"></i> Edit</button>
