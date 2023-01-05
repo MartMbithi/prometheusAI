@@ -144,7 +144,8 @@ require_once('../partials/head.php');
                                 <?php
                                 $assets_category_sql = mysqli_query(
                                     $mysqli,
-                                    "SELECT * FROM assets_category"
+                                    "SELECT * FROM assets_category 
+                                    ORDER BY  category_name ASC"
                                 );
                                 $cnt = 1;
                                 if (mysqli_num_rows($assets_category_sql) > 0) {
