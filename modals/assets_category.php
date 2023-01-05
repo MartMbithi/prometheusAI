@@ -43,8 +43,8 @@
                         Are You Sure You Want To Delete This Record?
                     </h4>
                     <input type="hidden" value="<?php echo $assets_category['category_id']; ?>" required name="category_id" class="form-control">
-                    <button type="button" class="text-center btn btn-success" data-bs-dismiss="modal">No</button>
-                    <input type="submit" value="Yes, Delete" name="Delete_Asset_Category" class="text-center btn btn-danger">
+                    <button type="button" class="text-center btn btn-outline-lime" data-bs-dismiss="modal">No</button>
+                    <input type="submit" value="Yes, Delete" name="Delete_Asset_Category" class="text-center btn btn-outline-danger">
                 </div>
             </form>
         </div>
