@@ -129,6 +129,18 @@ if (isset($_POST['Add_Asset'])) {
     }
 }
 
- /* Update Asset */
+/* Update Asset */
 
- /* Delete Asset */
+
+/* Delete Asset */
+if (isset($_POST['Delete_Asset'])) {
+    $asset_id = mysqli_real_escape_string($mysqli, $_POST['asset_id']);
+
+    /* Persist */
+    $delete_sql = "DELETE FROM assets WHERE asset_id = '{$asset_id}'";
+    if (mysqli_query($mysqli, $delete_sql)) {
+        $success  = "Asset deleted";
+    } else {
+        $err = "Failed, please try again";
+    }
+}
