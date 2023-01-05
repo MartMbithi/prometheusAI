@@ -194,7 +194,7 @@ require_once('../partials/head.php');
                                                     <h5 class="card-title"><?php echo $assets['asset_name']; ?></h5>
                                                     <h6 class="card-subtitle mb-3 text-white text-opacity-50">
                                                         Cost: Ksh <?php echo number_format($assets['asset_cost']); ?> <br>
-                                                        Purchase Date: <?php echo $assets['asset_date_purchased']; ?><br>
+                                                        Purchase Date: <?php echo date('d M Y', strtotime($assets['asset_date_purchased'])); ?><br>
                                                         Status:
                                                         <?php
                                                         if ($assets['asset_status'] == 'Operational') { ?>
@@ -211,7 +211,7 @@ require_once('../partials/head.php');
                                                     </div>
                                                 </div>
                                                 <div class="card-arrow">
-                                                    <div class="card-arrow-top-left text-success"></div>
+                                                    <div class="card-arrow-top-left "></div>
                                                     <div class="card-arrow-top-right"></div>
                                                     <div class="card-arrow-bottom-left"></div>
                                                     <div class="card-arrow-bottom-right"></div>

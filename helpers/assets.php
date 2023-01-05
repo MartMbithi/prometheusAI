@@ -115,7 +115,7 @@ if (isset($_POST['Add_Asset'])) {
     $asset_name = mysqli_real_escape_string($mysqli, $_POST['asset_name']);
     $asset_details = mysqli_real_escape_string($mysqli, $_POST['asset_details']);
     $asset_cost = mysqli_real_escape_string($mysqli, $_POST['asset_cost']);
-    $asset_date_purchased = mysqli_real_escape_string($mysqli, date('d M Y', strtotime($_POST['asset_date_purchased'])));
+    $asset_date_purchased = mysqli_real_escape_string($mysqli, $_POST['asset_date_purchased']);
     $asset_status = mysqli_real_escape_string($mysqli, $_POST['asset_status']);
 
     /* Persist Details */
