@@ -114,7 +114,7 @@ require_once('../partials/head.php');
                                         <form method="post" enctype="multipart/form-data" role="form">
                                             <div class="modal-body">
                                                 <div class="row">
-                                                    <div class="form-group col-md-4">
+                                                    <div class="form-group col-md-4 mb-3">
                                                         <label for="">Asset Category Name</label>
                                                         <select required name="asset_category_id" class="form-control">
                                                             <option>Select Asset Category</option>
@@ -134,19 +134,19 @@ require_once('../partials/head.php');
                                                             } ?>
                                                         </select>
                                                     </div>
-                                                    <div class="form-group col-md-8">
+                                                    <div class="form-group col-md-8 mb-3">
                                                         <label for="">Asset Name</label>
                                                         <input type="text" required name="assets_name" class="form-control">
                                                     </div>
-                                                    <div class="form-group col-md-4">
+                                                    <div class="form-group col-md-4 mb-3">
                                                         <label for="">Asset Price</label>
                                                         <input type="text" required name="asset_cost" class="form-control">
                                                     </div>
-                                                    <div class="form-group col-md-4">
+                                                    <div class="form-group col-md-4 mb-3">
                                                         <label for="">Asset Date Purchased</label>
                                                         <input type="date" required name="asset_date_purchased" class="form-control">
                                                     </div>
-                                                    <div class="form-group col-md-4">
+                                                    <div class="form-group col-md-4 mb-3">
                                                         <label for="">Asset Status</label>
                                                         <select type="text" required name="asset_status" class="form-control">
                                                             <option>Operational</option>
