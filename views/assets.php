@@ -153,6 +153,10 @@ require_once('../partials/head.php');
                                                             <option>Faulty</option>
                                                         </select>
                                                     </div>
+                                                    <div class="form-group col-md-12 mb-3">
+                                                        <label for="">Asset Details</label>
+                                                        <textarea rows="3" type="text" required name="asset_details" class="form-control"></textarea>
+                                                    </div>
                                                 </div>
                                             </div>
                                             <div class="modal-footer">
