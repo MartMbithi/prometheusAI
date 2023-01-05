@@ -95,7 +95,7 @@ require_once('../partials/head.php');
                     <div class="row">
                         <div class="col-xl-12">
                             <h1 class="page-header">
-                                My Assets
+                                My Assets Under <?php echo $_GET['name']; ?>
                             </h1>
                             <div class="d-flex justify-content-end">
                                 <button type="button" data-bs-toggle="modal" data-bs-target="#add_modal" class="btn-sm btn btn-outline-lime"><span>Register New Asset</button>
@@ -176,11 +176,12 @@ require_once('../partials/head.php');
                             <br>
                             <div class="row row-cols-1 row-cols-md-2 g-3">
                                 <?php
+                                $assets_category = mysqli_real_escape_string($mysqli, $_GET['category']);
                                 $assets_sql = mysqli_query(
                                     $mysqli,
                                     "SELECT * FROM assets a INNER JOIN 
                                     assets_category ac ON a.asset_category_id = ac.category_id
-                                    ORDER BY  asset_name ASC"
+                                    WHERE category_id = '{$assets_category}' ORDER BY  asset_name ASC"
                                 );
                                 $cnt = 1;
                                 if (mysqli_num_rows($assets_sql) > 0) {
