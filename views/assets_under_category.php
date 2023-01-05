@@ -116,21 +116,10 @@ require_once('../partials/head.php');
                                                     <div class="form-group col-md-4 mb-3">
                                                         <label for="">Asset Category Name</label>
                                                         <select required name="asset_category_id" class="form-control">
-                                                            <option>Select Asset Category</option>
-                                                            <?php
-                                                            $assets_category_sql = mysqli_query(
-                                                                $mysqli,
-                                                                "SELECT * FROM assets_category ORDER BY  category_name ASC"
-                                                            );
-                                                            $cnt = 1;
-                                                            if (mysqli_num_rows($assets_category_sql) > 0) {
-                                                                while ($assets_category = mysqli_fetch_array($assets_category_sql)) {
-                                                            ?>
-                                                                    <option value="<?php echo $assets_category['category_id']; ?>">
-                                                                        <?php echo $assets_category['category_code'] . '-' . $assets_category['category_name']; ?>
-                                                                    </option>
-                                                            <?php }
-                                                            } ?>
+                                                            <option value="<?php echo $_GET['category_id']; ?>">
+                                                                <?php echo $_GET['category_name']; ?>
+                                                            </option>
+
                                                         </select>
                                                     </div>
                                                     <div class="form-group col-md-8 mb-3">
