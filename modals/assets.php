@@ -1,6 +1,22 @@
 <!-- Update Modal -->
 <div class="modal fade" id="update_<?php echo $assets['asset_id']; ?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" data-backdrop="false" style="background-color: rgba(0, 0, 0, 0.5);">
-    <div class="modal-dialog  modal-xl" role="document">
+    <div class="modal-dialog modal-dialog-centered modal-xl" role="document">
+        <div class="modal-content">
+            <div class="modal-header align-items-center">
+                <div class="modal-title">
+                    <h6 class="mb-0">Update Asset</h6>
+                </div>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+
+        </div>
+    </div>
+</div>
+<!-- End Modal -->
+
+<!-- Update Modal -->
+<div class="modal fade" id="update_<?php echo $assets['asset_id']; ?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" data-backdrop="false" style="background-color: rgba(0, 0, 0, 0.5);">
+    <div class="modal-dialog modal-dialog-centered modal-xl" role="document">
         <div class="modal-content">
             <div class="modal-header align-items-center">
                 <div class="modal-title">
