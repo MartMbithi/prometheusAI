@@ -95,7 +95,7 @@ require_once('../partials/head.php');
                     <div class="row">
                         <div class="col-xl-12">
                             <h1 class="page-header">
-                                My Assets Under <?php echo $_GET['name']; ?>
+                                My Assets Under <?php echo $_GET['category_name']; ?>
                             </h1>
                             <div class="d-flex justify-content-end">
                                 <button type="button" data-bs-toggle="modal" data-bs-target="#add_modal" class="btn-sm btn btn-outline-lime"><span>Register New Asset</button>
@@ -176,7 +176,7 @@ require_once('../partials/head.php');
                             <br>
                             <div class="row row-cols-1 row-cols-md-2 g-3">
                                 <?php
-                                $assets_category = mysqli_real_escape_string($mysqli, $_GET['category']);
+                                $assets_category = mysqli_real_escape_string($mysqli, $_GET['category_id']);
                                 $assets_sql = mysqli_query(
                                     $mysqli,
                                     "SELECT * FROM assets a INNER JOIN 
@@ -218,12 +218,27 @@ require_once('../partials/head.php');
                                                 </div>
                                             </div>
                                         </div>
-                                <?php
+                                    <?php
                                         $cnt = $cnt + 1;
                                         /* Modals  */
                                         include('../modals/assets.php');
                                     }
-                                } ?>
+                                } else { ?>
+                                    <div class="col-sm-12 col-lg-6 col-xl-6">
+                                        <div class="card Asset_Category_Name">
+                                            <div class="card-header fw-bold small">Woops</div>
+                                            <div class="card-body">
+                                                <h5 class="card-title">We cannot find any asset under this category</h5>
+                                            </div>
+                                            <div class="card-arrow">
+                                                <div class="card-arrow-top-left "></div>
+                                                <div class="card-arrow-top-right"></div>
+                                                <div class="card-arrow-bottom-left"></div>
+                                                <div class="card-arrow-bottom-right"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                <?php } ?>
                             </div>
                         </div>
                     </div>
