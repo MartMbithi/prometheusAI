@@ -83,6 +83,22 @@ if (isset($_POST['Add_Bill'])) {
     }
 }
 
- /* Update Bill */
+/* Update Bill */
+if (isset($_POST['Add_Bill'])) {
+    $purchase_item = mysqli_real_escape_string($mysqli, $_POST['purchase_item']);
+    $purchase_quantity = mysqli_real_escape_string($mysqli, $_POST['purchase_quantity']);
+    $purchase_amount = mysqli_real_escape_string($mysqli, $_POST['purchase_amount']);
+    $purchase_date_made = mysqli_real_escape_string($mysqli, $_POST['purchase_date_made']);
+    $purchase_id = mysqli_real_escape_string($mysqli, $_POST['purchase_id']);
 
+    /* Persist */
+    $update_sql = "UPDATE purchases SET purchase_item = '{$purchase_item}', purchase_quantity = '{$purchase_quantity}',
+    purchase_amount = '{$purchase_amount}', purchase_date_made = '{$purchase_date_made}' WHERE purchase_id = '{$purchase_id}'";
+
+    if (mysqli_query($mysqli, $update_sql)) {
+        $success = "Bill updated";
+    } else {
+        $err = "Failed, please try again";
+    }
+}
  /* Delete Bill */
