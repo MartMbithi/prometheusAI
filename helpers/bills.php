@@ -71,10 +71,11 @@ if (isset($_POST['Add_Bill'])) {
     $purchase_quantity = mysqli_real_escape_string($mysqli, $_POST['purchase_quantity']);
     $purchase_amount = mysqli_real_escape_string($mysqli, $_POST['purchase_amount']);
     $purchase_date_made = mysqli_real_escape_string($mysqli, $_POST['purchase_date_made']);
+    $purchase_details = mysqli_real_escape_string($mysqli, $_POST['purchase_details']);
 
     /* Persist */
-    $add_sql = "INSERT INTO purchases(purchase_item, purchase_quantity, purchase_amount, purchase_date_made)
-    VALUES('{$purchase_item}', '{$purchase_quantity}', '{$purchase_amount}', '{$purchase_date_made}')";
+    $add_sql = "INSERT INTO purchases(purchase_item, purchase_quantity, purchase_amount, purchase_date_made, purchase_details)
+    VALUES('{$purchase_item}', '{$purchase_quantity}', '{$purchase_amount}', '{$purchase_date_made}', '{$purchase_details}')";
 
     if (mysqli_query($mysqli, $add_sql)) {
         $success = "Bill posted";
@@ -89,11 +90,13 @@ if (isset($_POST['Update_Bill'])) {
     $purchase_quantity = mysqli_real_escape_string($mysqli, $_POST['purchase_quantity']);
     $purchase_amount = mysqli_real_escape_string($mysqli, $_POST['purchase_amount']);
     $purchase_date_made = mysqli_real_escape_string($mysqli, $_POST['purchase_date_made']);
+    $purchase_details = mysqli_real_escape_string($mysqli, $_POST['purchase_details']);
     $purchase_id = mysqli_real_escape_string($mysqli, $_POST['purchase_id']);
 
     /* Persist */
     $update_sql = "UPDATE purchases SET purchase_item = '{$purchase_item}', purchase_quantity = '{$purchase_quantity}',
-    purchase_amount = '{$purchase_amount}', purchase_date_made = '{$purchase_date_made}' WHERE purchase_id = '{$purchase_id}'";
+    purchase_amount = '{$purchase_amount}', purchase_date_made = '{$purchase_date_made}', purchase_details = '{$purchase_details}'
+    WHERE purchase_id = '{$purchase_id}'";
 
     if (mysqli_query($mysqli, $update_sql)) {
         $success = "Bill updated";

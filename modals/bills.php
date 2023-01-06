@@ -28,6 +28,10 @@
                             <label for="">Date Posted</label>
                             <input type="date" required name="purchase_date_made" value="<?php echo $bills['purchase_date_made']; ?>" class="form-control">
                         </div>
+                        <div class="form-group col-md-12 mb-3">
+                            <label for="">Bill Details</label>
+                            <textarea rows="3" type="text" required name="purchase_details" class="form-control"><?php echo $bills['purchase_details']; ?></textarea>
+                        </div>
                     </div>
                 </div>
                 <div class="modal-footer">
