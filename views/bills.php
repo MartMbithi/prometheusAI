@@ -152,7 +152,7 @@ require_once('../partials/head.php');
                                 $bills_sql = mysqli_query(
                                     $mysqli,
                                     "SELECT * FROM purchases 
-                                    ORDER BY purchase_date_made ASC"
+                                    ORDER BY purchase_date_made DESC"
                                 );
                                 $cnt = 1;
                                 if (mysqli_num_rows($bills_sql) > 0) {
@@ -164,7 +164,7 @@ require_once('../partials/head.php');
                                                 <div class="card-body">
                                                     <h5 class="card-title"><?php echo $bills['purchase_item']; ?></h5>
                                                     <h6 class="card-subtitle mb-3 text-white text-opacity-50">
-                                                        Cost: Ksh <?php echo number_format($bills['purchase_item']); ?> <br>
+                                                        Cost: Ksh <?php echo number_format($bills['purchase_amount']); ?> <br>
                                                         Date Posted: <?php echo date('d M Y', strtotime($bills['purchase_date_made'])); ?><br>
                                                     </h6>
                                                     <div class="card-footer">
