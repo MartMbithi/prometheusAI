@@ -77,7 +77,7 @@ require_once('../partials/head.php');
         <div class="login">
             <div class="login-content">
                 <form method="POST" name="login_form">
-                    <h1 class="text-center">Financial-AI <br>Sign In</h1>
+                    <h1 class="text-center">PrometheusAI<br>Sign In</h1>
                     <div class="text-white text-opacity-50 text-center mb-4">
                         For your protection, please verify your identity.
                     </div>
@@ -92,10 +92,10 @@ require_once('../partials/head.php');
                         <input type="password" class="form-control form-control-lg bg-white bg-opacity-5" name="user_password" required />
                     </div>
                     <div class="mb-3">
-                        <div class="form-check">
+                       <!--  <div class="form-check">
                             <input class="form-check-input" type="checkbox" value="" id="customCheck1" />
                             <label class="form-check-label" for="customCheck1">Remember me</label>
-                        </div>
+                        </div> -->
                     </div>
                     <button type="submit" name="Login" class="btn btn-outline-theme btn-lg d-block w-100 fw-500 mb-3">Sign In</button>
                     <div class="text-center text-white text-opacity-50">

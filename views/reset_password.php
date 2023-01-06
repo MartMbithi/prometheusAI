@@ -77,7 +77,7 @@ require_once('../partials/head.php');
         <div class="login">
             <div class="login-content">
                 <form method="POST" name="login_form">
-                    <h1 class="text-center">Financial-AI <br>Reset Password</h1>
+                    <h1 class="text-center">PrometheusAI <br>Reset Password</h1>
                     <div class="text-white text-opacity-50 text-center mb-4">
                         Forgot your password?, worry not just provide your email. We will reset it for you
                     </div>
