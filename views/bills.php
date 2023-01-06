@@ -173,6 +173,7 @@ require_once('../partials/head.php');
                                                         Date Posted: <?php echo date('d M Y', strtotime($bills['purchase_date_made'])); ?><br>
                                                     </h6>
                                                     <div class="card-footer">
+                                                        <button data-bs-toggle="modal" data-bs-target="#details_<?php echo $bills['purchase_id']; ?>" class="btn btn-sm btn-outline-lime"><i class="fas fa-eye"></i> Details</button>
                                                         <button data-bs-toggle="modal" data-bs-target="#update_<?php echo $bills['purchase_id']; ?>" class="btn btn-sm btn-outline-warning"><i class="fas fa-edit"></i> Edit</button>
                                                         <button data-bs-toggle="modal" data-bs-target="#delete_<?php echo $bills['purchase_id']; ?>" class="btn btn-sm btn-outline-danger"><i class="fas fa-trash"></i> Delete</button>
                                                     </div>

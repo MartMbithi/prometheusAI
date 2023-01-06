@@ -1,3 +1,22 @@
+<!-- Preview Bill -->
+<div class="modal fade" id="details_<?php echo $bills['purchase_id']; ?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" data-backdrop="false" style="background-color: rgba(0, 0, 0, 0.5);">
+    <div class="modal-dialog modal-dialog-centered modal-xl" role="document">
+        <div class="modal-content">
+            <div class="modal-header align-items-center">
+                <div class="modal-title">
+                    <h6 class="mb-0">Bill details</h6>
+                </div>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                <p><?php echo $bills['purchase_details']; ?></p>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- End Bill -->
+
+
 <!-- Update Modal -->
 <div class="modal fade" id="update_<?php echo $bills['purchase_id']; ?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" data-backdrop="false" style="background-color: rgba(0, 0, 0, 0.5);">
     <div class="modal-dialog modal-dialog-centered modal-xl" role="document">
