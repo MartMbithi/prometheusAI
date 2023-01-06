@@ -164,7 +164,7 @@ require_once('../partials/head.php');
                                                     </div>
                                                 </div>
                                                 <div class="card-arrow">
-                                                    <div class="card-arrow-top-left"></div>
+                                                    <div class="card-arrow-top-left text-success"></div>
                                                     <div class="card-arrow-top-right"></div>
                                                     <div class="card-arrow-bottom-left"></div>
                                                     <div class="card-arrow-bottom-right"></div>
