@@ -84,7 +84,7 @@ if (isset($_POST['Add_Bill'])) {
 }
 
 /* Update Bill */
-if (isset($_POST['Add_Bill'])) {
+if (isset($_POST['Update_Bill'])) {
     $purchase_item = mysqli_real_escape_string($mysqli, $_POST['purchase_item']);
     $purchase_quantity = mysqli_real_escape_string($mysqli, $_POST['purchase_quantity']);
     $purchase_amount = mysqli_real_escape_string($mysqli, $_POST['purchase_amount']);
