@@ -101,4 +101,17 @@ if (isset($_POST['Add_Bill'])) {
         $err = "Failed, please try again";
     }
 }
- /* Delete Bill */
+
+/* Delete Bill */
+if (isset($_POST['Delete_Bill'])) {
+    $purchase_id = mysqli_real_escape_string($mysqli, $_POST['purchase_id']);
+
+    /* Persist */
+    $delete_sql = "DELETE FROM purchases WHERE purchase_id = '{$purchase_id}'";
+
+    if (mysqli_query($mysqli, $delete_sql)) {
+        $success = "Bill deleted";
+    } else {
+        $err = "Failed, please try again";
+    }
+}
