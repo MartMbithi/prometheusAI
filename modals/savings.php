@@ -18,7 +18,7 @@
                         </div>
                         <div class="form-group col-md-6 mb-3">
                             <label for="">Amount</label>
-                            <input type="text" required name="saving_amount" value="<?php echo $savings['saving_account']; ?>" class="form-control">
+                            <input type="text" required name="saving_amount" value="<?php echo $savings['saving_amount']; ?>" class="form-control">
                         </div>
                         <div class="form-group col-md-6 mb-3">
                             <label for="">Date Posted</label>
