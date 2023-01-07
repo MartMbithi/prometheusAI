@@ -138,21 +138,21 @@ require_once('../partials/head.php');
                             <div class="d-flex justify-content-center">
                                 <div class="row g-3 align-items-center">
                                     <div class="col-auto">
-                                        <input class="form-control" type="text" id="Asset_Category_Search" onkeyup="FilterFunction()" placeholder="Search Bills">
+                                        <input class="form-control" type="text" id="Asset_Category_Search" onkeyup="FilterFunction()" placeholder="Search Savings">
                                     </div>
                                 </div>
                             </div>
                             <br>
                             <div class="row row-cols-1 row-cols-md-2 g-3">
                                 <?php
-                                $bills_sql = mysqli_query(
+                                $saving_sql = mysqli_query(
                                     $mysqli,
                                     "SELECT * FROM purchases 
-                                    ORDER BY purchase_date_made DESC"
+                                    ORDER BY  saving_date DESC"
                                 );
                                 $cnt = 1;
-                                if (mysqli_num_rows($bills_sql) > 0) {
-                                    while ($bills = mysqli_fetch_array($bills_sql)) {
+                                if (mysqli_num_rows($saving_sql) > 0) {
+                                    while ($savings = mysqli_fetch_array($saving_sql)) {
                                 ?>
                                         <div class="col-sm-12 col-lg-4 col-xl-4">
                                             <div class="card Asset_Category_Name">
