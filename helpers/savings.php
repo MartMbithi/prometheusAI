@@ -76,12 +76,28 @@ if (isset($_POST['Add_Savings'])) {
     $add_sql = "INSERT INTO savings (saving_account, saving_amount,saving_date) VALUES('{$saving_account}' '{$saving_amount}',
     '{$saving_date}')";
     if (mysqli_query($mysqli, $add_sql)) {
-        $success = "Revenue posted";
+        $success = "Savings posted";
     } else {
         $err = "Failed, please try again";
     }
 }
 
- /* Update Savings */
+/* Update Savings */
+if (isset($_POST['Update_Savings'])) {
+    $saving_account = mysqli_real_escape_string($mysqli, $_POST['saving_account']);
+    $saving_amount = mysqli_real_escape_string($mysqli, $_POST['saving_amount']);
+    $saving_date = mysqli_real_escape_string($mysqli, $_POST['saving_date']);
+    $saving_id = mysqli_real_escape_string($mysqli, $_POST['saving_id']);
+
+    /* Persist */
+    $update_sql = "UPDATE savings SET saving_account = '{$saving_account}', saving_amount = '{$saving_amount}',  saving_date = '{$saving_date}',
+    WHERE saving_id = '{$saving_id}'";
+
+    if (mysqli_query($mysqli, $update_sql)) {
+        $success = "Saving updated";
+    } else {
+        $err = "Failed, please try again";
+    }
+}
 
  /* Delete Savings */
