@@ -23,6 +23,12 @@
                 </a>
             </div>
             <div class="menu-item">
+                <a href="wish_list" class="menu-link">
+                    <span class="menu-icon"><i class="bi bi-basket"></i></span>
+                    <span class="menu-text">Wishlist</span>
+                </a>
+            </div>
+            <div class="menu-item">
                 <a href="bills" class="menu-link">
                     <span class="menu-icon"><i class="bi bi-list"></i></span>
                     <span class="menu-text">Bills</span>
