@@ -147,7 +147,7 @@ require_once('../partials/head.php');
                                 <?php
                                 $saving_sql = mysqli_query(
                                     $mysqli,
-                                    "SELECT * FROM purchases 
+                                    "SELECT * FROM savings 
                                     ORDER BY  saving_date DESC"
                                 );
                                 $cnt = 1;

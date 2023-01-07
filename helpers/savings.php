@@ -66,7 +66,21 @@
  */
 
 
- /* Add Savings */
+/* Add Savings */
+if (isset($_POST['Add_Savings'])) {
+    $saving_account = mysqli_real_escape_string($mysqli, $_POST['saving_account']);
+    $saving_amount = mysqli_real_escape_string($mysqli, $_POST['saving_amount']);
+    $saving_date = mysqli_real_escape_string($mysqli, $_POST['saving_date']);
+
+    /* Persist */
+    $add_sql = "INSERT INTO savings (saving_account, saving_amount,saving_date) VALUES('{$saving_account}' '{$saving_amount}',
+    '{$saving_date}')";
+    if (mysqli_query($mysqli, $add_sql)) {
+        $success = "Revenue posted";
+    } else {
+        $err = "Failed, please try again";
+    }
+}
 
  /* Update Savings */
 
