@@ -100,4 +100,16 @@ if (isset($_POST['Update_Savings'])) {
     }
 }
 
- /* Delete Savings */
+/* Delete Savings */
+if (isset($_POST['Delete_Savings'])) {
+    $saving_id = mysqli_real_escape_string($mysqli, $_POST['saving_id']);
+
+    /* Persist */
+    $delete_sql = "DELETE FROM savings WHERE saving_id = '{$saving_id}'";
+
+    if (mysqli_query($mysqli, $delete_sql)) {
+        $success = "Saving deleted";
+    } else {
+        $err = "Failed, please try again";
+    }
+}
