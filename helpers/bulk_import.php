@@ -121,7 +121,7 @@ if (isset($_POST['Bulk_Import_Asset'])) {
             $asset_category_id = mysqli_real_escape_string($mysqli, $_POST['asset_category_id']);
 
 
-            if (!empty($asset_name) || !empty($asset_category_id) || !empty($asset_cost)) {
+            if (!empty($asset_name) && !empty($asset_cost)) {
                 /* Persist */
                 $add_sql = "INSERT INTO assets(asset_category_id, asset_name, asset_details, asset_cost, asset_date_purchased, asset_status)
                 VALUES('{$asset_category_id}', '{$asset_name}', '{$asset_details}', '{$asset_cost}', '{$asset_date_purchased}', '{$asset_status}')";
@@ -131,11 +131,15 @@ if (isset($_POST['Bulk_Import_Asset'])) {
                 } else {
                     $err = "Failed, please try again";
                 }
-            } else {
-                $info = "Kindly fill all values";
             }
+            /*
+            😯 
+            else {
+                $info = "Kindly fill all values";
+            } 
+            */
         }
     } else {
-        $info = "Invalid file type. please upload excel file.";
+        $info = "Invalid file type. please upload excel file";
     }
 }
