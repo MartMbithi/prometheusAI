@@ -95,10 +95,10 @@ require_once('../partials/head.php');
                     <div class="row">
                         <div class="col-xl-12">
                             <h1 class="page-header">
-                                My Bills
+                                My Savings / Revenues.
                             </h1>
                             <div class="d-flex justify-content-end">
-                                <button type="button" data-bs-toggle="modal" data-bs-target="#add_modal" class="btn-sm btn btn-outline-lime"><span>Register New Bill</button>
+                                <button type="button" data-bs-toggle="modal" data-bs-target="#add_modal" class="btn-sm btn btn-outline-lime"><span>Register New Saving</button>
                             </div>
 
                             <div class="modal fade fixed-right" id="add_modal" tabindex="-1" role="dialog" aria-hidden="true">
@@ -113,30 +113,22 @@ require_once('../partials/head.php');
                                         <form method="post" enctype="multipart/form-data" role="form">
                                             <div class="modal-body">
                                                 <div class="row">
-                                                    <div class="form-group col-md-8 mb-3">
-                                                        <label for="">Bill Name</label>
-                                                        <input type="text" required name="purchase_item" class="form-control">
-                                                    </div>
-                                                    <div class="form-group col-md-4 mb-3">
-                                                        <label for="">Quantity</label>
-                                                        <input type="number" required name="purchase_quantity" class="form-control">
+                                                    <div class="form-group col-md-12 mb-3">
+                                                        <label for="">Account</label>
+                                                        <input type="text" required name="saving_account" class="form-control">
                                                     </div>
                                                     <div class="form-group col-md-6 mb-3">
-                                                        <label for="">Bill Amount</label>
-                                                        <input type="text" required name="purchase_amount" class="form-control">
+                                                        <label for="">Amount</label>
+                                                        <input type="text" required name="saving_amount" class="form-control">
                                                     </div>
                                                     <div class="form-group col-md-6 mb-3">
                                                         <label for="">Date Posted</label>
-                                                        <input type="date" required name="purchase_date_made" class="form-control">
-                                                    </div>
-                                                    <div class="form-group col-md-12 mb-3">
-                                                        <label for="">Bill Details</label>
-                                                        <textarea rows="3" type="text" required name="purchase_details" class="form-control"></textarea>
+                                                        <input type="date" required name="saving_date" class="form-control">
                                                     </div>
                                                 </div>
                                             </div>
                                             <div class="modal-footer">
-                                                <button type="submit" name="Add_Bill" class="btn btn-outline-lime">Add</button>
+                                                <button type="submit" name="Add_Savings" class="btn btn-outline-lime">Add</button>
                                             </div>
                                         </form>
                                     </div>
