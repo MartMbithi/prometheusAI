@@ -8,6 +8,28 @@
                 </div>
                 <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
             </div>
+            <form method="post" enctype="multipart/form-data" role="form">
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="form-group col-md-12 mb-3">
+                            <label for="">Account</label>
+                            <input type="hidden" value="<?php echo $savings['saving_id']; ?>" required name="saving_id" class="form-control">
+                            <input type="text" required name="saving_account" value="<?php echo $savings['saving_account']; ?>" class="form-control">
+                        </div>
+                        <div class="form-group col-md-6 mb-3">
+                            <label for="">Amount</label>
+                            <input type="text" required name="saving_amount" value="<?php echo $savings['saving_account']; ?>" class="form-control">
+                        </div>
+                        <div class="form-group col-md-6 mb-3">
+                            <label for="">Date Posted</label>
+                            <input type="date" required name="saving_date" value="<?php echo $savings['saving_date']; ?>" class="form-control">
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" name="Update_Savings" class="btn btn-outline-lime">Update</button>
+                </div>
+            </form>
         </div>
     </div>
 </div>
