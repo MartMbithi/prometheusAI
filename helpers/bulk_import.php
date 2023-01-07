@@ -66,9 +66,8 @@
  */
 
 
-include '../vendor/autoload.php';
-
 use PhpOffice\PhpSpreadsheet\Reader\Xlsx;
+
 
 if (isset($_POST['Bulk_Import_Asset'])) {
 

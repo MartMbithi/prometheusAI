@@ -125,9 +125,9 @@ abstract class Dimension
      *
      * @return $this
      */
-    public function setXfIndex(int $XfIndex)
+    public function setXfIndex(int $pValue)
     {
-        $this->xfIndex = $XfIndex;
+        $this->xfIndex = $pValue;
 
         return $this;
     }

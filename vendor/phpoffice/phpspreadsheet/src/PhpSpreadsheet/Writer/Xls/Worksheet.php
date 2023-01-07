@@ -188,7 +188,7 @@ class Worksheet extends BIFFwriter
     /**
      * Escher object corresponding to MSODRAWING.
      *
-     * @var null|\PhpOffice\PhpSpreadsheet\Shared\Escher
+     * @var \PhpOffice\PhpSpreadsheet\Shared\Escher
      */
     private $escher;
 
@@ -1584,7 +1584,7 @@ class Worksheet extends BIFFwriter
             return;
         }
 
-        [$column, $row] = Coordinate::indexesFromString($this->phpSheet->getFreezePane() ?? '');
+        [$column, $row] = Coordinate::indexesFromString($this->phpSheet->getFreezePane());
         $x = $column - 1;
         $y = $row - 1;
 
@@ -2138,7 +2138,7 @@ class Worksheet extends BIFFwriter
     private function writePassword(): void
     {
         // Exit unless sheet protection and password have been specified
-        if (!$this->phpSheet->getProtection()->getSheet() || !$this->phpSheet->getProtection()->getPassword() || $this->phpSheet->getProtection()->getAlgorithm() !== '') {
+        if (!$this->phpSheet->getProtection()->getSheet() || !$this->phpSheet->getProtection()->getPassword()) {
             return;
         }
 
@@ -2507,18 +2507,22 @@ class Worksheet extends BIFFwriter
 
     /**
      * Get Escher object.
+     *
+     * @return \PhpOffice\PhpSpreadsheet\Shared\Escher
      */
-    public function getEscher(): ?\PhpOffice\PhpSpreadsheet\Shared\Escher
+    public function getEscher()
     {
         return $this->escher;
     }
 
     /**
      * Set Escher object.
+     *
+     * @param \PhpOffice\PhpSpreadsheet\Shared\Escher $pValue
      */
-    public function setEscher(?\PhpOffice\PhpSpreadsheet\Shared\Escher $escher): void
+    public function setEscher(?\PhpOffice\PhpSpreadsheet\Shared\Escher $pValue = null): void
     {
-        $this->escher = $escher;
+        $this->escher = $pValue;
     }
 
     /**
