@@ -172,7 +172,7 @@ require_once('../partials/head.php');
 
                             <!-- Bulk Import Modal -->
                             <div class="modal fade fixed-right" id="bulk_import" tabindex="-1" role="dialog" aria-hidden="true">
-                                <div class="modal-dialog modal-xl modal-dialog-centered" role="document">
+                                <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
                                     <div class="modal-content">
                                         <div class="modal-header align-items-center">
                                             <div class="modal-title">
@@ -183,7 +183,7 @@ require_once('../partials/head.php');
                                         <form method="post" enctype="multipart/form-data" role="form">
                                             <div class="modal-body">
                                                 <div class="row">
-                                                    <div class="form-group col-md-6 mb-3">
+                                                    <div class="form-group col-md-12 mb-3">
                                                         <label for="">Asset Category Name</label>
                                                         <select required name="asset_category_id" class="form-control">
                                                             <option>Select Asset Category</option>
@@ -203,11 +203,9 @@ require_once('../partials/head.php');
                                                             } ?>
                                                         </select>
                                                     </div>
-                                                    <div class="form-group col-md-6 mb-3">
-                                                        <div class="form-group mb-3">
-                                                            <label class="form-label" for="exampleFormControlFile1">Assets XLS File</label>
-                                                            <input type="file" name="assets_bulk_import_file" required class="form-control" id="exampleFormControlFile1" />
-                                                        </div>
+                                                    <div class="form-group col-md-12 mb-3">
+                                                        <label class="form-label" for="exampleFormControlFile1">Assets XLS File</label>
+                                                        <input type="file" name="assets_bulk_import_file" required class="form-control" id="exampleFormControlFile1" />
                                                     </div>
                                                 </div>
                                             </div>
