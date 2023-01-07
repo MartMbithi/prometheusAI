@@ -78,7 +78,7 @@
                         </div>
                         <div class="form-group col-md-12 mb-3">
                             <label for="">Asset Details</label>
-                            <textarea rows="3" type="text" required name="asset_details" class="form-control">value="<?php echo $assets['asset_details']; ?>"</textarea>
+                            <textarea rows="3" type="text" required name="asset_details" class="form-control"><?php echo $assets['asset_details']; ?></textarea>
                         </div>
                     </div>
                 </div>

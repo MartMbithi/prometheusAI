@@ -82,8 +82,8 @@ if (isset($_POST['Bulk_Import_Asset'])) {
 
     /* Where Magic Happens */
     if (in_array($_FILES["assets_bulk_import_file"]["type"], $allowedFileType)) {
-        $targetPath = '../storage/bulk_uploads/' . 'PRODUCTS_BULK_IMPORT_' . time() . '_' . $_FILES['file']['name'];
-        move_uploaded_file($_FILES['file']['tmp_name'], $targetPath);
+        $targetPath = '../storage/bulk_uploads/' . 'Assets_' . time() . '_' . $_FILES['assets_bulk_import_file']['name'];
+        move_uploaded_file($_FILES['assets_bulk_import_file']['tmp_name'], $targetPath);
 
         $Reader = new \PhpOffice\PhpSpreadsheet\Reader\Xlsx();
 
@@ -93,71 +93,39 @@ if (isset($_POST['Bulk_Import_Asset'])) {
         $sheetCount = count($spreadSheetAry);
 
         for ($i = 1; $i <= $sheetCount; $i++) {
-            /* Load Mumble Jumble */
-            $product_id = sha1(md5(mysqli_real_escape_string($conn, $rand_number . time())));
 
-            $product_name = "";
+            $asset_name = "";
             if (isset($spreadSheetAry[$i][0])) {
-                $product_name = mysqli_real_escape_string($conn, $spreadSheetAry[$i][0]);
+                $asset_name = mysqli_real_escape_string($mysqli, $spreadSheetAry[$i][0]);
             }
 
-            $product_description = "";
+            $asset_cost = "";
             if (isset($spreadSheetAry[$i][1])) {
-                $product_description = mysqli_real_escape_string($conn, $spreadSheetAry[$i][1]);
+                $asset_cost = mysqli_real_escape_string($mysqli, $spreadSheetAry[$i][1]);
             }
-            $product_purchase_price = "";
+
+            $asset_date_purchased = "";
             if (isset($spreadSheetAry[$i][2])) {
-                $product_purchase_price = mysqli_real_escape_string($conn, $spreadSheetAry[$i][2]);
+                $asset_date_purchased = mysqli_real_escape_string($mysqli, $spreadSheetAry[$i][2]);
             }
-            $product_sale_price = "";
+
+            $asset_status = "";
             if (isset($spreadSheetAry[$i][3])) {
-                $product_sale_price = mysqli_real_escape_string($conn, $spreadSheetAry[$i][3]);
+                $asset_status = mysqli_real_escape_string($mysqli, $spreadSheetAry[$i][3]);
             }
 
-            $product_quantity = "";
+            $asset_details = "";
             if (isset($spreadSheetAry[$i][4])) {
-                $product_quantity = mysqli_real_escape_string($conn, $spreadSheetAry[$i][4]);
-            }
-
-            $product_quantity_limit = "";
-            if (isset($spreadSheetAry[$i][5])) {
-                $product_quantity_limit = mysqli_real_escape_string($conn, $spreadSheetAry[$i][5]);
-            }
-            $product_code = "";
-            if (isset($spreadSheetAry[$i][6])) {
-                $product_code = mysqli_real_escape_string($conn, $spreadSheetAry[$i][6]);
+                $asset_details = mysqli_real_escape_string($mysqli, $spreadSheetAry[$i][4]);
             }
 
             $asset_category_id = mysqli_real_escape_string($mysqli, $_POST['asset_category_id']);
 
 
             if (!empty($product_name)) {
-                $query = "INSERT INTO products (product_id, product_store_id, product_name, product_description, product_purchase_price, product_sale_price, product_quantity, product_quantity_limit, product_code) 
-                VALUES(?,?,?,?,?,?,?,?,?)";
-                /* Log This Operation */
-                require('../functions/logs.php');
-                $paramType = "sssssssss";
-                $paramArray = array(
-                    $product_id,
-                    $product_store_id,
-                    $product_name,
-                    $product_description,
-                    $product_purchase_price,
-                    $product_sale_price,
-                    $product_quantity,
-                    $product_quantity_limit,
-                    $product_code
-                );
-
-                $insertId = $db->insert($query, $paramType, $paramArray);
-                if (!empty($insertId)) {
-                    $err = "Error Occured While Importing Data";
-                } else {
-                    $success = "Products Imported";
-                }
             }
         }
     } else {
-        $info = "Invalid File Type. Upload Excel File.";
+        $info = "Invalid file type. please upload excel file.";
     }
 }
