@@ -97,8 +97,11 @@ require_once('../partials/head.php');
                             <h1 class="page-header">
                                 My Assets
                             </h1>
-                            <div class="d-flex justify-content-end">
-                                <button type="button" data-bs-toggle="modal" data-bs-target="#add_modal" class="btn-sm btn btn-outline-lime"><span>Register New Asset</button>
+                            <div class="d-flex justify-content-end mb-3">
+                                <div class="btn-group">
+                                    <button type="button" data-bs-toggle="modal" data-bs-target="#bulk_import" class="btn-sm btn btn-outline-lime"><span>Bulk Import</button>
+                                    <button type="button" data-bs-toggle="modal" data-bs-target="#add_modal" class="btn-sm btn btn-outline-lime"><span>Register New Asset</button>
+                                </div>
                             </div>
 
                             <div class="modal fade fixed-right" id="add_modal" tabindex="-1" role="dialog" aria-hidden="true">
