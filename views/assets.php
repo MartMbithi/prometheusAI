@@ -103,7 +103,7 @@ require_once('../partials/head.php');
                                     <button type="button" data-bs-toggle="modal" data-bs-target="#add_modal" class="btn-sm btn btn-outline-lime"><span>Register New Asset</button>
                                 </div>
                             </div>
-
+                            <!-- Add Modal -->
                             <div class="modal fade fixed-right" id="add_modal" tabindex="-1" role="dialog" aria-hidden="true">
                                 <div class="modal-dialog modal-xl modal-dialog-centered" role="document">
                                     <div class="modal-content">
@@ -168,6 +168,57 @@ require_once('../partials/head.php');
                                     </div>
                                 </div>
                             </div>
+                            <!-- End Modal -->
+
+                            <!-- Bulk Import Modal -->
+                            <div class="modal fade fixed-right" id="bulk_import" tabindex="-1" role="dialog" aria-hidden="true">
+                                <div class="modal-dialog modal-xl modal-dialog-centered" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header align-items-center">
+                                            <div class="modal-title">
+                                                <h6 class="mb-0">Bulk Import Assets From Xls File</h6>
+                                            </div>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                                        </div>
+                                        <form method="post" enctype="multipart/form-data" role="form">
+                                            <div class="modal-body">
+                                                <div class="row">
+                                                    <div class="form-group col-md-6 mb-3">
+                                                        <label for="">Asset Category Name</label>
+                                                        <select required name="asset_category_id" class="form-control">
+                                                            <option>Select Asset Category</option>
+                                                            <?php
+                                                            $assets_category_sql = mysqli_query(
+                                                                $mysqli,
+                                                                "SELECT * FROM assets_category ORDER BY  category_name ASC"
+                                                            );
+                                                            $cnt = 1;
+                                                            if (mysqli_num_rows($assets_category_sql) > 0) {
+                                                                while ($assets_category = mysqli_fetch_array($assets_category_sql)) {
+                                                            ?>
+                                                                    <option value="<?php echo $assets_category['category_id']; ?>">
+                                                                        <?php echo $assets_category['category_code'] . '-' . $assets_category['category_name']; ?>
+                                                                    </option>
+                                                            <?php }
+                                                            } ?>
+                                                        </select>
+                                                    </div>
+                                                    <div class="form-group col-md-6 mb-3">
+                                                        <div class="form-group mb-3">
+                                                            <label class="form-label" for="exampleFormControlFile1">Assets XLS File</label>
+                                                            <input type="file" name="assets_bulk_import_file" required class="form-control" id="exampleFormControlFile1" />
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="submit" name="Bulk_Import_Asset" class="btn btn-outline-lime">Upload</button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- End Modal -->
                             <hr class="mb-4" />
                             <div class="d-flex justify-content-center">
                                 <div class="row g-3 align-items-center">
