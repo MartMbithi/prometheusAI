@@ -158,16 +158,14 @@ require_once('../partials/head.php');
                                             <div class="card Asset_Category_Name">
                                                 <div class="card-header fw-bold small"><?php echo $cnt; ?></div>
                                                 <div class="card-body">
-                                                    <h5 class="card-title"><?php echo $bills['purchase_item']; ?></h5>
+                                                    <h5 class="card-title"><?php echo $savings['saving_account']; ?></h5>
                                                     <h6 class="card-subtitle mb-3 text-white text-opacity-50">
-                                                        QTY: <?php echo $bills['purchase_quantity']; ?><br>
-                                                        Cost: Ksh <?php echo number_format($bills['purchase_amount']); ?> <br>
-                                                        Date Posted: <?php echo date('d M Y', strtotime($bills['purchase_date_made'])); ?><br>
+                                                        Amount: Ksh <?php echo number_format($savings['saving_amount']); ?> <br>
+                                                        Date Posted: <?php echo date('d M Y', strtotime($savings['saving_date'])); ?><br>
                                                     </h6>
                                                     <div class="card-footer">
-                                                        <button data-bs-toggle="modal" data-bs-target="#details_<?php echo $bills['purchase_id']; ?>" class="btn btn-sm btn-outline-lime"><i class="fas fa-eye"></i> Details</button>
-                                                        <button data-bs-toggle="modal" data-bs-target="#update_<?php echo $bills['purchase_id']; ?>" class="btn btn-sm btn-outline-warning"><i class="fas fa-edit"></i> Edit</button>
-                                                        <button data-bs-toggle="modal" data-bs-target="#delete_<?php echo $bills['purchase_id']; ?>" class="btn btn-sm btn-outline-danger"><i class="fas fa-trash"></i> Delete</button>
+                                                        <button data-bs-toggle="modal" data-bs-target="#update_<?php echo $savings['saving_id']; ?>" class="btn btn-sm btn-outline-warning"><i class="fas fa-edit"></i> Edit</button>
+                                                        <button data-bs-toggle="modal" data-bs-target="#delete_<?php echo $savings['saving_id']; ?>" class="btn btn-sm btn-outline-danger"><i class="fas fa-trash"></i> Delete</button>
                                                     </div>
                                                 </div>
                                                 <div class="card-arrow">
@@ -181,7 +179,7 @@ require_once('../partials/head.php');
                                 <?php
                                         $cnt = $cnt + 1;
                                         /* Modals  */
-                                        include('../modals/bills.php');
+                                        include('../modals/savings.php');
                                     }
                                 } ?>
                             </div>
