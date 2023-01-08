@@ -90,7 +90,7 @@ if (isset($_POST['Update_Savings'])) {
     $saving_id = mysqli_real_escape_string($mysqli, $_POST['saving_id']);
 
     /* Persist */
-    $update_sql = "UPDATE savings SET saving_account = '{$saving_account}', saving_amount = '{$saving_amount}',  saving_date = '{$saving_date}',
+    $update_sql = "UPDATE savings SET saving_account = '{$saving_account}', saving_amount = '{$saving_amount}',  saving_date = '{$saving_date}'
     WHERE saving_id = '{$saving_id}'";
 
     if (mysqli_query($mysqli, $update_sql)) {
