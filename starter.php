@@ -82,7 +82,8 @@ $helpers = fopen("helpers/$asset_name.php", "w") or die("Unable to open file!");
 echo "Crafted $asset_name.php Helper ✅ \n";
 
 /* Custom License Headers On Helpers Only */
-$license_header = "<?php ";
+
+$license_header = "<?php \n" . include('config/license');
 fwrite($helpers, $license_header);
 fclose($helpers);
 
