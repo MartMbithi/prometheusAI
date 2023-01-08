@@ -40,8 +40,8 @@
                     <div class="row">
                         <div class="form-group col-md-6 mb-3">
                             <label for="">Category Name</label>
-                            <select required name="asset_category_id" class="form-control">
-                                <option value="<?php echo $assets['category_id']; ?>">
+                            <select required name="wishlist_item_category_id" class="form-control">
+                                <option value="<?php echo $wishlist['category_id']; ?>">
                                     <?php echo $wishlist['category_code'] . '-' . $wishlist['category_name']; ?>
                                 </option>
                                 <?php
