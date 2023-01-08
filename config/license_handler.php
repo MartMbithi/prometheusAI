@@ -67,12 +67,9 @@
 
 
 /* Devlan Solutions LTD License Header */
-$devlan_solutions_license = "/*
- *  \n
- *  \n
+$devlan_solutions_license = "/*\n
  *   www.devlan.co.ke \n
  *   hello@devlan.co.ke\n
- *  \n
  *  \n
  *   The Devlan Solutions LTD End User License Agreement\n
  *   Copyright (c) 2022 Devlan Solutions LTD\n
