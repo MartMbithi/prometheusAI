@@ -91,7 +91,6 @@ sleep(2);
 $modals = fopen("modals/$asset_name.php", "w") or die("Unable to open file!");
 echo "Crafted $asset_name.php Modal ✅ \n";
 
-
 /* Sleep */
 sleep(2);
 /* Views File */
