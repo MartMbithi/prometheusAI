@@ -196,7 +196,7 @@ require_once('../partials/head.php');
                                                     <div class="card-footer">
                                                         <button data-bs-toggle="modal" data-bs-target="#details_<?php echo $wishlist['wishlist_id']; ?>" class="btn btn-sm btn-outline-lime"><i class="fas fa-hand-holding-usd"></i> Buy</button>
                                                         <button data-bs-toggle="modal" data-bs-target="#update_<?php echo $wishlist['wishlist_id']; ?>" class="btn btn-sm btn-outline-warning"><i class="fas fa-edit"></i> Edit</button>
-                                                        <button data-bs-toggle="modal" data-bs-target="#delete_<?php echo $wishlist['wishlist_id']; ?>" class="btn btn-sm btn-outline-danger"><i class="fas fa-trash"></i> Delete</button>
+                                                        <button data-bs-toggle="modal" data-bs-target="#delete_<?php echo $wishlist['wishlist_id']; ?>" class="btn btn-sm btn-outline-danger"><i class="fas fa-trash"></i> Remove</button>
                                                     </div>
                                                 </div>
                                                 <div class="card-arrow">

@@ -102,7 +102,7 @@
                     </h4>
                     <input type="hidden" value="<?php echo $wishlist['wishlist_id']; ?>" required name="wishlist_id" class="form-control">
                     <button type="button" class="text-center btn btn-outline-lime" data-bs-dismiss="modal">No</button>
-                    <input type="submit" value="Yes, Delete" name="Delete_Wishlist" class="text-center btn btn-outline-danger">
+                    <input type="submit" value="Yes, Remove" name="Delete_Wishlist" class="text-center btn btn-outline-danger">
                 </div>
             </form>
         </div>
