@@ -79,7 +79,7 @@ sleep(2);
 
 /* Helper Files */
 $helpers = fopen("helpers/$asset_name.php", "w") or die("Unable to open file!");
-echo "Crafted $asset_name.php Helper ✅ ";
+echo "Crafted $asset_name.php Helper ✅ \n";
 
 /* Custom License Headers On Helpers Only */
 $license_header = "<?php ";
@@ -91,14 +91,14 @@ sleep(2);
 
 /* Modals File */
 $modals = fopen("modals/$asset_name.php", "w") or die("Unable to open file!");
-echo "Crafted $asset_name.php modal ✅ ";
+echo "Crafted $asset_name.php modal ✅ \n";
 
 
 /* Sleep */
 sleep(2);
 /* Views File */
 $views = fopen("views/$asset_name.php", "w") or die("Unable to open file!");
-echo "Crafted $asset_name.php view ✅ ";
+echo "Crafted $asset_name.php view ✅ \n";
 
 /* Sleep */
 sleep(2);
