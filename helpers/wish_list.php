@@ -119,4 +119,22 @@ if (isset($_POST['Delete_Wishlist'])) {
     }
 }
 
- /* Purchase Item From Wishlist */
+/* Purchase Item From Wishlist */
+if (isset($_POST['Add_To_Asset'])) {
+    $asset_category_id = mysqli_real_escape_string($mysqli, $_POST['asset_category_id']);
+    $asset_name = mysqli_real_escape_string($mysqli, $_POST['asset_name']);
+    $asset_details = mysqli_real_escape_string($mysqli, $_POST['asset_details']);
+    $asset_cost = mysqli_real_escape_string($mysqli, $_POST['asset_cost']);
+    $asset_date_purchased = mysqli_real_escape_string($mysqli, $_POST['asset_date_purchased']);
+    $asset_status = mysqli_real_escape_string($mysqli, $_POST['asset_status']);
+
+    /* Persist Details */
+    $add_sql = "INSERT INTO assets(asset_category_id, asset_name, asset_details, asset_cost, asset_date_purchased, asset_status)
+    VALUES('{$asset_category_id}', '{$asset_name}', '{$asset_details}', '{$asset_cost}', '{$asset_date_purchased}', '{$asset_status}')";
+
+    if (mysqli_query($mysqli, $add_sql)) {
+        $success = "Asset added";
+    } else {
+        $err = "Failed, please try again";
+    }
+}
