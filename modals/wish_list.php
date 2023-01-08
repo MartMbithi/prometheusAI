@@ -13,7 +13,7 @@
                     <input type="hidden" value="<?php echo $wishlist['wishlist_item_name']; ?>" required name="asset_name" class="form-control">
                     <input type="hidden" value="<?php echo $wishlist['wishlist_item_desc']; ?>" required name="asset_details" class="form-control">
                     <input type="hidden" value="<?php echo $wishlist['wishlist_item_cost']; ?>" required name="asset_cost" class="form-control">
-                    <input type="hiiden" value="<?php echo date('Y-m-d') ?>" required name="asset_date_purchased" class="form-control">
+                    <input type="hidden" value="<?php echo date('Y-m-d') ?>" required name="asset_date_purchased" class="form-control">
                     <input type="hidden" value="Operational" required name="asset_status" class="form-control">
                     <button type="button" class="text-center btn btn-outline-lime" data-bs-dismiss="modal">No</button>
                     <input type="submit" value="Yes" name="Add_To_Asset" class="text-center btn btn-outline-danger">
@@ -38,7 +38,7 @@
 
                 <div class="modal-body">
                     <div class="row">
-                        <div class="form-group col-md-4 mb-3">
+                        <div class="form-group col-md-6 mb-3">
                             <label for="">Category Name</label>
                             <select required name="asset_category_id" class="form-control">
                                 <option value="<?php echo $assets['category_id']; ?>">
@@ -63,7 +63,7 @@
                         <div class="form-group col-md-6 mb-3">
                             <label for="">Item Name</label>
                             <!-- Hide This -->
-                            <input type="text" required name="wishlist_id" class="form-control" value="<?php echo $wishlist['wishlist_id']; ?>">
+                            <input type="hidden" required name="wishlist_id" class="form-control" value="<?php echo $wishlist['wishlist_id']; ?>">
                             <input type="text" required name="wishlist_item_name" class="form-control" value="<?php echo $wishlist['wishlist_item_name']; ?>">
                         </div>
                         <div class="form-group col-md-6 mb-3">
