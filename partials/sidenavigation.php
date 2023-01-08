@@ -40,7 +40,7 @@
                     <span class="menu-text">Savings</span>
                 </a>
             </div>
-            <div class="menu-divider"></div>
+            <!-- <div class="menu-divider"></div>
             <div class="menu-header">Reports</div>
             <div class="menu-item">
                 <a href="assets" class="menu-link">
@@ -59,7 +59,7 @@
                     <span class="menu-icon"><i class="bi bi-calendar"></i></span>
                     <span class="menu-text">Savings</span>
                 </a>
-            </div>
+            </div> -->
         </div>
     </div>
 </div>
