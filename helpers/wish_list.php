@@ -64,3 +64,28 @@
  *   TORT OR ANY OTHER THEORY OF LIABILITY, EXCEED THE LICENSE FEE PAID BY YOU, IF ANY.
  *
  */
+
+
+/* Add Wishlist Item */
+if (isset($_POST['Add_Wishlist_Item'])) {
+    $wishlist_item_category_id = mysqli_real_escape_string($mysqli, $_POST['wishlist_item_category_id']);
+    $wishlist_item_name = mysqli_real_escape_string($mysqli, $_POST['wishlist_item_name']);
+    $wishlist_item_qty = mysqli_real_escape_string($mysqli, $_POST['wishlist_item_qty']);
+    $wishlist_item_desc = mysqli_real_escape_string($mysqli, $_POST['wishlist_item_desc']);
+    $wishlist_item_cost = mysqli_real_escape_string($mysqli, $_POST['wishlist_item_cost']);
+
+    /* Persist */
+    $add_sql  = "INSERT INTO wishlists(wishlist_item_category_id, wishlist_item_name, wishlist_item_qty, wishlist_item_desc, wishlist_item_cost) VALUES ('{$wishlist_item_category_id}', '{$wishlist_item_name}', '{$wishlist_item_qty}', '{$wishlist_item_desc}', '{$wishlist_item_cost}')";
+
+    if (mysqli_query($mysqli, $add_sql)) {
+        $success = "Item added to wishlist";
+    } else {
+        $err = "Failed, please try again";
+    }
+}
+
+ /* Update Wishlist Item */
+
+ /* Delete Item From Wishlist */
+
+ /* Purchase Item From Wishlist */
