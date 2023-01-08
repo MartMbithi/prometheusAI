@@ -103,6 +103,7 @@ require_once('../partials/head.php');
                                 <div class="btn-group">
                                     <button type="button" data-bs-toggle="modal" data-bs-target="#bulk_import" class="btn-sm btn btn-outline-lime"><span>Bulk Import</button>
                                     <button type="button" data-bs-toggle="modal" data-bs-target="#add_modal" class="btn-sm btn btn-outline-lime"><span>Register New Asset</button>
+                                    <button type="button" data-bs-toggle="modal" data-bs-target="#download_assets" class="btn-sm btn btn-outline-lime"><span>Download</button>
                                 </div>
                             </div>
                             <!-- Add Modal -->
@@ -219,6 +220,25 @@ require_once('../partials/head.php');
                                 </div>
                             </div>
                             <!-- End Modal -->
+
+                            <!-- Download Assets -->
+                            <div class="modal fade" id="download_assets" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" data-backdrop="false" style="background-color: rgba(0, 0, 0, 0.5);">
+                                <div class="modal-dialog modal-dialog-centered" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-body text-center text-danger">
+                                            <h4>
+                                                Heads Up!
+                                                <br>
+                                                Export Assets Records As
+                                                <br>
+                                            </h4>
+                                            <a href="reports?module=assets&type=PDF" class="text-center btn btn-outline-lime">PDF</a>
+                                            <a href="reports?module=assets&type=CSV" class="text-center btn btn-outline-lime">CSV</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- End Download Assets -->
                             <hr class="mb-4" />
                             <div class="d-flex justify-content-center">
                                 <div class="row g-3 align-items-center">
