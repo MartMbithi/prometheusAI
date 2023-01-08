@@ -70,14 +70,17 @@
     Make sure the application has write permissions 
 */
 
+echo "Welcome to Devlan LiteFramework Starter\n";
+
+$asset_name = readline("Enter file name: ");
 /* Helper Files */
-$helpers = fopen("helpers/test_helper.php", "w") or die("Unable to open file!");
+$helpers = fopen("helpers/$asset_name.php", "w") or die("Unable to open file!");
 
 /* Modals File */
-$modals = fopen("modals/test_modal.php", "w") or die("Unable to open file!");
+$modals = fopen("modals/$asset_name.php", "w") or die("Unable to open file!");
 
 /* Views File */
-$views = fopen("views/test_view.php", "w") or die("Unable to open file!");
+$views = fopen("views/$asset_name.php", "w") or die("Unable to open file!");
 
 
 /* Custom License Headers On Helpers Only */
