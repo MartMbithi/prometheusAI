@@ -158,8 +158,8 @@ require_once('../partials/head.php');
                                                 Export Bills Records As
                                                 <br>
                                             </h4>
-                                            <a href="reports?module=assets&type=PDF" class="text-center btn btn-outline-lime">PDF</a>
-                                            <a href="reports?module=assets&type=CSV" class="text-center btn btn-outline-lime">CSV</a>
+                                            <a href="reports?module=bills&type=PDF" class="text-center btn btn-outline-lime">PDF</a>
+                                            <a href="reports?module=bills&type=CSV" class="text-center btn btn-outline-lime">CSV</a>
                                         </div>
                                     </div>
                                 </div>
