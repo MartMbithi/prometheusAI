@@ -84,7 +84,26 @@ if (isset($_POST['Add_Wishlist_Item'])) {
     }
 }
 
- /* Update Wishlist Item */
+/* Update Wishlist Item */
+if (isset($_POST['Update_Item_Wishlist'])) {
+    $wishlist_item_category_id = mysqli_real_escape_string($mysqli, $_POST['wishlist_item_category_id']);
+    $wishlist_item_name = mysqli_real_escape_string($mysqli, $_POST['wishlist_item_name']);
+    $wishlist_item_qty = mysqli_real_escape_string($mysqli, $_POST['wishlist_item_qty']);
+    $wishlist_item_desc = mysqli_real_escape_string($mysqli, $_POST['wishlist_item_desc']);
+    $wishlist_item_cost = mysqli_real_escape_string($mysqli, $_POST['wishlist_item_cost']);
+    $wishlist_id = mysqli_real_escape_string($mysqli, $_POST['wishlist_id']);
+
+    /* Persist */
+    $update_sql  = "UPDATE wishlists SET  wishlist_item_category_id = '{$wishlist_item_category_id}', wishlist_item_name = '{$wishlist_item_name}',
+    wishlist_item_qty = '{$wishlist_item_qty}', wishlist_item_desc = '{$wishlist_item_desc}', wishlist_item_cost = '{$wishlist_item_cost}'
+    WHERE wishlist_id = '{$wishlist_id}'";
+
+    if (mysqli_query($mysqli, $update_sql)) {
+        $success = "Item in wishlist updated";
+    } else {
+        $err = "Failed, please try again";
+    }
+}
 
  /* Delete Item From Wishlist */
 
