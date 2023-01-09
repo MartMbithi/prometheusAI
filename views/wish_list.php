@@ -139,11 +139,15 @@ require_once('../partials/head.php');
                                                         <label for="">Item Name</label>
                                                         <input type="text" required name="wishlist_item_name" class="form-control">
                                                     </div>
-                                                    <div class="form-group col-md-6 mb-3">
+                                                    <div class="form-group col-md-4 mb-3">
                                                         <label for="">QTY</label>
                                                         <input type="text" required name="wishlist_item_qty" class="form-control">
                                                     </div>
-                                                    <div class="form-group col-md-6 mb-3">
+                                                    <div class="form-group col-md-4 mb-3">
+                                                        <label for="">Date</label>
+                                                        <input type="date" required name="wishlist_item_date_added" class="form-control">
+                                                    </div>
+                                                    <div class="form-group col-md-4 mb-3">
                                                         <label for="">Item Price</label>
                                                         <input type="text" required name="wishlist_item_cost" class="form-control">
                                                     </div>
