@@ -6,3 +6,4 @@ To dos:
 1. Paginations on all items.
 2. Limit Recent Bills on dashboard page.
 3. Limit Recent incomes and savings.
+4. Deploy this system on lampp stack from virtualbox
