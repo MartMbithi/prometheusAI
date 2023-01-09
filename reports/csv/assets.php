@@ -75,7 +75,7 @@ function filterData(&$str)
 $fileName = 'Assets Reports' . 'xls';
 
 /* Excel Column Name */
-$fields = array('#', 'Asset Category', 'Asset Name', 'Asset Cost', 'Asset Status', 'Asset Date Purchased');
+$fields = array('#', 'Asset Category', 'Asset Name', 'Asset Cost (Ksh)', 'Asset Status', 'Asset Date Purchased');
 
 
 /* Implode Excel Data */

@@ -64,54 +64,51 @@
  *   TORT OR ANY OTHER THEORY OF LIABILITY, EXCEED THE LICENSE FEE PAID BY YOU, IF ANY.
  *
  */
+function filterData(&$str)
+{
+    $str = preg_replace("/\t/", "\\t", $str);
+    $str = preg_replace("/\r?\n/", "\\n", $str);
+    if (strstr($str, '"')) $str = '"' . str_replace('"', '""', $str) . '"';
+}
 
-session_start();
-require_once('../config/config.php');
-require_once('../config/codeGen.php');
-require_once('../config/checklogin.php');
+/* Excel File Name */
+$fileName = 'Bills & Expenditure Reports' . 'xls';
 
-/* Global Variables */
-$report_module = mysqli_real_escape_string($mysqli, $_GET['module']);
-$report_type = mysqli_real_escape_string($mysqli, $_GET['type']);
+/* Excel Column Name */
+$fields = array('#', 'Item', 'Qty', 'Cost (Ksh)', 'Date Posted');
 
-if ($report_module == 'assets') {
-    if ($report_type == 'CSV') {
-        /* Generate CSV Reort */
-        include('../reports/csv/assets.php');
-    } else if ($report_module == 'PDF') {
-        /* Generate PDF Report */
-    } else {
-        /* Error */
-        $_SESSION['err'] = 'System error, please reload your session';
-        header('Location: dashboard');
-        exit;
-    }
-} else if ($report_module == 'bills') {
-    if ($report_type == 'CSV') {
-        /* Generate CSV Reort */
-        include('../reports/csv/bills.php');
-    } else if ($report_module == 'PDF') {
-        /* Generate PDF Report */
-    } else {
-        /* Error */
-        $_SESSION['err'] = 'System error, please reload your session';
-        header('Location: dashboard');
-        exit;
-    }
-} else if ($report_module == 'savings') {
-    if ($report_type == 'CSV') {
-        /* Generate CSV Reort */
-    } else if ($report_module == 'PDF') {
-        /* Generate PDF Report */
-    } else {
-        /* Error */
-        $_SESSION['err'] = 'System error, please reload your session';
-        header('Location: dashboard');
-        exit;
+
+/* Implode Excel Data */
+$excelData = implode("\t", array_values($fields)) . "\n";
+
+/* Fetch All Records From The Database */
+$query = $mysqli->query("SELECT * FROM purchases 
+ORDER BY purchase_date_made DESC");
+if ($query->num_rows > 0) {
+    /* Load All Fetched Rows */
+    $cnt = 1;
+    while ($row = $query->fetch_assoc()) {
+        /* Hardwire This Data Into .xls File */
+        $lineData = array(
+            $cnt,
+            $row['purchase_item'],
+            $row['purchase_quantity'],
+            $row['purchase_amount'],
+            date('d M Y', strtotime($row['purchase_amount']))
+        );
+        $cnt = $cnt + 1;/* Auto increment asset number */
+        array_walk($lineData, 'filterData');
+        $excelData .= implode("\t", array_values($lineData)) . "\n";
     }
 } else {
-    /* Default Error */
-    $_SESSION['err'] = 'System error, please reload your session';
-    header('Location: dashboard');
-    exit;
+    $excelData .= 'No Asset Records Available...' . "\n";
 }
+
+/* Generate Header File Encodings For Download */
+header("Content-Type: application/vnd.ms-excel");
+header("Content-Disposition: attachment; filename=\"$fileName\"");
+
+/* Render  Excel Data For Download */
+echo $excelData;
+
+exit;
