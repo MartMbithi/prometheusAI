@@ -94,7 +94,7 @@ if ($query->num_rows > 0) {
             $row['purchase_item'],
             $row['purchase_quantity'],
             $row['purchase_amount'],
-            date('d M Y', strtotime($row['purchase_amount']))
+            date('d M Y', strtotime($row['purchase_date_made']))
         );
         $cnt = $cnt + 1;/* Auto increment asset number */
         array_walk($lineData, 'filterData');
