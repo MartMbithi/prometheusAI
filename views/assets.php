@@ -297,6 +297,7 @@ require_once('../partials/head.php');
                                         include('../modals/assets.php');
                                     }
                                 } ?>
+
                             </div>
                         </div>
                     </div>

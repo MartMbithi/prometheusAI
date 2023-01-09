@@ -184,27 +184,28 @@ $html =
                                 assets_category ac ON a.asset_category_id = ac.category_id
                                 ORDER BY  asset_name ASC"
                             );
-                            $cnt = 1;
-                                if (mysqli_num_rows($assets_sql) > 0) {
-                                    while ($assets = mysqli_fetch_array($assets_sql)) {
-                                        $cumulative_assets_cost += $assets['asset_cost'];
-                                        $html .=
-                                        '
-                                            <tr>
-                                                <td>' . $assets['category_name'] . '</td>
-                                                <td>' . $assets['asset_name'] . '</td>
-                                                <td>' . $assets['asset_status'] . '</td>
-                                                <td>' . date('d M Y g:ia', strtotime($assets['asset_date_purchased'])) . '</td>
-                                                <td>' . "Ksh " . number_format($assets['asset_cost']) . '</td>
-                                            </tr>
-                                        ';
-                                    }
+                            $cumulative_assets_cost = 0;
+                            if (mysqli_num_rows($assets_sql) > 0) {
+                                while ($assets = mysqli_fetch_array($assets_sql)) {
+                                    $cost = $assets['asset_cost'];
+                                    $cumulative_assets_cost += $cost;
+                                    $html .=
+                                    '
+                                        <tr>
+                                            <td>' . $assets['category_name'] . '</td>
+                                            <td>' . $assets['asset_name'] . '</td>
+                                            <td>' . $assets['asset_status'] . '</td>
+                                            <td>' . date('d M Y', strtotime($assets['asset_date_purchased'])) . '</td>
+                                            <td>' . "Ksh " . number_format($assets['asset_cost']) . '</td>
+                                        </tr>
+                                    ';
                                 }
-                                $html .= '
-                                <tr>
-                                    <td  colspan="4"><b>Total Net Worth Amount: </b></td>
-                                    <td><b>' . "Ksh " . number_format($cumulative_assets_cost, 2) . '</b></td>
-                                </tr>
+                            }
+                            $html .= '
+                            <tr>
+                                <td  colspan="4"><b>Total Net Worth Amount: </b></td>
+                                <td><b>' . "Ksh " . number_format($cumulative_assets_cost) . '</b></td>
+                            </tr>
                         </tbody>
                     </table>
                 </body>

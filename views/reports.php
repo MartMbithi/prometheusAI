@@ -78,8 +78,9 @@ if ($report_module == 'assets') {
     if ($report_type == 'CSV') {
         /* Generate CSV Reort */
         include('../reports/csv/assets.php');
-    } else if ($report_module == 'PDF') {
+    } else if ($report_type == 'PDF') {
         /* Generate PDF Report */
+        include('../reports/pdf/assets.php');
     } else {
         /* Error */
         $_SESSION['err'] = 'System error, please reload your session';
@@ -90,7 +91,7 @@ if ($report_module == 'assets') {
     if ($report_type == 'CSV') {
         /* Generate CSV Reort */
         include('../reports/csv/bills.php');
-    } else if ($report_module == 'PDF') {
+    } else if ($report_type == 'PDF') {
         /* Generate PDF Report */
     } else {
         /* Error */
@@ -102,7 +103,7 @@ if ($report_module == 'assets') {
     if ($report_type == 'CSV') {
         /* Generate CSV Reort */
         include('../reports/csv/savings.php');
-    } else if ($report_module == 'PDF') {
+    } else if ($report_type == 'PDF') {
         /* Generate PDF Report */
     } else {
         /* Error */
