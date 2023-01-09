@@ -77,7 +77,7 @@ $report_type = mysqli_real_escape_string($mysqli, $_GET['type']);
 if ($report_module == 'assets') {
     if ($report_type == 'CSV') {
         /* Generate CSV Reort */
-        
+        include('../reports/csv/assets.php');
     } else if ($report_module == 'PDF') {
         /* Generate PDF Report */
     } else {

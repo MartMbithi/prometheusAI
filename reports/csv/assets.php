@@ -87,15 +87,18 @@ assets_category ac ON a.asset_category_id = ac.category_id
 ORDER BY  asset_name ASC");
 if ($query->num_rows > 0) {
     /* Load All Fetched Rows */
+    $cnt = 1;
     while ($row = $query->fetch_assoc()) {
         /* Hardwire This Data Into .xls File */
         $lineData = array(
+            $cnt,
             $row['category_name'],
             $row['asset_name'],
             $row['asset_cost'],
             $row['asset_status'],
             date('d M Y', strtotime($row['asset_date_purchased']))
         );
+        $cnt = $cnt + 1;/* Auto increment asset number */
         array_walk($lineData, 'filterData');
         $excelData .= implode("\t", array_values($lineData)) . "\n";
     }
