@@ -106,7 +106,8 @@ if ($report_module == 'assets') {
         include('../reports/csv/savings.php');
     } else if ($report_type == 'PDF') {
         /* Generate PDF Report */
-    } else {
+        include('../reports/pdf/savings.php');
+   } else {
         /* Error */
         $_SESSION['err'] = 'System error, please reload your session';
         header('Location: dashboard');

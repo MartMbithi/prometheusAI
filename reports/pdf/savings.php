@@ -178,28 +178,28 @@ $html =
                             ';
                             $savings_sql = mysqli_query(
                                 $mysqli,
-                                "SELECT * FROM purchases 
-                                ORDER BY purchase_date_made DESC"
+                                "SELECT * FROM savings 
+                                ORDER BY  saving_date DESC"
                             );
-                            $cumulative_bill_cost = 0;
+                            $cumulative_revenue = 0;
                             if (mysqli_num_rows($savings_sql) > 0) {
                                 while ($savings = mysqli_fetch_array($savings_sql)) {
                                     $amount = $savings['saving_amount'];
-                                    $cumulative_revenue += $cost;
+                                    $cumulative_revenue += $amount;
                                     $html .=
                                     '
                                         <tr>
                                             <td>' . $savings['saving_account'] . '</td>
                                             <td>' . date('d M Y', strtotime($savings['saving_date'])) . '</td>
-                                            <td>' . "Ksh " . number_format($savings['saving_amount']) . '</td>
+                                            <td>' . "Ksh " . number_format($savings['saving_amount'], 2) . '</td>
                                         </tr>
                                     ';
                                 }
                             }
                             $html .= '
                             <tr>
-                                <td  colspan="3"><b>Total Amount: </b></td>
-                                <td><b>' . "Ksh " . number_format($cumulative_revenue) . '</b></td>
+                                <td  colspan="2"><b>Total Net Amount: </b></td>
+                                <td><b>' . "Ksh " . number_format($cumulative_revenue, 2) . '</b></td>
                             </tr>
                         </tbody>
                     </table>
