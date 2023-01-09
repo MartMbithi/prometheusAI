@@ -73,9 +73,11 @@ if (isset($_POST['Add_Wishlist_Item'])) {
     $wishlist_item_qty = mysqli_real_escape_string($mysqli, $_POST['wishlist_item_qty']);
     $wishlist_item_desc = mysqli_real_escape_string($mysqli, $_POST['wishlist_item_desc']);
     $wishlist_item_cost = mysqli_real_escape_string($mysqli, $_POST['wishlist_item_cost']);
+    $wishlist_item_date_added = mysqli_real_escape_string($mysqli, $_POST['wishlist_item_date_added']);
 
     /* Persist */
-    $add_sql  = "INSERT INTO wishlists(wishlist_item_category_id, wishlist_item_name, wishlist_item_qty, wishlist_item_desc, wishlist_item_cost) VALUES ('{$wishlist_item_category_id}', '{$wishlist_item_name}', '{$wishlist_item_qty}', '{$wishlist_item_desc}', '{$wishlist_item_cost}')";
+    $add_sql  = "INSERT INTO wishlists(wishlist_item_category_id, wishlist_item_name, wishlist_item_qty, wishlist_item_desc, wishlist_item_cost, wishlist_item_date_added) 
+    VALUES ('{$wishlist_item_category_id}', '{$wishlist_item_name}', '{$wishlist_item_qty}', '{$wishlist_item_desc}', '{$wishlist_item_cost}', '{$wishlist_item_date_added}')";
 
     if (mysqli_query($mysqli, $add_sql)) {
         $success = "Item added to wishlist";
@@ -92,10 +94,12 @@ if (isset($_POST['Update_Item_Wishlist'])) {
     $wishlist_item_desc = mysqli_real_escape_string($mysqli, $_POST['wishlist_item_desc']);
     $wishlist_item_cost = mysqli_real_escape_string($mysqli, $_POST['wishlist_item_cost']);
     $wishlist_id = mysqli_real_escape_string($mysqli, $_POST['wishlist_id']);
+    $wishlist_item_date_added = mysqli_real_escape_string($mysqli, $_POST['wishlist_item_date_added']);
+
 
     /* Persist */
     $update_sql  = "UPDATE wishlists SET  wishlist_item_category_id = '{$wishlist_item_category_id}', wishlist_item_name = '{$wishlist_item_name}',
-    wishlist_item_qty = '{$wishlist_item_qty}', wishlist_item_desc = '{$wishlist_item_desc}', wishlist_item_cost = '{$wishlist_item_cost}'
+    wishlist_item_qty = '{$wishlist_item_qty}', wishlist_item_desc = '{$wishlist_item_desc}', wishlist_item_cost = '{$wishlist_item_cost}', wishlist_item_date_added = '{$wishlist_item_date_added}'
     WHERE wishlist_id = '{$wishlist_id}'";
 
     if (mysqli_query($mysqli, $update_sql)) {
