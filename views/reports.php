@@ -101,6 +101,7 @@ if ($report_module == 'assets') {
 } else if ($report_module == 'savings') {
     if ($report_type == 'CSV') {
         /* Generate CSV Reort */
+        include('../reports/csv/savings.php');
     } else if ($report_module == 'PDF') {
         /* Generate PDF Report */
     } else {
