@@ -71,7 +71,6 @@ require_once('../config/checklogin.php');
 require_once('../helpers/assets.php');
 require_once('../partials/head.php');
 ?>
-?>
 
 <body>
 
