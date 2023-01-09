@@ -64,53 +64,50 @@
  *   TORT OR ANY OTHER THEORY OF LIABILITY, EXCEED THE LICENSE FEE PAID BY YOU, IF ANY.
  *
  */
+function filterData(&$str)
+{
+    $str = preg_replace("/\t/", "\\t", $str);
+    $str = preg_replace("/\r?\n/", "\\n", $str);
+    if (strstr($str, '"')) $str = '"' . str_replace('"', '""', $str) . '"';
+}
 
-session_start();
-require_once('../config/config.php');
-require_once('../config/codeGen.php');
-require_once('../config/checklogin.php');
+/* Excel File Name */
+$fileName = 'Assets Reports' . 'xls';
 
-/* Global Variables */
-$report_module = mysqli_real_escape_string($mysqli, $_GET['module']);
-$report_type = mysqli_real_escape_string($mysqli, $_GET['type']);
+/* Excel Column Name */
+$fields = array('#', 'Asset Category', 'Asset Name', 'Asset Cost', 'Asset Status', 'Asset Date Purchased');
 
-if ($report_module == 'assets') {
-    if ($report_type == 'CSV') {
-        /* Generate CSV Reort */
-        
-    } else if ($report_module == 'PDF') {
-        /* Generate PDF Report */
-    } else {
-        /* Error */
-        $_SESSION['err'] = 'System error, please reload your session';
-        header('Location: dashboard');
-        exit;
-    }
-} else if ($report_module == 'bills') {
-    if ($report_type == 'CSV') {
-        /* Generate CSV Reort */
-    } else if ($report_module == 'PDF') {
-        /* Generate PDF Report */
-    } else {
-        /* Error */
-        $_SESSION['err'] = 'System error, please reload your session';
-        header('Location: dashboard');
-        exit;
-    }
-} else if ($report_module == 'savings') {
-    if ($report_type == 'CSV') {
-        /* Generate CSV Reort */
-    } else if ($report_module == 'PDF') {
-        /* Generate PDF Report */
-    } else {
-        /* Error */
-        $_SESSION['err'] = 'System error, please reload your session';
-        header('Location: dashboard');
-        exit;
+
+/* Implode Excel Data */
+$excelData = implode("\t", array_values($fields)) . "\n";
+
+/* Fetch All Records From The Database */
+$query = $mysqli->query("SELECT * FROM assets a INNER JOIN 
+assets_category ac ON a.asset_category_id = ac.category_id
+ORDER BY  asset_name ASC");
+if ($query->num_rows > 0) {
+    /* Load All Fetched Rows */
+    while ($row = $query->fetch_assoc()) {
+        /* Hardwire This Data Into .xls File */
+        $lineData = array(
+            $row['category_name'],
+            $row['asset_name'],
+            $row['asset_cost'],
+            $row['asset_status'],
+            date('d M Y', strtotime($row['asset_date_purchased']))
+        );
+        array_walk($lineData, 'filterData');
+        $excelData .= implode("\t", array_values($lineData)) . "\n";
     }
 } else {
-    /* Default Error */
-    $_SESSION['err'] = 'System error, please reload your session';
-    header('Location: dashboard');
-    exit;
+    $excelData .= 'No Asset Records Available...' . "\n";
 }
+
+/* Generate Header File Encodings For Download */
+header("Content-Type: application/vnd.ms-excel");
+header("Content-Disposition: attachment; filename=\"$fileName\"");
+
+/* Render  Excel Data For Download */
+echo $excelData;
+
+exit;
