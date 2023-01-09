@@ -93,6 +93,7 @@ if ($report_module == 'assets') {
         include('../reports/csv/bills.php');
     } else if ($report_type == 'PDF') {
         /* Generate PDF Report */
+        include('../reports/pdf/bills.php');
     } else {
         /* Error */
         $_SESSION['err'] = 'System error, please reload your session';
