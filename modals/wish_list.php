@@ -66,13 +66,17 @@
                             <input type="hidden" required name="wishlist_id" class="form-control" value="<?php echo $wishlist['wishlist_id']; ?>">
                             <input type="text" required name="wishlist_item_name" class="form-control" value="<?php echo $wishlist['wishlist_item_name']; ?>">
                         </div>
-                        <div class="form-group col-md-6 mb-3">
+                        <div class="form-group col-md-4 mb-3">
                             <label for="">QTY</label>
                             <input type="text" required name="wishlist_item_qty" class="form-control" value="<?php echo $wishlist['wishlist_item_qty']; ?>">
                         </div>
-                        <div class=" form-group col-md-6 mb-3">
+                        <div class=" form-group col-md-4 mb-3">
                             <label for="">Item Price</label>
                             <input type="text" required name="wishlist_item_cost" class="form-control" value="<?php echo $wishlist['wishlist_item_cost']; ?>">
+                        </div>
+                        <div class="form-group col-md-4 mb-3">
+                            <label for="">Date</label>
+                            <input type="date" value="<?php echo $wishlist['wishlist_item_date_added']; ?>" required name="wishlist_item_date_added" class="form-control">
                         </div>
                         <div class=" form-group col-md-12 mb-3">
                             <label for="">Item Desc</label>
