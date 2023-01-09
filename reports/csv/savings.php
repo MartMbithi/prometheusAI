@@ -72,18 +72,18 @@ function filterData(&$str)
 }
 
 /* Excel File Name */
-$fileName = 'Bills & Expenditure Reports' . 'xls';
+$fileName = 'Reveue, Income & Savings Reports' . 'xls';
 
 /* Excel Column Name */
-$fields = array('#', 'Item', 'Qty', 'Cost (Ksh)', 'Date Posted');
+$fields = array('#', 'Account', 'Amount (Ksh)', 'Date Posted');
 
 
 /* Implode Excel Data */
 $excelData = implode("\t", array_values($fields)) . "\n";
 
 /* Fetch All Records From The Database */
-$query = $mysqli->query("SELECT * FROM purchases 
-ORDER BY purchase_date_made DESC");
+$query = $mysqli->query("SELECT * FROM savings 
+ORDER BY  saving_date DESC");
 if ($query->num_rows > 0) {
     /* Load All Fetched Rows */
     $cnt = 1;
@@ -91,17 +91,16 @@ if ($query->num_rows > 0) {
         /* Hardwire This Data Into .xls File */
         $lineData = array(
             $cnt,
-            $row['purchase_item'],
-            $row['purchase_quantity'],
-            $row['purchase_amount'],
-            date('d M Y', strtotime($row['purchase_date_made']))
+            $row['saving_account'],
+            $row['saving_amount'],
+            date('d M Y', strtotime($row['saving_date']))
         );
         $cnt = $cnt + 1;/* Auto increment asset number */
         array_walk($lineData, 'filterData');
         $excelData .= implode("\t", array_values($lineData)) . "\n";
     }
 } else {
-    $excelData .= 'No Bills Records Available...' . "\n";
+    $excelData .= 'No Savings Records Available...' . "\n";
 }
 
 /* Generate Header File Encodings For Download */
