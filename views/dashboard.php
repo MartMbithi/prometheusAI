@@ -213,7 +213,7 @@ require_once('../partials/head.php');
                                         /* Fetch Recent Bills */
                                         $recent_bills_sql = mysqli_query(
                                             $mysqli,
-                                            "SELECT * FROM purchases  ORDER BY purchase_date_made DESC LIMIT 20"
+                                            "SELECT * FROM purchases  ORDER BY purchase_date_made DESC LIMIT 10"
                                         );
                                         if (mysqli_num_rows($recent_bills_sql) > 0) {
                                             while ($recent_bills = mysqli_fetch_array($recent_bills_sql)) {
@@ -270,7 +270,7 @@ require_once('../partials/head.php');
                                         /* Fetch Recent Bills */
                                         $recent_incomes_sql = mysqli_query(
                                             $mysqli,
-                                            "SELECT * FROM savings  ORDER BY saving_date DESC LIMIT 20"
+                                            "SELECT * FROM savings  ORDER BY saving_date DESC LIMIT 10"
                                         );
                                         if (mysqli_num_rows($recent_incomes_sql) > 0) {
                                             while ($recent_income = mysqli_fetch_array($recent_incomes_sql)) {
