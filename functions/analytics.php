@@ -68,10 +68,13 @@
 if (isset($_POST['Filter_Dashboard'])) {
 
     /* Date Variables */
-    
+    $start_date = mysqli_real_escape_string($mysqli, $_POST['from_date']);
+    $end_date = mysqli_real_escape_string($mysqli, $_POST['from_date']);
+
 
     /* Total Assets Owned */
-    $query = "SELECT COUNT(*)  FROM assets ";
+    $query = "SELECT COUNT(*)  FROM assets 
+    WHERE asset_date_purchased = '{$start_date}' AND '{$end_date}'";
     $stmt = $mysqli->prepare($query);
     $stmt->execute();
     $stmt->bind_result($my_assets);
@@ -80,7 +83,8 @@ if (isset($_POST['Filter_Dashboard'])) {
 
 
     /* Current Expenditure  - Bills*/
-    $query = "SELECT SUM(purchase_amount)  FROM purchases";
+    $query = "SELECT SUM(purchase_amount)  FROM purchases 
+    WHERE BETWEEN purchase_date_made = '{$start_date}' AND '{$end_date}'";
     $stmt = $mysqli->prepare($query);
     $stmt->execute();
     $stmt->bind_result($my_purchases);
@@ -89,7 +93,8 @@ if (isset($_POST['Filter_Dashboard'])) {
 
 
     /* Savings */
-    $query = "SELECT SUM(saving_amount)  FROM savings";
+    $query = "SELECT SUM(saving_amount)  FROM savings 
+    WHERE BETWEEN saving_date = '{$start_date}' AND  '{$end_date}'";
     $stmt = $mysqli->prepare($query);
     $stmt->execute();
     $stmt->bind_result($my_saving_amount);
@@ -98,7 +103,6 @@ if (isset($_POST['Filter_Dashboard'])) {
 
     /* Current Status - Either Loss Or Profit */
     $my_curent_financial_status = abs($my_saving_amount - $my_purchases);
-
 } else {
     /* Load Normal Analytics With No FIlter */
 
