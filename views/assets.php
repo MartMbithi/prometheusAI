@@ -250,11 +250,18 @@ require_once('../partials/head.php');
                             <br>
                             <div class="row row-cols-1 row-cols-md-2 g-3">
                                 <?php
+                                $per_page_record = 12;
+                                if (isset($_GET["page"])) {
+                                    $page  = $_GET["page"];
+                                } else {
+                                    $page = 1;
+                                }
+                                $start_from = ($page - 1) * $per_page_record;
                                 $assets_sql = mysqli_query(
                                     $mysqli,
                                     "SELECT * FROM assets a INNER JOIN 
                                     assets_category ac ON a.asset_category_id = ac.category_id
-                                    ORDER BY  asset_name ASC"
+                                    ORDER BY  asset_name ASC LIMIT $start_from, $per_page_record"
                                 );
                                 $cnt = 1;
                                 if (mysqli_num_rows($assets_sql) > 0) {
@@ -301,6 +308,7 @@ require_once('../partials/head.php');
                             </div>
                         </div>
                     </div>
+                    <?php include('../paginations/assets.php'); ?>
                 </div>
             </div>
         </div>
