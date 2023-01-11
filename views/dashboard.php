@@ -111,6 +111,7 @@ require_once('../partials/head.php');
                 <?php
                 /* Inline Analytics */
                 require_once('../functions/analytics.php');
+
                 ?>
                 <!-- My Assets -->
                 <div class="col-xl-3 col-lg-6">
