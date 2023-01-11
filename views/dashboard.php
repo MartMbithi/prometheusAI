@@ -67,7 +67,6 @@
 session_start();
 require_once('../config/config.php');
 require_once('../config/checklogin.php');
-require_once('../functions/analytics.php');
 require_once('../partials/head.php');
 ?>
 
@@ -91,25 +90,28 @@ require_once('../partials/head.php');
 
             <div class="row">
                 <div class="d-flex justify-content-end mb-3">
-                    <form class="row row-cols-lg-auto g-3 align-items-center">
+                    <form class="row row-cols-lg-auto g-3 align-items-center" method="post">
                         <div class="col-12">
                             <div class="input-group">
                                 <div class="input-group-text">From</div>
-                                <input type="date" class="form-control">
+                                <input type="date" name="from_date" required class="form-control">
                             </div>
                         </div>
                         <div class="col-12">
                             <div class="input-group">
                                 <div class="input-group-text">To</div>
-                                <input type="date" class="form-control">
+                                <input type="date" name="to_date" required class="form-control">
                             </div>
                         </div>
                         <div class="col-12">
-                            <button type="submit" class="btn btn-outline-lime">Filter</button>
+                            <button type="submit" name="Filter_Dashboard" class="btn btn-outline-lime">Filter</button>
                         </div>
                     </form>
                 </div>
-
+                <?php
+                /* Inline Analytics */
+                require_once('../functions/analytics.php');
+                ?>
                 <!-- My Assets -->
                 <div class="col-xl-3 col-lg-6">
                     <div class="card mb-3">

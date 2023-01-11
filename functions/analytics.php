@@ -65,6 +65,7 @@
  *
  */
 
+if(!empty)
 
 /* Total Assets Owned */
 $query = "SELECT COUNT(*)  FROM assets ";
