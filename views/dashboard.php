@@ -90,6 +90,25 @@ require_once('../partials/head.php');
         <div id="content" class="app-content">
 
             <div class="row">
+                <div class="d-flex justify-content-end mb-3">
+                    <form class="row row-cols-lg-auto g-3 align-items-center">
+                        <div class="col-12">
+                            <div class="input-group">
+                                <div class="input-group-text">From</div>
+                                <input type="date" class="form-control">
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <div class="input-group">
+                                <div class="input-group-text">To</div>
+                                <input type="date" class="form-control">
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <button type="submit" class="btn btn-outline-lime">Filter</button>
+                        </div>
+                    </form>
+                </div>
 
                 <!-- My Assets -->
                 <div class="col-xl-3 col-lg-6">
