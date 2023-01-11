@@ -169,10 +169,17 @@ require_once('../partials/head.php');
                             <br>
                             <div class="row row-cols-1 row-cols-md-2 g-3">
                                 <?php
+                                $per_page_record = 12;
+                                if (isset($_GET["page"])) {
+                                    $page  = $_GET["page"];
+                                } else {
+                                    $page = 1;
+                                }
+                                $start_from = ($page - 1) * $per_page_record;
                                 $saving_sql = mysqli_query(
                                     $mysqli,
                                     "SELECT * FROM savings 
-                                    ORDER BY  saving_date DESC"
+                                    ORDER BY  saving_date DESC LIMIT $start_from, $per_page_record"
                                 );
                                 $cnt = 1;
                                 if (mysqli_num_rows($saving_sql) > 0) {
@@ -209,6 +216,7 @@ require_once('../partials/head.php');
                             </div>
                         </div>
                     </div>
+                    <?php include('../paginations/savings.php'); ?>
                 </div>
             </div>
         </div>
