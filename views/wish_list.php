@@ -177,11 +177,18 @@ require_once('../partials/head.php');
                             <br>
                             <div class="row row-cols-1 row-cols-md-2 g-3">
                                 <?php
+                                $per_page_record = 9;
+                                if (isset($_GET["page"])) {
+                                    $page  = $_GET["page"];
+                                } else {
+                                    $page = 1;
+                                }
+                                $start_from = ($page - 1) * $per_page_record;
                                 $wishlist_sql = mysqli_query(
                                     $mysqli,
                                     "SELECT * FROM wishlists w INNER JOIN 
                                     assets_category ac ON w.wishlist_item_category_id = ac.category_id
-                                    ORDER BY  wishlist_item_name ASC"
+                                    ORDER BY  wishlist_item_name ASC LIMIT $start_from, $per_page_record"
                                 );
                                 $cnt = 1;
                                 if (mysqli_num_rows($wishlist_sql) > 0) {
@@ -220,6 +227,7 @@ require_once('../partials/head.php');
                             </div>
                         </div>
                     </div>
+                    <?php include('../paginations/wishlist.php'); ?>
                 </div>
             </div>
         </div>

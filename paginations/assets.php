@@ -66,7 +66,7 @@
  */
 
 
-/* Handle Asset Categories Paginations */
+/* Handle Asset Paginations */
 ?>
 <h1></h1>
 <div class="d-flex justify-content-center">
