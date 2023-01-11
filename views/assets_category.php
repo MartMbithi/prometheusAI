@@ -141,7 +141,7 @@ require_once('../partials/head.php');
                             <br>
                             <div class="row row-cols-1 row-cols-md-2 g-3">
                                 <?php
-                                $per_page_record = 4;
+                                $per_page_record = 6;
                                 if (isset($_GET["page"])) {
                                     $page  = $_GET["page"];
                                 } else {
@@ -150,8 +150,9 @@ require_once('../partials/head.php');
                                 $start_from = ($page - 1) * $per_page_record;
                                 $assets_category_sql = mysqli_query(
                                     $mysqli,
-                                    "SELECT * FROM assets_category 
-                                    ORDER BY  category_name ASC"
+                                    "SELECT * FROM assets_category  
+                                    ORDER BY  category_name ASC 
+                                    LIMIT $start_from, $per_page_record"
                                 );
                                 $cnt = 1;
                                 if (mysqli_num_rows($assets_category_sql) > 0) {
