@@ -141,6 +141,13 @@ require_once('../partials/head.php');
                             <br>
                             <div class="row row-cols-1 row-cols-md-2 g-3">
                                 <?php
+                                $per_page_record = 4;
+                                if (isset($_GET["page"])) {
+                                    $page  = $_GET["page"];
+                                } else {
+                                    $page = 1;
+                                }
+                                $start_from = ($page - 1) * $per_page_record;
                                 $assets_category_sql = mysqli_query(
                                     $mysqli,
                                     "SELECT * FROM assets_category 
@@ -182,8 +189,8 @@ require_once('../partials/head.php');
                                 <nav aria-label="Page navigation example">
                                     <ul class="pagination">
                                         <?php
-                                        $query = "SELECT COUNT(*) FROM pet";
-                                        $rs_result = mysqli_query($mysqli, $query);
+                                        $pagination_sql = "SELECT COUNT(*) FROM assets_category";
+                                        $rs_result = mysqli_query($mysqli, $pagination_sql);
                                         $row = mysqli_fetch_row($rs_result);
                                         $total_records = $row[0];
 
@@ -191,20 +198,20 @@ require_once('../partials/head.php');
                                         $pagLink = "";
 
                                         if ($page >= 2) {
-                                            echo "<li class='page-item'><a class='page-link' href='pets?page=" . ($page - 1) . "'>Previous</a></li>";
+                                            echo "<li class='page-item'><a class='page-link' href='assets_category?page=" . ($page - 1) . "'>Previous</a></li>";
                                         }
 
                                         for ($i = 1; $i <= $total_pages; $i++) {
                                             if ($i == $page) {
-                                                $pagLink .= "<li class='page-item active'><a class = 'active page-link' href='pets?page=" . $i . "'>" . $i . " </a></li>";
+                                                $pagLink .= "<li class='page-item active'><a class = 'active page-link' href='assets_category?page=" . $i . "'>" . $i . " </a></li>";
                                             } else {
-                                                $pagLink .= "<li class='page-item'><a class='page-link' href='pets?page=" . $i . "'>" . $i . " </a></li>";
+                                                $pagLink .= "<li class='page-item'><a class='page-link' href='assets_category?page=" . $i . "'>" . $i . " </a></li>";
                                             }
                                         };
                                         echo $pagLink;
 
                                         if ($page < $total_pages) {
-                                            echo "<li class='page-item'><a class='page-link'  href='pets?page=" . ($page + 1) . "'>  Next </a></li>";
+                                            echo "<li class='page-item'><a class='page-link'  href='assets_category?page=" . ($page + 1) . "'>  Next </a></li>";
                                         }
 
                                         ?>
