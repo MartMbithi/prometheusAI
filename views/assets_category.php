@@ -186,42 +186,11 @@ require_once('../partials/head.php');
                                     }
                                 } ?>
                             </div>
-                            <div class="d-flex justify-content-center">
-                                <nav aria-label="Page navigation example">
-                                    <ul class="pagination">
-                                        <?php
-                                        $pagination_sql = "SELECT COUNT(*) FROM assets_category";
-                                        $rs_result = mysqli_query($mysqli, $pagination_sql);
-                                        $row = mysqli_fetch_row($rs_result);
-                                        $total_records = $row[0];
-
-                                        $total_pages = ceil($total_records / $per_page_record);
-                                        $pagLink = "";
-
-                                        if ($page >= 2) {
-                                            echo "<li class='page-item'><a class='page-link' href='assets_category?page=" . ($page - 1) . "'>Previous</a></li>";
-                                        }
-
-                                        for ($i = 1; $i <= $total_pages; $i++) {
-                                            if ($i == $page) {
-                                                $pagLink .= "<li class='page-item active'><a class = 'active page-link' href='assets_category?page=" . $i . "'>" . $i . " </a></li>";
-                                            } else {
-                                                $pagLink .= "<li class='page-item'><a class='page-link' href='assets_category?page=" . $i . "'>" . $i . " </a></li>";
-                                            }
-                                        };
-                                        echo $pagLink;
-
-                                        if ($page < $total_pages) {
-                                            echo "<li class='page-item'><a class='page-link'  href='assets_category?page=" . ($page + 1) . "'>  Next </a></li>";
-                                        }
-
-                                        ?>
-
-                                    </ul>
-                                </nav>
-                            </div>
                         </div>
                     </div>
+                    
+                    <?php include('../paginations/asset_categories.php'); ?>
+
                 </div>
             </div>
         </div>
