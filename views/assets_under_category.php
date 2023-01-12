@@ -170,7 +170,8 @@ require_once('../partials/head.php');
                                     $mysqli,
                                     "SELECT * FROM assets a INNER JOIN 
                                     assets_category ac ON a.asset_category_id = ac.category_id
-                                    WHERE category_id = '{$assets_category}' ORDER BY  asset_name ASC"
+                                    WHERE asset_user_id = '{$_SESSION['user_id']}' AND 
+                                    category_id = '{$assets_category}' ORDER BY  asset_name ASC"
                                 );
                                 $cnt = 1;
                                 if (mysqli_num_rows($assets_sql) > 0) {
