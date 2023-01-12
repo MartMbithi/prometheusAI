@@ -114,6 +114,7 @@ switch (connection_status()) {
                     $_SESSION['success'] = 'Enter reset code sent to your email';
                     $_SESSION['user_email'] = $user_email;
                     header('Location: confirm_reset_code');
+                    exit;
                 } else {
                     $err = "Please try again";
                 }
@@ -137,6 +138,7 @@ switch (connection_status()) {
                     $_SESSION['success'] = 'Code confirmed, proceed to reset password';
                     $_SESSION['user_email'] = $user_email;
                     header('Location: confirm_password');
+                    exit;
                 } else {
                     $err = "Please try again";
                 }
