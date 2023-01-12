@@ -95,7 +95,7 @@ if (isset($_POST['Filter_Dashboard'])) {
 
     /* Savings */
     $query = "SELECT SUM(saving_amount)  FROM savings 
-    WHERE saving_saving_id = '$user_id' AND (saving_date BETWEEN  '$start_date' AND  '$end_date')";
+    WHERE saving_user_id = '$user_id' AND (saving_date BETWEEN  '$start_date' AND  '$end_date')";
     $stmt = $mysqli->prepare($query);
     $stmt->execute();
     $stmt->bind_result($my_saving_amount);
