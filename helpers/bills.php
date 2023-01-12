@@ -72,10 +72,11 @@ if (isset($_POST['Add_Bill'])) {
     $purchase_amount = mysqli_real_escape_string($mysqli, $_POST['purchase_amount']);
     $purchase_date_made = mysqli_real_escape_string($mysqli, $_POST['purchase_date_made']);
     $purchase_details = mysqli_real_escape_string($mysqli, $_POST['purchase_details']);
+    $purchase_user_id  = mysqli_real_escape_string($mysqli, $_SESSION['user_id']);
 
     /* Persist */
-    $add_sql = "INSERT INTO purchases(purchase_item, purchase_quantity, purchase_amount, purchase_date_made, purchase_details)
-    VALUES('{$purchase_item}', '{$purchase_quantity}', '{$purchase_amount}', '{$purchase_date_made}', '{$purchase_details}')";
+    $add_sql = "INSERT INTO purchases(purchase_item, purchase_quantity, purchase_amount, purchase_date_made, purchase_details, purchase_user_id)
+    VALUES('{$purchase_item}', '{$purchase_quantity}', '{$purchase_amount}', '{$purchase_date_made}', '{$purchase_details}', '{$purchase_user_id}')";
 
     if (mysqli_query($mysqli, $add_sql)) {
         $success = "Bill posted";
