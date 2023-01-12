@@ -100,6 +100,7 @@ switch (connection_status()) {
         /* This Will Trigger Mailer To Send Email Address */
         if (isset($_POST['Reset_Password_Step_1'])) {
             $user_email = mysqli_real_escape_string($mysqli, $_POST['user_email']);
+            $reset_token = mysqli_real_escape_string($mysqli, $code);
 
             /* Check If This Account Exists */
             $sql = "SELECT * FROM  user WHERE user_email = '{$user_email}'";
@@ -110,7 +111,9 @@ switch (connection_status()) {
                 /* Trigger Mailer */
                 include('../mailers/reset_password.php');
                 if (mysqli_query($mysqli, $reset_token_sql) && $mail->send()) {
-                    $success = "Kindly check your email for reset instructions";
+                    $_SESSION['success'] = 'Enter reset code sent to your email';
+                    unset($_SESSION['email']);
+                    header('Location: ../');
                 } else {
                     $err = "Please try again";
                 }
@@ -134,7 +137,7 @@ switch (connection_status()) {
                     if (mysqli_query($mysqli, $update_password_sql)) {
                         $_SESSION['success'] = 'Password updated successfully';
                         unset($_SESSION['email']);
-                        header('Location: ../');
+                        header('Location: confirm_reset_code');
                         exit;
                     } else {
                         $err = "Password reset failed, please try again";
