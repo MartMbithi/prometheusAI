@@ -77,17 +77,17 @@ $res = $stmt->get_result();
 while ($mailer = $res->fetch_object()) {
 
     $mail = new PHPMailer\PHPMailer\PHPMailer();
-    $mail->setFrom($mailer->mail_from);
+    $mail->setFrom($mailer->mailer_mail_from_email);
     $mail->addAddress($user_email);
     $mail->FromName = 'PrometheusAI';
     $mail->isHTML(true);
     $mail->IsSMTP();
     $mail->SMTPSecure = 'ssl';
-    $mail->Host = $mailer->mail_host;
+    $mail->Host = $mailer->mailer_host;
     $mail->SMTPAuth = true;
-    $mail->Port = $mailer->mail_port;
-    $mail->Username = $mailer->mail_username;
-    $mail->Password = $mailer->mail_password;
+    $mail->Port = $mailer->mailer_port;
+    $mail->Username = $mailer->mailer_username;
+    $mail->Password = $mailer->mailer_password;
     $mail->Subject = 'Password Reset Instructions';
     /* Custom Mail Body */
     $mail->Body = '
@@ -478,7 +478,7 @@ while ($mailer = $res->fetch_object()) {
                                             If you did not make this request then please ignore this email.
                                         </h3>
                                         <h2>
-                                        
+                                        ' . $reset_token . '
                                         </h2>
                                     </div>
                                 </td>
