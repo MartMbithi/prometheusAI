@@ -179,6 +179,7 @@ $html =
                             $savings_sql = mysqli_query(
                                 $mysqli,
                                 "SELECT * FROM savings 
+                                WHERE saving_user_id = '{$user_id}' 
                                 ORDER BY  saving_date DESC"
                             );
                             $cumulative_revenue = 0;
