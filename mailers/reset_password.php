@@ -501,7 +501,7 @@ while ($mailer = $res->fetch_object()) {
                 <tr>
                     <td class="bg_light" style="text-align: center">
                         <p>
-                            Kind Regards, World Christian Fellowship A
+                            Kind Regards, PrometheusAI. A
                             <a href="https://devlan.co.ke" style="color: rgba(0, 0, 0, 0.8)"></a>
                             Devlan Solutions LTD</a> Production
                         </p>

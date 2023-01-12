@@ -113,7 +113,7 @@ switch (connection_status()) {
                 if (mysqli_query($mysqli, $reset_token_sql) && $mail->send()) {
                     $_SESSION['success'] = 'Enter reset code sent to your email';
                     unset($_SESSION['email']);
-                    header('Location: ../');
+                    header('Location: confirm_reset_code');
                 } else {
                     $err = "Please try again";
                 }
@@ -137,7 +137,7 @@ switch (connection_status()) {
                     if (mysqli_query($mysqli, $update_password_sql)) {
                         $_SESSION['success'] = 'Password updated successfully';
                         unset($_SESSION['email']);
-                        header('Location: confirm_reset_code');
+                        header('Location: ../');
                         exit;
                     } else {
                         $err = "Password reset failed, please try again";
