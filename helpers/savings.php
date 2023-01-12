@@ -71,10 +71,11 @@ if (isset($_POST['Add_Savings'])) {
     $saving_account = mysqli_real_escape_string($mysqli, $_POST['saving_account']);
     $saving_amount = mysqli_real_escape_string($mysqli, $_POST['saving_amount']);
     $saving_date = mysqli_real_escape_string($mysqli, $_POST['saving_date']);
+    $saving_user_id  = mysqli_real_escape_string($mysqli, $_SESSION['user_id']);
 
     /* Persist */
-    $add_sql = "INSERT INTO savings (saving_account, saving_amount, saving_date) VALUES('{$saving_account}', '{$saving_amount}',
-    '{$saving_date}')";
+    $add_sql = "INSERT INTO savings (saving_account, saving_amount, saving_date, saving_user_id) VALUES('{$saving_account}', '{$saving_amount}',
+    '{$saving_date}', '{$saving_user_id}')";
     if (mysqli_query($mysqli, $add_sql)) {
         $success = "Savings posted";
     } else {

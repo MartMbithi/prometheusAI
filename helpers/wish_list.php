@@ -74,6 +74,7 @@ if (isset($_POST['Add_Wishlist_Item'])) {
     $wishlist_item_desc = mysqli_real_escape_string($mysqli, $_POST['wishlist_item_desc']);
     $wishlist_item_cost = mysqli_real_escape_string($mysqli, $_POST['wishlist_item_cost']);
     $wishlist_item_date_added = mysqli_real_escape_string($mysqli, $_POST['wishlist_item_date_added']);
+    
 
     /* Persist */
     $add_sql  = "INSERT INTO wishlists(wishlist_item_category_id, wishlist_item_name, wishlist_item_qty, wishlist_item_desc, wishlist_item_cost, wishlist_item_date_added) 
