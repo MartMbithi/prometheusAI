@@ -112,7 +112,7 @@ switch (connection_status()) {
                 include('../mailers/reset_password.php');
                 if (mysqli_query($mysqli, $reset_token_sql) && $mail->send()) {
                     $_SESSION['success'] = 'Enter reset code sent to your email';
-                    unset($_SESSION['email']);
+                    $_SESSION['user_email'] = $user_email;
                     header('Location: confirm_reset_code');
                 } else {
                     $err = "Please try again";
@@ -122,6 +122,30 @@ switch (connection_status()) {
             }
         }
 
+        /* Confirm Password Reset Code */
+        if (isset($_POST['Reset_Password_Confirm_Code'])) {
+            $user_email = mysqli_real_escape_string($mysqli, $_SESSION['user_email']);
+            $reset_code = mysqli_real_escape_string($mysqli, $_POST['reset_code']);
+
+            /* Check If This Reset Code Exists */
+            $sql = "SELECT * FROM  user WHERE user_reset_token = '{$reset_code}'";
+            $res = mysqli_query($mysqli, $sql);
+            if (mysqli_num_rows($res) > 0) {
+                /* Update User Password Reset Token */
+                $reset_token_sql  = "UPDATE user SET user_reset_token = '' WHERE user_email = '{$user_email}'";
+                if (mysqli_query($mysqli, $reset_token_sql)) {
+                    $_SESSION['success'] = 'Code confirmed, proceed to reset password';
+                    $_SESSION['user_email'] = $user_email;
+                    header('Location: confirm_password');
+                } else {
+                    $err = "Please try again";
+                }
+            } else {
+                $_SESSION['err'] = 'Code does not exist, please resent again';
+                header('Location: reset_password');
+                exit;
+            }
+        }
 
         /* Password Reset Step 2 */
         if (isset($_POST['Reset_Password_Step_2'])) {
