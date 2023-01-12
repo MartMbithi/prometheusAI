@@ -84,6 +84,7 @@ $excelData = implode("\t", array_values($fields)) . "\n";
 /* Fetch All Records From The Database */
 $query = $mysqli->query("SELECT * FROM assets a INNER JOIN 
 assets_category ac ON a.asset_category_id = ac.category_id
+WHERE asset_user_id = '{$user_id}'
 ORDER BY  asset_name ASC");
 if ($query->num_rows > 0) {
     /* Load All Fetched Rows */

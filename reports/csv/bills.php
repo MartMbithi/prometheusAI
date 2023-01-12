@@ -83,6 +83,7 @@ $excelData = implode("\t", array_values($fields)) . "\n";
 
 /* Fetch All Records From The Database */
 $query = $mysqli->query("SELECT * FROM purchases 
+WHERE purchase_user_id = '{$user_id}'
 ORDER BY purchase_date_made DESC");
 if ($query->num_rows > 0) {
     /* Load All Fetched Rows */

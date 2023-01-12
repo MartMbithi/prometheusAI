@@ -82,7 +82,8 @@ $fields = array('#', 'Account', 'Amount (Ksh)', 'Date Posted');
 $excelData = implode("\t", array_values($fields)) . "\n";
 
 /* Fetch All Records From The Database */
-$query = $mysqli->query("SELECT * FROM savings 
+$query = $mysqli->query("SELECT * FROM savings
+WHERE saving_user_id = '{$user_id}' 
 ORDER BY  saving_date DESC");
 if ($query->num_rows > 0) {
     /* Load All Fetched Rows */
