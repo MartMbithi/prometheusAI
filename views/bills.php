@@ -187,6 +187,7 @@ require_once('../partials/head.php');
                                 $bills_sql = mysqli_query(
                                     $mysqli,
                                     "SELECT * FROM purchases 
+                                    WHERE purchase_user_id = '{$_SESSION['user_id']}'
                                     ORDER BY purchase_date_made DESC LIMIT $start_from, $per_page_record"
                                 );
                                 $cnt = 1;
