@@ -126,7 +126,9 @@ require_once('../partials/head.php');
                                                             <?php
                                                             $assets_category_sql = mysqli_query(
                                                                 $mysqli,
-                                                                "SELECT * FROM assets_category ORDER BY  category_name ASC"
+                                                                "SELECT * FROM assets_category 
+                                                                WHERE category_user_id = '{$_SESSION['user_id']}'
+                                                                ORDER BY  category_name ASC"
                                                             );
                                                             $cnt = 1;
                                                             if (mysqli_num_rows($assets_category_sql) > 0) {
@@ -193,7 +195,9 @@ require_once('../partials/head.php');
                                                             <?php
                                                             $assets_category_sql = mysqli_query(
                                                                 $mysqli,
-                                                                "SELECT * FROM assets_category ORDER BY  category_name ASC"
+                                                                "SELECT * FROM assets_category 
+                                                                WHERE category_user_id = '{$_SESSION['user_id']}'
+                                                                ORDER BY  category_name ASC"
                                                             );
                                                             $cnt = 1;
                                                             if (mysqli_num_rows($assets_category_sql) > 0) {
@@ -261,6 +265,7 @@ require_once('../partials/head.php');
                                     $mysqli,
                                     "SELECT * FROM assets a INNER JOIN 
                                     assets_category ac ON a.asset_category_id = ac.category_id
+                                    WHERE asset_user_id = '{$_SESSION['user_id']}'
                                     ORDER BY  asset_name ASC LIMIT $start_from, $per_page_record"
                                 );
                                 $cnt = 1;
