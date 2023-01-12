@@ -73,7 +73,7 @@
     <nav aria-label="Page navigation example">
         <ul class="pagination">
             <?php
-            $pagination_sql = "SELECT COUNT(*) FROM assets_category";
+            $pagination_sql = "SELECT COUNT(*) FROM assets_category WHERE category_user_id = '{$_SESSION['user_id']}'";
             $rs_result = mysqli_query($mysqli, $pagination_sql);
             $row = mysqli_fetch_row($rs_result);
             $total_records = $row[0];
