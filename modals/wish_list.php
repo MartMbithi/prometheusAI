@@ -6,9 +6,10 @@
                 <div class="modal-body text-center text-danger">
                     <h4>
                         Heads Up! <br><br>
-                        Add This Wishlist Item To Assets?
+                        Add This Wishlist Item To Assets?wishlist_id
                     </h4>
                     <!-- Hide This -->
+                    <input type="hidden" value="<?php echo $wishlist['wishlist_id']; ?>" required name="wishlist_id" class="form-control">
                     <input type="hidden" value="<?php echo $wishlist['wishlist_item_category_id']; ?>" required name="asset_category_id" class="form-control">
                     <input type="hidden" value="<?php echo $wishlist['wishlist_item_name']; ?>" required name="asset_name" class="form-control">
                     <input type="hidden" value="<?php echo $wishlist['wishlist_item_desc']; ?>" required name="asset_details" class="form-control">
