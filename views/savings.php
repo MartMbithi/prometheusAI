@@ -179,6 +179,7 @@ require_once('../partials/head.php');
                                 $saving_sql = mysqli_query(
                                     $mysqli,
                                     "SELECT * FROM savings 
+                                    WHERE saving_user_id = '{$_SESSION['user_id']}'
                                     ORDER BY  saving_date DESC LIMIT $start_from, $per_page_record"
                                 );
                                 $cnt = 1;

@@ -39,7 +39,7 @@
                                 $assets_category_sql = mysqli_query(
                                     $mysqli,
                                     "SELECT * FROM assets_category
-                                    WHERE category_id !='{$assets['category_id']}' ORDER BY  category_name ASC"
+                                    WHERE category_user_id = '{$_SESSION['user_id']}' AND category_id !='{$assets['category_id']}' ORDER BY  category_name ASC"
                                 );
                                 if (mysqli_num_rows($assets_category_sql) > 0) {
                                     while ($assets_category = mysqli_fetch_array($assets_category_sql)) {

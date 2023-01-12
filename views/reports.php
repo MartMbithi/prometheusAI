@@ -73,6 +73,7 @@ require_once('../config/checklogin.php');
 /* Global Variables */
 $report_module = mysqli_real_escape_string($mysqli, $_GET['module']);
 $report_type = mysqli_real_escape_string($mysqli, $_GET['type']);
+$user_id = mysqli_real_escape_string($mysqli, $_SESSION['user_id']);
 
 if ($report_module == 'assets') {
     if ($report_type == 'CSV') {
@@ -84,7 +85,7 @@ if ($report_module == 'assets') {
     } else {
         /* Error */
         $_SESSION['err'] = 'System error, please reload your session';
-        header('Location: dashboard');
+        header('Location: assets');
         exit;
     }
 } else if ($report_module == 'bills') {
@@ -97,7 +98,7 @@ if ($report_module == 'assets') {
     } else {
         /* Error */
         $_SESSION['err'] = 'System error, please reload your session';
-        header('Location: dashboard');
+        header('Location: bills');
         exit;
     }
 } else if ($report_module == 'savings') {
@@ -107,10 +108,10 @@ if ($report_module == 'assets') {
     } else if ($report_type == 'PDF') {
         /* Generate PDF Report */
         include('../reports/pdf/savings.php');
-   } else {
+    } else {
         /* Error */
         $_SESSION['err'] = 'System error, please reload your session';
-        header('Location: dashboard');
+        header('Location: savings');
         exit;
     }
 } else {

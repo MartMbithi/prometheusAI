@@ -66,13 +66,15 @@
  */
 
 
+
 /* Add Asset Category */
 if (isset($_POST['Add_Asset_Category'])) {
     $category_code = mysqli_real_escape_string($mysqli, $_POST['category_code']);
     $category_name = mysqli_real_escape_string($mysqli, $_POST['category_name']);
+    $category_user_id = mysqli_real_escape_string($mysqli, $_SESSION['user_id']);
 
     /* Persist Register */
-    $add_category = "INSERT INTO assets_category(category_code, category_name) VALUES('{$category_code}', '{$category_name}')";
+    $add_category = "INSERT INTO assets_category(category_user_id, category_code, category_name) VALUES('{$category_user_id}','{$category_code}', '{$category_name}')";
     if (mysqli_query($mysqli, $add_category)) {
         $success = "Asset category registered";
     } else {
@@ -117,10 +119,11 @@ if (isset($_POST['Add_Asset'])) {
     $asset_cost = mysqli_real_escape_string($mysqli, $_POST['asset_cost']);
     $asset_date_purchased = mysqli_real_escape_string($mysqli, $_POST['asset_date_purchased']);
     $asset_status = mysqli_real_escape_string($mysqli, $_POST['asset_status']);
+    $asset_user_id = mysqli_real_escape_string($mysqli, $_SESSION['user_id']);
 
     /* Persist Details */
-    $add_sql = "INSERT INTO assets(asset_category_id, asset_name, asset_details, asset_cost, asset_date_purchased, asset_status)
-    VALUES('{$asset_category_id}', '{$asset_name}', '{$asset_details}', '{$asset_cost}', '{$asset_date_purchased}', '{$asset_status}')";
+    $add_sql = "INSERT INTO assets(asset_category_id, asset_name, asset_details, asset_cost, asset_date_purchased, asset_status, asset_user_id)
+    VALUES('{$asset_category_id}', '{$asset_name}', '{$asset_details}', '{$asset_cost}', '{$asset_date_purchased}', '{$asset_status}', '{$asset_user_id}')";
 
     if (mysqli_query($mysqli, $add_sql)) {
         $success = "Asset added";

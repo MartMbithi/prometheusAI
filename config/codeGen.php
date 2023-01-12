@@ -71,5 +71,8 @@ $length = 15;
 $tk = substr(str_shuffle("qwertyuioplkjhgfdsazxcvbnmQWERTYUIOPLKJHGFDSAZXCVBNM1234567890"), 1, $length);
 
 
-/* OTP */
+/* Code */
 $code = substr(str_shuffle("QWERTYUIOPLKJHGFDSAZXCVBNM1234567890"), 1, 5);
+
+/* OTP */
+$otp = substr(str_shuffle("1234567890"), 1, 6);

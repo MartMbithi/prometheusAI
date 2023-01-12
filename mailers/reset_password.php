@@ -70,24 +70,24 @@ require_once('../vendor/PHPMailer/src/SMTP.php');
 require_once('../vendor/PHPMailer/src/PHPMailer.php');
 require_once('../vendor/PHPMailer/src/Exception.php');
 
-$ret = "SELECT * FROM `wcf_system_settings`  ";
+$ret = "SELECT * FROM mailer_settings";
 $stmt = $mysqli->prepare($ret);
 $stmt->execute(); //ok
 $res = $stmt->get_result();
 while ($mailer = $res->fetch_object()) {
 
     $mail = new PHPMailer\PHPMailer\PHPMailer();
-    $mail->setFrom($mailer->mail_from);
+    $mail->setFrom($mailer->mailer_mail_from_email);
     $mail->addAddress($user_email);
-    $mail->FromName = 'World Christian Fellowship';
+    $mail->FromName = 'PrometheusAI';
     $mail->isHTML(true);
     $mail->IsSMTP();
     $mail->SMTPSecure = 'ssl';
-    $mail->Host = $mailer->mail_host;
+    $mail->Host = $mailer->mailer_host;
     $mail->SMTPAuth = true;
-    $mail->Port = $mailer->mail_port;
-    $mail->Username = $mailer->mail_username;
-    $mail->Password = $mailer->mail_password;
+    $mail->Port = $mailer->mailer_port;
+    $mail->Username = $mailer->mailer_username;
+    $mail->Password = $mailer->mailer_password;
     $mail->Subject = 'Password Reset Instructions';
     /* Custom Mail Body */
     $mail->Body = '
@@ -448,7 +448,7 @@ while ($mailer = $res->fetch_object()) {
                     >
                         <tr>
                         <td class="logo" style="text-align: center">
-                        <h1><a href="#">World Christian Fellowship</a></h1>
+                        <h1><a href="#">PrometheusAI</a></h1>
                         </td>
                         </tr>
                     </table>
@@ -477,7 +477,9 @@ while ($mailer = $res->fetch_object()) {
                                             Resetting your password is easy. Just use the code below follow the instructions, will have you up and running in no time. 
                                             If you did not make this request then please ignore this email.
                                         </h3>
-                                        <h2>' . $one_time_password . '</h2>
+                                        <h2>
+                                        ' . $reset_token . '
+                                        </h2>
                                     </div>
                                 </td>
                             </tr>
@@ -499,7 +501,7 @@ while ($mailer = $res->fetch_object()) {
                 <tr>
                     <td class="bg_light" style="text-align: center">
                         <p>
-                            Kind Regards, World Christian Fellowship A
+                            Kind Regards, PrometheusAI. A
                             <a href="https://devlan.co.ke" style="color: rgba(0, 0, 0, 0.8)"></a>
                             Devlan Solutions LTD</a> Production
                         </p>

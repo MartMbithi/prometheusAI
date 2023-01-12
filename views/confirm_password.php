@@ -76,7 +76,7 @@ require_once('../partials/head.php');
 
         <div class="login">
             <div class="login-content">
-                <form method="POST" name="login_form">
+                <form method="POST" name="login_form" autocomplete="off">
                     <h1 class="text-center">Financial-AI <br>Confirm Password</h1>
                     <div class="text-white text-opacity-50 text-center mb-4">
                         Enter your new password and confirm it.

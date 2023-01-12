@@ -182,6 +182,7 @@ $html =
                                 $mysqli,
                                 "SELECT * FROM assets a INNER JOIN 
                                 assets_category ac ON a.asset_category_id = ac.category_id
+                                WHERE asset_user_id = '{$user_id}'
                                 ORDER BY  asset_name ASC"
                             );
                             $cumulative_assets_cost = 0;

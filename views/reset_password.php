@@ -66,6 +66,7 @@
  */
 session_start();
 require_once('../config/config.php');
+require_once('../config/codeGen.php');
 require_once('../helpers/authentication.php');
 require_once('../partials/head.php');
 ?>
@@ -76,7 +77,7 @@ require_once('../partials/head.php');
 
         <div class="login">
             <div class="login-content">
-                <form method="POST" name="login_form">
+                <form method="POST" name="login_form" autocomplete="off">
                     <h1 class="text-center">PrometheusAI <br>Reset Password</h1>
                     <div class="text-white text-opacity-50 text-center mb-4">
                         Forgot your password?, worry not just provide your email. We will reset it for you

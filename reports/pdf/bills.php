@@ -180,6 +180,7 @@ $html =
                             $bill_sql = mysqli_query(
                                 $mysqli,
                                 "SELECT * FROM purchases 
+                                WHERE purchase_user_id = '{$user_id}'
                                 ORDER BY purchase_date_made DESC"
                             );
                             $cumulative_bill_cost = 0;

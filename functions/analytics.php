@@ -65,6 +65,8 @@
  *
  */
 
+$user_id = mysqli_real_escape_string($mysqli, $_SESSION['user_id']);
+
 if (isset($_POST['Filter_Dashboard'])) {
 
     /* Date Variables */
@@ -73,7 +75,7 @@ if (isset($_POST['Filter_Dashboard'])) {
 
     /* Total Assets Owned */
     $query = "SELECT COUNT(*)  FROM assets 
-    WHERE asset_date_purchased BETWEEN '$start_date' AND '$end_date'";
+    WHERE asset_user_id  = '$user_id' AND (asset_date_purchased BETWEEN '$start_date' AND '$end_date')";
     $stmt = $mysqli->prepare($query);
     $stmt->execute();
     $stmt->bind_result($my_assets);
@@ -83,7 +85,7 @@ if (isset($_POST['Filter_Dashboard'])) {
 
     /* Current Expenditure  - Bills*/
     $query = "SELECT SUM(purchase_amount)  FROM purchases 
-    WHERE  purchase_date_made  BETWEEN  '$start_date' AND '$end_date'";
+    WHERE  purchase_user_id = '$user_id' AND (purchase_date_made  BETWEEN  '$start_date' AND '$end_date')";
     $stmt = $mysqli->prepare($query);
     $stmt->execute();
     $stmt->bind_result($my_purchases);
@@ -93,7 +95,7 @@ if (isset($_POST['Filter_Dashboard'])) {
 
     /* Savings */
     $query = "SELECT SUM(saving_amount)  FROM savings 
-    WHERE saving_date BETWEEN  '$start_date' AND  '$end_date'";
+    WHERE saving_user_id = '$user_id' AND (saving_date BETWEEN  '$start_date' AND  '$end_date')";
     $stmt = $mysqli->prepare($query);
     $stmt->execute();
     $stmt->bind_result($my_saving_amount);
@@ -106,7 +108,7 @@ if (isset($_POST['Filter_Dashboard'])) {
     /* Load Normal Analytics With No FIlter */
 
     /* Total Assets Owned */
-    $query = "SELECT COUNT(*)  FROM assets ";
+    $query = "SELECT COUNT(*)  FROM assets  WHERE asset_user_id  = '$user_id' ";
     $stmt = $mysqli->prepare($query);
     $stmt->execute();
     $stmt->bind_result($my_assets);
@@ -115,7 +117,7 @@ if (isset($_POST['Filter_Dashboard'])) {
 
 
     /* Current Expenditure  - Bills*/
-    $query = "SELECT SUM(purchase_amount)  FROM purchases";
+    $query = "SELECT SUM(purchase_amount)  FROM purchases WHERE  purchase_user_id = '$user_id'";
     $stmt = $mysqli->prepare($query);
     $stmt->execute();
     $stmt->bind_result($my_purchases);
@@ -124,7 +126,7 @@ if (isset($_POST['Filter_Dashboard'])) {
 
 
     /* Savings */
-    $query = "SELECT SUM(saving_amount)  FROM savings";
+    $query = "SELECT SUM(saving_amount)  FROM savings WHERE saving_user_id = '$user_id'";
     $stmt = $mysqli->prepare($query);
     $stmt->execute();
     $stmt->bind_result($my_saving_amount);

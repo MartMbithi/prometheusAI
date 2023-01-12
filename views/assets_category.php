@@ -151,6 +151,7 @@ require_once('../partials/head.php');
                                 $assets_category_sql = mysqli_query(
                                     $mysqli,
                                     "SELECT * FROM assets_category  
+                                    WHERE category_user_id  = '{$_SESSION['user_id']}'
                                     ORDER BY  category_name ASC 
                                     LIMIT $start_from, $per_page_record"
                                 );
@@ -188,7 +189,7 @@ require_once('../partials/head.php');
                             </div>
                         </div>
                     </div>
-                    
+
                     <?php include('../paginations/asset_categories.php'); ?>
 
                 </div>

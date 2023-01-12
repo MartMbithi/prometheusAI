@@ -6,9 +6,10 @@
                 <div class="modal-body text-center text-danger">
                     <h4>
                         Heads Up! <br><br>
-                        Add This Wishlist Item To Assets?
+                        Add This Wishlist Item To Assets?wishlist_id
                     </h4>
                     <!-- Hide This -->
+                    <input type="hidden" value="<?php echo $wishlist['wishlist_id']; ?>" required name="wishlist_id" class="form-control">
                     <input type="hidden" value="<?php echo $wishlist['wishlist_item_category_id']; ?>" required name="asset_category_id" class="form-control">
                     <input type="hidden" value="<?php echo $wishlist['wishlist_item_name']; ?>" required name="asset_name" class="form-control">
                     <input type="hidden" value="<?php echo $wishlist['wishlist_item_desc']; ?>" required name="asset_details" class="form-control">
@@ -48,7 +49,8 @@
                                 $assets_category_sql = mysqli_query(
                                     $mysqli,
                                     "SELECT * FROM assets_category
-                                    WHERE category_id !='{$wishlist['category_id']}' ORDER BY  category_name ASC"
+                                    WHERE category_user_id = '{$_SESSION['user_id']}' AND
+                                    category_id !='{$wishlist['category_id']}' ORDER BY  category_name ASC"
                                 );
                                 if (mysqli_num_rows($assets_category_sql) > 0) {
                                     while ($assets_category = mysqli_fetch_array($assets_category_sql)) {
