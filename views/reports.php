@@ -73,7 +73,7 @@ require_once('../config/checklogin.php');
 /* Global Variables */
 $report_module = mysqli_real_escape_string($mysqli, $_GET['module']);
 $report_type = mysqli_real_escape_string($mysqli, $_GET['type']);
-$user_id = mysqli_real_escape_string($mysqli, $_POST['user_id']);
+$user_id = mysqli_real_escape_string($mysqli, $_SESSION['user_id']);
 
 if ($report_module == 'assets') {
     if ($report_type == 'CSV') {
