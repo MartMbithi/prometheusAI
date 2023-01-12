@@ -72,16 +72,18 @@ if (isset($_POST['Login'])) {
     $user_email = mysqli_real_escape_string($mysqli, $_POST['user_email']);
     $user_password = mysqli_real_escape_string($mysqli, sha1(md5($_POST['user_password'])));
 
+
     /* Handle Auth */
-    $stmt = $mysqli->prepare("SELECT user_id, user_name, user_email, user_password FROM user 
+    $stmt = $mysqli->prepare("SELECT user_id, user_name, user_email, user_password, user_access_level FROM user 
     WHERE user_email = '{$user_email}' AND user_password = '{$user_password}'");
     $stmt->execute();
-    $stmt->bind_result($user_id, $user_name, $user_email, $user_password);
+    $stmt->bind_result($user_id, $user_name, $user_email, $user_password, $user_access_level);
     $rs = $stmt->fetch();
 
     /* Session Variables */
     $_SESSION['user_id'] = $user_id;
     $_SESSION['user_name'] = $user_name;
+    $_SESSION['user_access_level'] = $user_access_level;
 
     if ($rs) {
         /* Pass This Alert Via Session */
@@ -93,50 +95,111 @@ if (isset($_POST['Login'])) {
     }
 }
 
-/* Reset Password */
-if (isset($_POST['Reset_Password_Step_1'])) {
-    $user_email = mysqli_real_escape_string($mysqli, $_POST['user_email']);
+switch (connection_status()) {
+    case CONNECTION_NORMAL:
+        /* This Will Trigger Mailer To Send Email Address */
+        break;
+    case (CONNECTION_ABORTED || CONNECTION_TIMEOUT):
+        /* This Will Trigger Default Password Reset Without No Email */
+        /* This Steps Are Followed When This System Is Deployed Offline - No Internet Connection */
+        /* Reset Password */
+        if (isset($_POST['Reset_Password_Step_1'])) {
+            $user_email = mysqli_real_escape_string($mysqli, $_POST['user_email']);
 
-    /* Check If This Account Exists */
-    $sql = "SELECT * FROM  user WHERE user_email = '{$user_email}'";
-    $res = mysqli_query($mysqli, $sql);
-    if (mysqli_num_rows($res) > 0) {
-        /*
-        This system will be used offline so just redirect user to password reset 
-         */
-        $_SESSION['success'] = 'Email confirmed, proceed to reset password';
-        $_SESSION['user_email'] = $user_email;
-        header('Location: confirm_password');
-        exit;
-    } else {
-        $err = "Email does not exist";
-    }
-}
-
-
-/* Password Reset Step 2 */
-if (isset($_POST['Reset_Password_Step_2'])) {
-    $user_email = mysqli_real_escape_string($mysqli, $_SESSION['user_email']);
-    if (!empty($user_email)) {
-        $new_password = sha1(md5(mysqli_real_escape_string($mysqli, $_POST['new_password'])));
-        $confirm_password = sha1(md5(mysqli_real_escape_string($mysqli, $_POST['confirm_password'])));
-
-        if ($new_password != $confirm_password) {
-            $err = "Passwords does not match";
-        } else {
-            $update_password_sql = "UPDATE user SET user_password = '{$confirm_password}' WHERE user_email ='{$user_email}'";
-            if (mysqli_query($mysqli, $update_password_sql)) {
-                $_SESSION['success'] = 'Password updated successfully';
-                unset($_SESSION['email']);
-                header('Location: ../');
+            /* Check If This Account Exists */
+            $sql = "SELECT * FROM  user WHERE user_email = '{$user_email}'";
+            $res = mysqli_query($mysqli, $sql);
+            if (mysqli_num_rows($res) > 0) {
+                /*
+            This system will be used offline so just redirect user to password reset 
+            */
+                $_SESSION['success'] = 'Email confirmed, proceed to reset password';
+                $_SESSION['user_email'] = $user_email;
+                header('Location: confirm_password');
                 exit;
             } else {
-                $err = "Password reset failed, please try again";
+                $err = "Email does not exist";
             }
         }
-    } else {
-        $_SESSION['err'] = 'Kindly enter a valid password';
-        header('Location: reset_password');
-        exit;
-    }
+
+
+        /* Password Reset Step 2 */
+        if (isset($_POST['Reset_Password_Step_2'])) {
+            $user_email = mysqli_real_escape_string($mysqli, $_SESSION['user_email']);
+            if (!empty($user_email)) {
+                $new_password = sha1(md5(mysqli_real_escape_string($mysqli, $_POST['new_password'])));
+                $confirm_password = sha1(md5(mysqli_real_escape_string($mysqli, $_POST['confirm_password'])));
+
+                if ($new_password != $confirm_password) {
+                    $err = "Passwords does not match";
+                } else {
+                    $update_password_sql = "UPDATE user SET user_password = '{$confirm_password}' WHERE user_email ='{$user_email}'";
+                    if (mysqli_query($mysqli, $update_password_sql)) {
+                        $_SESSION['success'] = 'Password updated successfully';
+                        unset($_SESSION['email']);
+                        header('Location: ../');
+                        exit;
+                    } else {
+                        $err = "Password reset failed, please try again";
+                    }
+                }
+            } else {
+                $_SESSION['err'] = 'Kindly enter a valid password';
+                header('Location: reset_password');
+                exit;
+            }
+        }
+        break;
+
+    default:
+        /* This Will Trigger Default Password Reset Without No Email */
+        /* This Steps Are Followed When This System Is Deployed Offline - No Internet Connection */
+        /* Reset Password */
+        if (isset($_POST['Reset_Password_Step_1'])) {
+            $user_email = mysqli_real_escape_string($mysqli, $_POST['user_email']);
+
+            /* Check If This Account Exists */
+            $sql = "SELECT * FROM  user WHERE user_email = '{$user_email}'";
+            $res = mysqli_query($mysqli, $sql);
+            if (mysqli_num_rows($res) > 0) {
+                /*
+            This system will be used offline so just redirect user to password reset 
+            */
+                $_SESSION['success'] = 'Email confirmed, proceed to reset password';
+                $_SESSION['user_email'] = $user_email;
+                header('Location: confirm_password');
+                exit;
+            } else {
+                $err = "Email does not exist";
+            }
+        }
+
+
+        /* Password Reset Step 2 */
+        if (isset($_POST['Reset_Password_Step_2'])) {
+            $user_email = mysqli_real_escape_string($mysqli, $_SESSION['user_email']);
+            if (!empty($user_email)) {
+                $new_password = sha1(md5(mysqli_real_escape_string($mysqli, $_POST['new_password'])));
+                $confirm_password = sha1(md5(mysqli_real_escape_string($mysqli, $_POST['confirm_password'])));
+
+                if ($new_password != $confirm_password) {
+                    $err = "Passwords does not match";
+                } else {
+                    $update_password_sql = "UPDATE user SET user_password = '{$confirm_password}' WHERE user_email ='{$user_email}'";
+                    if (mysqli_query($mysqli, $update_password_sql)) {
+                        $_SESSION['success'] = 'Password updated successfully';
+                        unset($_SESSION['email']);
+                        header('Location: ../');
+                        exit;
+                    } else {
+                        $err = "Password reset failed, please try again";
+                    }
+                }
+            } else {
+                $_SESSION['err'] = 'Kindly enter a valid password';
+                header('Location: reset_password');
+                exit;
+            }
+        }
+        break;
 }
