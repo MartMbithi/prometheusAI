@@ -100,7 +100,7 @@ switch (connection_status()) {
         /* This Will Trigger Mailer To Send Email Address */
         if (isset($_POST['Reset_Password_Step_1'])) {
             $user_email = mysqli_real_escape_string($mysqli, $_POST['user_email']);
-            $reset_token = mysqli_real_escape_string($mysqli, $code);
+            $reset_token = mysqli_real_escape_string($mysqli, $otp);
 
             /* Check If This Account Exists */
             $sql = "SELECT * FROM  user WHERE user_email = '{$user_email}'";
