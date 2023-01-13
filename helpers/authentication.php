@@ -290,6 +290,7 @@ if (isset($_POST['Sign_Up'])) {
     $user_phone = mysqli_real_escape_string($mysqli, $_POST['user_phone']);
     $new_password = sha1(md5(mysqli_real_escape_string($mysqli, $_POST['new_password'])));
     $confirm_password = sha1(md5(mysqli_real_escape_string($mysqli, $_POST['confirm_password'])));
+    $user_access_level = mysqli_real_escape_string($mysqli, 'User');
 
     /* Check If Passwords Match */
     if ($confirm_password != $new_password) {
@@ -302,8 +303,8 @@ if (isset($_POST['Sign_Up'])) {
             $err = "An account with this email and user phone already exists";
         } else {
             /* Process Sign Up */
-            $sign_up_sql = "INSERT INTO user (user_name, user_email user_phone, user_password)
-            VALUES('{$user_name}', '{$user_email}', '{$user_phone}', '{$confirm_password}')";
+            $sign_up_sql = "INSERT INTO user (user_name, user_email, user_phone, user_password, user_access_level)
+            VALUES('{$user_name}', '{$user_email}', '{$user_phone}', '{$confirm_password}', '{$user_access_level}')";
 
             if (mysqli_query($mysqli, $sign_up_sql)) {
                 $_SESSION['success'] = 'Account created successfully, proceed to login';
