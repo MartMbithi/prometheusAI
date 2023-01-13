@@ -3,7 +3,7 @@
 <!-- App Js -->
 <script src="../public/js/app.min.js"></script>
 <!-- Mojs -->
-<script src="https://cdn.jsdelivr.net/npm/@mojs/core"></script>
+<script src="../public/plugins/mojs/mo.js"></script>
 <!-- Noty -->
 <script src="../public/js/noty/noty.js"></script>
 <!-- Load Alerts -->
@@ -11,6 +11,7 @@
 
 <!-- Prevent Double Submission -->
 <script type="text/javascript">
+    /* Prevent Double Submissions */
     if (window.history.replaceState) {
         window.history.replaceState(null, null, window.location.href);
     }
@@ -30,4 +31,15 @@
             }
         }
     }
+    /* Automatically Update Where You At */
+    $(function() {
+        var current = location.pathname;
+        $('#nav li a').each(function() {
+            var $this = $(this);
+            // if the current path is like this link, make it active
+            if ($this.attr('href').indexOf(current) !== -1) {
+                $this.addClass('active');
+            }
+        })
+    })
 </script>

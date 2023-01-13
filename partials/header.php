@@ -21,7 +21,7 @@
     <div class="brand">
         <a href="dashboard" class="brand-logo">
             <span class="brand-img">
-                <span class="brand-img-text text-theme">P</span>
+                <span class="brand-img-text text-lime">P</span>
             </span>
             <span class="brand-text">PrometheusAI</span>
         </a>
@@ -44,7 +44,7 @@
                 </div>
             </a>
             <div class="dropdown-menu dropdown-menu-end me-lg-3 fs-11px mt-1">
-                <button class="dropdown-item d-flex align-items-center" data-bs-toggle="modal" data-bs-target="#logout_modal">End Session <i class="bi bi-lock  ms-auto text-theme fs-16px my-n1"></i></button>
+                <button class="dropdown-item d-flex align-items-center" data-bs-toggle="modal" data-bs-target="#logout_modal">End Session <i class="bi bi-lock  ms-auto text-lime fs-16px my-n1"></i></button>
             </div>
         </div>
     </div>
