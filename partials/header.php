@@ -59,7 +59,7 @@
                         Heads Up😉! <br><br>
                         Are You Sure You Want To Terminate This Session?
                     </h4>
-                    <button type="button" class="text-center btn btn-success" data-bs-dismiss="modal">No</button>
+                    <button type="button" class="text-center btn btn-lime" data-bs-dismiss="modal">No</button>
                     <input type="submit" value="Yes, Terminate" class="text-center btn btn-danger">
                 </div>
             </form>
