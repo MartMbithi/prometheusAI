@@ -86,7 +86,7 @@ if (isset($_POST['Filter_Dashboard'])) {
                             $recent_bills_sql = mysqli_query(
                                 $mysqli,
                                 "SELECT * FROM purchases  
-                                WHERE  purchase_date_made  BETWEEN  '$start_date' AND '$end_date' 
+                                WHERE purchase_user_id = '{$_SESSION['user_id']}' AND (purchase_date_made  BETWEEN  '$start_date' AND '$end_date') 
                                 ORDER BY purchase_date_made DESC LIMIT 10"
                             );
                             if (mysqli_num_rows($recent_bills_sql) > 0) {
@@ -145,7 +145,7 @@ if (isset($_POST['Filter_Dashboard'])) {
                             $recent_incomes_sql = mysqli_query(
                                 $mysqli,
                                 "SELECT * FROM savings
-                                WHERE saving_date BETWEEN  '$start_date' AND  '$end_date'  
+                                WHERE saving_user_id = '{$_SESSION['user_id']}' AND (saving_date BETWEEN  '$start_date' AND  '$end_date')  
                                 ORDER BY saving_date DESC LIMIT 10"
                             );
                             if (mysqli_num_rows($recent_incomes_sql) > 0) {
@@ -207,7 +207,9 @@ if (isset($_POST['Filter_Dashboard'])) {
                             /* Fetch Recent Bills */
                             $recent_bills_sql = mysqli_query(
                                 $mysqli,
-                                "SELECT * FROM purchases  ORDER BY purchase_date_made DESC LIMIT 10"
+                                "SELECT * FROM purchases
+                                WHERE purchase_user_id = '{$_SESSION['user_id']}'
+                                ORDER BY purchase_date_made DESC LIMIT 10"
                             );
                             if (mysqli_num_rows($recent_bills_sql) > 0) {
                                 while ($recent_bills = mysqli_fetch_array($recent_bills_sql)) {
@@ -264,7 +266,9 @@ if (isset($_POST['Filter_Dashboard'])) {
                             /* Fetch Recent Bills */
                             $recent_incomes_sql = mysqli_query(
                                 $mysqli,
-                                "SELECT * FROM savings  ORDER BY saving_date DESC LIMIT 10"
+                                "SELECT * FROM savings 
+                                WHERE saving_user_id = '{$_SESSION['user_id']}'
+                                 ORDER BY saving_date DESC LIMIT 10"
                             );
                             if (mysqli_num_rows($recent_incomes_sql) > 0) {
                                 while ($recent_income = mysqli_fetch_array($recent_incomes_sql)) {
