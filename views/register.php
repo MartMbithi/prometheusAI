@@ -108,7 +108,7 @@ require_once('../partials/head.php');
                         </div>
                     </div>
                     <div class="mb-3">
-                        <button type="submit" name="Sign_Up" class="btn btn-outline-theme btn-lg d-block w-100">Sign Up</button>
+                        <button type="submit" name="Sign_Up" class="btn btn-outline-lime btn-lg d-block w-100">Sign Up</button>
                     </div>
                     <div class="text-white text-opacity-50 text-center">
                         Already have an account? <a href="../">Sign In</a>

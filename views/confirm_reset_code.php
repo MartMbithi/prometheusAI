@@ -87,7 +87,7 @@ require_once('../partials/head.php');
                         </div>
                         <input type="text" class="form-control form-control-lg bg-white bg-opacity-5" name="reset_code" required />
                     </div>
-                    <button type="submit" name="Reset_Password_Confirm_Code" class="btn btn-outline-theme btn-lg d-block w-100 fw-500 mb-3">Reset</button>
+                    <button type="submit" name="Reset_Password_Confirm_Code" class="btn btn-outline-lime btn-lg d-block w-100 fw-500 mb-3">Reset</button>
                 </form>
             </div>
 
