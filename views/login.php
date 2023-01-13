@@ -100,7 +100,7 @@ require_once('../partials/head.php');
                     </div>
                     <button type="submit" name="Login" class="btn btn-outline-theme btn-lg d-block w-100 fw-500 mb-3">Sign In</button>
                     <div class="text-center text-white text-opacity-50">
-                        Don't have an account yet? <a href="reset_password">Sign Up</a>.
+                        Don't have an account yet? <a href="register">Sign Up</a>.
                     </div>
                 </form>
             </div>
