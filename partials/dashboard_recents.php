@@ -282,7 +282,7 @@ if (isset($_POST['Filter_Dashboard'])) {
                                         </td>
                                         <td>Total amount in Ksh<?php echo number_format($recent_income['saving_amount']); ?></td>
                                         <td>
-                                            <span class="badge d-block bg-theme text-theme-900 rounded-0 pt-5px w-70px" style="min-height: 18px"><?php echo date('d M Y', strtotime($recent_income['saving_date'])); ?></span>
+                                            <span class="badge d-block bg-lime text-theme-900 rounded-0 pt-5px w-70px" style="min-height: 18px"><?php echo date('d M Y', strtotime($recent_income['saving_date'])); ?></span>
                                         </td>
                                     </tr>
                                 <?php }
