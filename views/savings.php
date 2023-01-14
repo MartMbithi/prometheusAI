@@ -213,6 +213,9 @@ require_once('../partials/head.php');
                                         /* Modals  */
                                         include('../modals/savings.php');
                                     }
+                                } else {
+                                    /* 404 */
+                                    include('../errors/savings_404.php');
                                 } ?>
                             </div>
                         </div>

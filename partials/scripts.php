@@ -3,7 +3,7 @@
 <!-- App Js -->
 <script src="../public/js/app.min.js"></script>
 <!-- Mojs -->
-<script src="https://cdn.jsdelivr.net/npm/@mojs/core"></script>
+<script src="../public/plugins/mojs/mo.js"></script>
 <!-- Noty -->
 <script src="../public/js/noty/noty.js"></script>
 <!-- Load Alerts -->
@@ -11,6 +11,7 @@
 
 <!-- Prevent Double Submission -->
 <script type="text/javascript">
+    /* Prevent Double Submissions */
     if (window.history.replaceState) {
         window.history.replaceState(null, null, window.location.href);
     }

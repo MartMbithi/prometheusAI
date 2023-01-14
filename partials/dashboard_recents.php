@@ -86,7 +86,7 @@ if (isset($_POST['Filter_Dashboard'])) {
                             $recent_bills_sql = mysqli_query(
                                 $mysqli,
                                 "SELECT * FROM purchases  
-                                WHERE  purchase_date_made  BETWEEN  '$start_date' AND '$end_date' 
+                                WHERE purchase_user_id = '{$_SESSION['user_id']}' AND (purchase_date_made  BETWEEN  '$start_date' AND '$end_date') 
                                 ORDER BY purchase_date_made DESC LIMIT 10"
                             );
                             if (mysqli_num_rows($recent_bills_sql) > 0) {
@@ -95,14 +95,14 @@ if (isset($_POST['Filter_Dashboard'])) {
                                     <tr>
                                         <td>
                                             <span class="d-flex align-items-center">
-                                                <i class="bi bi-circle-fill fs-6px text-theme me-2"></i>
+                                                <i class="bi bi-circle-fill fs-6px text-lime me-2"></i>
                                                 <?php echo $recent_bills['purchase_item']; ?>
                                             </span>
                                         </td>
                                         <td>QTY: <?php echo $recent_bills['purchase_quantity']; ?></td>
                                         <td>Amount in Ksh <?php echo number_format($recent_bills['purchase_amount']); ?></td>
                                         <td>
-                                            <span class="badge d-block bg-theme text-theme-900 rounded-0 pt-5px w-70px" style="min-height: 18px"><?php echo date('d M Y', strtotime($recent_bills['purchase_date_made'])); ?></span>
+                                            <span class="badge d-block bg-lime text-theme-900 rounded-0 pt-5px w-70px" style="min-height: 18px"><?php echo date('d M Y', strtotime($recent_bills['purchase_date_made'])); ?></span>
                                         </td>
                                     </tr>
                                 <?php }
@@ -145,7 +145,7 @@ if (isset($_POST['Filter_Dashboard'])) {
                             $recent_incomes_sql = mysqli_query(
                                 $mysqli,
                                 "SELECT * FROM savings
-                                WHERE saving_date BETWEEN  '$start_date' AND  '$end_date'  
+                                WHERE saving_user_id = '{$_SESSION['user_id']}' AND (saving_date BETWEEN  '$start_date' AND  '$end_date')  
                                 ORDER BY saving_date DESC LIMIT 10"
                             );
                             if (mysqli_num_rows($recent_incomes_sql) > 0) {
@@ -154,13 +154,13 @@ if (isset($_POST['Filter_Dashboard'])) {
                                     <tr>
                                         <td>
                                             <span class="d-flex align-items-center">
-                                                <i class="bi bi-circle-fill fs-6px text-theme me-2"></i>
+                                                <i class="bi bi-circle-fill fs-6px text-lime me-2"></i>
                                                 <?php echo $recent_income['saving_account']; ?>
                                             </span>
                                         </td>
                                         <td>Total amount in Ksh<?php echo number_format($recent_income['saving_amount']); ?></td>
                                         <td>
-                                            <span class="badge d-block bg-theme text-theme-900 rounded-0 pt-5px w-70px" style="min-height: 18px"><?php echo date('d M Y', strtotime($recent_income['saving_date'])); ?></span>
+                                            <span class="badge d-block bg-lime text-theme-900 rounded-0 pt-5px w-70px" style="min-height: 18px"><?php echo date('d M Y', strtotime($recent_income['saving_date'])); ?></span>
                                         </td>
                                     </tr>
                                 <?php }
@@ -207,7 +207,9 @@ if (isset($_POST['Filter_Dashboard'])) {
                             /* Fetch Recent Bills */
                             $recent_bills_sql = mysqli_query(
                                 $mysqli,
-                                "SELECT * FROM purchases  ORDER BY purchase_date_made DESC LIMIT 10"
+                                "SELECT * FROM purchases
+                                WHERE purchase_user_id = '{$_SESSION['user_id']}'
+                                ORDER BY purchase_date_made DESC LIMIT 10"
                             );
                             if (mysqli_num_rows($recent_bills_sql) > 0) {
                                 while ($recent_bills = mysqli_fetch_array($recent_bills_sql)) {
@@ -222,7 +224,7 @@ if (isset($_POST['Filter_Dashboard'])) {
                                         <td>QTY: <?php echo $recent_bills['purchase_quantity']; ?></td>
                                         <td>Amount in Ksh <?php echo number_format($recent_bills['purchase_amount']); ?></td>
                                         <td>
-                                            <span class="badge d-block bg-theme text-theme-900 rounded-0 pt-5px w-70px" style="min-height: 18px"><?php echo date('d M Y', strtotime($recent_bills['purchase_date_made'])); ?></span>
+                                            <span class="badge d-block bg-lime text-theme-900 rounded-0 pt-5px w-70px" style="min-height: 18px"><?php echo date('d M Y', strtotime($recent_bills['purchase_date_made'])); ?></span>
                                         </td>
                                     </tr>
                                 <?php }
@@ -264,7 +266,9 @@ if (isset($_POST['Filter_Dashboard'])) {
                             /* Fetch Recent Bills */
                             $recent_incomes_sql = mysqli_query(
                                 $mysqli,
-                                "SELECT * FROM savings  ORDER BY saving_date DESC LIMIT 10"
+                                "SELECT * FROM savings 
+                                WHERE saving_user_id = '{$_SESSION['user_id']}'
+                                 ORDER BY saving_date DESC LIMIT 10"
                             );
                             if (mysqli_num_rows($recent_incomes_sql) > 0) {
                                 while ($recent_income = mysqli_fetch_array($recent_incomes_sql)) {
@@ -278,7 +282,7 @@ if (isset($_POST['Filter_Dashboard'])) {
                                         </td>
                                         <td>Total amount in Ksh<?php echo number_format($recent_income['saving_amount']); ?></td>
                                         <td>
-                                            <span class="badge d-block bg-theme text-theme-900 rounded-0 pt-5px w-70px" style="min-height: 18px"><?php echo date('d M Y', strtotime($recent_income['saving_date'])); ?></span>
+                                            <span class="badge d-block bg-lime text-theme-900 rounded-0 pt-5px w-70px" style="min-height: 18px"><?php echo date('d M Y', strtotime($recent_income['saving_date'])); ?></span>
                                         </td>
                                     </tr>
                                 <?php }

@@ -88,6 +88,7 @@ require_once('../partials/head.php');
                     <div class="mb-3">
                         <div class="d-flex">
                             <label class="form-label">Password <span class="text-danger">*</span></label>
+                            <a href="reset_password" class="ms-auto text-white text-decoration-none text-opacity-50">Forgot password?</a>
                         </div>
                         <input type="password" class="form-control form-control-lg bg-white bg-opacity-5" name="user_password" required />
                     </div>
@@ -97,9 +98,9 @@ require_once('../partials/head.php');
                             <label class="form-check-label" for="customCheck1">Remember me</label>
                         </div> -->
                     </div>
-                    <button type="submit" name="Login" class="btn btn-outline-theme btn-lg d-block w-100 fw-500 mb-3">Sign In</button>
+                    <button type="submit" name="Login" class="btn btn-outline-lime btn-lg d-block w-100 fw-500 mb-3">Sign In</button>
                     <div class="text-center text-white text-opacity-50">
-                        Forgot password? <a href="reset_password">Reset</a>.
+                        Don't have an account yet? <a href="register">Sign Up</a>.
                     </div>
                 </form>
             </div>
