@@ -308,8 +308,10 @@ require_once('../partials/head.php');
                                         /* Modals  */
                                         include('../modals/assets.php');
                                     }
+                                } else {
+                                    /* 404 */
+                                    include('../errors/assets_404.php');
                                 } ?>
-
                             </div>
                         </div>
                     </div>
