@@ -4,7 +4,7 @@
         <div class="card-body">
             <h5 class="card-title"></h5>
             <h6 class="card-subtitle mb-3 text-warning text-opacity-50">
-                Woops!, PrometheusAI Sub Routines Cannot Find Any Assets Categories.
+                Woops!, PrometheusAI Sub Routines Cannot Find Any Registered Assets Categories.
             </h6>
         </div>
         <div class="card-arrow">
