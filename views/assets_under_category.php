@@ -208,27 +208,15 @@ require_once('../partials/head.php');
                                                 </div>
                                             </div>
                                         </div>
-                                    <?php
+                                <?php
                                         $cnt = $cnt + 1;
                                         /* Modals  */
                                         include('../modals/assets.php');
                                     }
-                                } else { ?>
-                                    <div class="col-sm-12 col-lg-6 col-xl-6">
-                                        <div class="card Asset_Category_Name">
-                                            <div class="card-header fw-bold small">Woops</div>
-                                            <div class="card-body">
-                                                <h5 class="card-title">We cannot find any asset under this category</h5>
-                                            </div>
-                                            <div class="card-arrow">
-                                                <div class="card-arrow-top-left "></div>
-                                                <div class="card-arrow-top-right"></div>
-                                                <div class="card-arrow-bottom-left"></div>
-                                                <div class="card-arrow-bottom-right"></div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                <?php } ?>
+                                } else {
+                                    /* 404 */
+                                    include('../errors/assets_404.php');
+                                } ?>
                             </div>
                         </div>
                     </div>
