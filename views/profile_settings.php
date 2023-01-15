@@ -107,104 +107,26 @@ require_once('../partials/head.php');
                                     <div class="profile-sidebar">
                                         <div class="desktop-sticky-top">
                                             <div class="profile-img">
-                                                <img src="assets/img/user/profile.jpg" alt="" />
+                                                <img src="../public/img/user/profile.png" alt="" />
                                             </div>
 
-                                            <h4>John Smith</h4>
-                                            <div class="mb-3 text-white text-opacity-50 fw-bold mt-n2">@johnsmith</div>
-                                            <p>
-                                                Principal UXUI Design & Brand Architecture for HUD. Creator of SeanTheme.
-                                                Bringing the world closer together. Studied Computer Science and Psychology at Harvard University.
-                                            </p>
+                                            <h4><?php echo $user['user_name']; ?></h4>
+                                            <div class="mb-3 text-white text-opacity-50 fw-bold mt-n2"></div>
+
                                             <div class="mb-1">
-                                                <i class="fa fa-map-marker-alt fa-fw text-white text-opacity-50"></i> New York, NY
+                                                <i class="fa fa-phone fa-fw text-white text-opacity-50"></i> <?php echo $user['user_phone']; ?>
                                             </div>
                                             <div class="mb-3">
-                                                <i class="fa fa-link fa-fw text-white text-opacity-50"></i> seantheme.com/hud
-                                            </div>
-                                            <hr class="mt-4 mb-4" />
-
-                                            <div class="fw-bold mb-3 fs-16px">People to follow</div>
-                                            <div class="d-flex align-items-center mb-3">
-                                                <img src="assets/img/user/user-1.jpg" alt="" width="30" class="rounded-circle" />
-                                                <div class="flex-fill px-3">
-                                                    <div class="fw-bold text-truncate w-100px">Noor Rowe</div>
-                                                    <div class="fs-12px text-white text-opacity-50">3.1m followers</div>
-                                                </div>
-                                                <a href="#" class="btn btn-sm btn-outline-theme fs-11px">Follow</a>
-                                            </div>
-                                            <div class="d-flex align-items-center mb-3">
-                                                <img src="assets/img/user/user-2.jpg" alt="" width="30" class="rounded-circle" />
-                                                <div class="flex-fill px-3">
-                                                    <div class="fw-bold text-truncate w-100px">Abbey Parker</div>
-                                                    <div class="fs-12px text-white text-opacity-50">302k followers</div>
-                                                </div>
-                                                <a href="#" class="btn btn-sm btn-outline-theme fs-11px">Follow</a>
-                                            </div>
-                                            <div class="d-flex align-items-center mb-3">
-                                                <img src="assets/img/user/user-3.jpg" alt="" width="30" class="rounded-circle" />
-                                                <div class="flex-fill px-3">
-                                                    <div class="fw-bold text-truncate w-100px">Savannah Nicholson</div>
-                                                    <div class="fs-12px text-white text-opacity-50">720k followers</div>
-                                                </div>
-                                                <a href="#" class="btn btn-sm btn-outline-theme fs-11px">Follow</a>
-                                            </div>
-                                            <div class="d-flex align-items-center mb-3">
-                                                <img src="assets/img/user/user-4.jpg" alt="" width="30" class="rounded-circle" />
-                                                <div class="flex-fill px-3">
-                                                    <div class="fw-bold text-truncate w-100px">Kenny Bright</div>
-                                                    <div class="fs-12px text-white text-opacity-50">1.4m followers</div>
-                                                </div>
-                                                <a href="#" class="btn btn-sm btn-outline-theme fs-11px">Follow</a>
-                                            </div>
-                                            <div class="d-flex align-items-center">
-                                                <img src="assets/img/user/user-5.jpg" alt="" width="30" class="rounded-circle" />
-                                                <div class="flex-fill px-3">
-                                                    <div class="fw-bold text-truncate w-100px">Cara Poole</div>
-                                                    <div class="fs-12px text-white text-opacity-50">989k followers</div>
-                                                </div>
-                                                <a href="#" class="btn btn-sm btn-outline-theme fs-11px">Follow</a>
+                                                <i class="fa fa-envelope fa-fw text-white text-opacity-50"></i> <?php echo $user['user_email']; ?>
                                             </div>
                                         </div>
                                     </div>
 
-
                                     <div class="profile-content">
-                                        <ul class="profile-tab nav nav-tabs nav-tabs-v2">
-                                            <li class="nav-item">
-                                                <a href="#profile-post" class="nav-link active" data-bs-toggle="tab">
-                                                    <div class="nav-field">Posts</div>
-                                                    <div class="nav-value">382</div>
-                                                </a>
-                                            </li>
-                                            <li class="nav-item">
-                                                <a href="#profile-followers" class="nav-link" data-bs-toggle="tab">
-                                                    <div class="nav-field">Followers</div>
-                                                    <div class="nav-value">1.3m</div>
-                                                </a>
-                                            </li>
-                                            <li class="nav-item">
-                                                <a href="#profile-media" class="nav-link" data-bs-toggle="tab">
-                                                    <div class="nav-field">Photos</div>
-                                                    <div class="nav-value">1,397</div>
-                                                </a>
-                                            </li>
-                                            <li class="nav-item">
-                                                <a href="#profile-video" class="nav-link" data-bs-toggle="tab">
-                                                    <div class="nav-field">Videos</div>
-                                                    <div class="nav-value">120</div>
-                                                </a>
-                                            </li>
-                                            <li class="nav-item">
-                                                <a href="#profile-followers" class="nav-link" data-bs-toggle="tab">
-                                                    <div class="nav-field">Following</div>
-                                                    <div class="nav-value">2,592</div>
-                                                </a>
-                                            </li>
-                                        </ul>
+
                                         <div class="profile-content-container">
                                             <div class="row gx-4">
-                                                <div class="col-xl-8">
+                                                <div class="col-xl-12">
                                                     <div class="tab-content p-0">
 
                                                         <div class="tab-pane fade show active" id="profile-post">
@@ -713,94 +635,11 @@ require_once('../partials/head.php');
 
                                                     </div>
                                                 </div>
-                                                <div class="col-xl-4">
-                                                    <div class="desktop-sticky-top d-none d-lg-block">
-                                                        <div class="card mb-3">
-                                                            <div class="list-group list-group-flush">
-                                                                <div class="list-group-item fw-bold px-3 d-flex">
-                                                                    <span class="flex-fill">Trends for you</span>
-                                                                    <a href="#" class="text-white text-opacity-50"><i class="fa fa-cog"></i></a>
-                                                                </div>
-                                                                <div class="list-group-item px-3">
-                                                                    <div class="text-white text-opacity-50"><small><strong>Trending Worldwide</strong></small></div>
-                                                                    <div class="fw-bold mb-2">#BreakingNews</div>
-                                                                    <a href="#" class="card text-white text-decoration-none mb-1">
-                                                                        <div class="card-body">
-                                                                            <div class="row no-gutters">
-                                                                                <div class="col-md-8">
-                                                                                    <div class="small text-white text-opacity-50 mb-1 mt-n1">Space</div>
-                                                                                    <div class="h-40px fs-13px overflow-hidden mb-n1">Distant star explosion is brightest ever seen, study finds</div>
-                                                                                </div>
-                                                                                <div class="col-md-4 d-flex">
-                                                                                    <div class="h-100 w-100" style="background: url(assets/img/gallery/news-1.jpg) center; background-size: cover;"></div>
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-                                                                        <div class="card-arrow">
-                                                                            <div class="card-arrow-top-left"></div>
-                                                                            <div class="card-arrow-top-right"></div>
-                                                                            <div class="card-arrow-bottom-left"></div>
-                                                                            <div class="card-arrow-bottom-right"></div>
-                                                                        </div>
-                                                                    </a>
-                                                                    <div><small class="text-white text-opacity-50">1.89m share</small></div>
-                                                                </div>
-                                                                <div class="list-group-item px-3">
-                                                                    <div class="fw-bold mb-2">#TrollingForGood</div>
-                                                                    <div class="fs-13px mb-1">Be a good Troll and spread some positivity on HUD today.</div>
-                                                                    <div><small class="text-white text-opacity-50"><i class="fa fa-external-link-square-alt"></i> Promoted by HUD Trolls</small></div>
-                                                                </div>
-                                                                <div class="list-group-item px-3">
-                                                                    <div class="text-white text-opacity-50"><small><strong>Trending Worldwide</strong></small></div>
-                                                                    <div class="fw-bold mb-2">#CronaOutbreak</div>
-                                                                    <div class="fs-13px mb-1">The coronavirus is affecting 210 countries around the world and 2 ...</div>
-                                                                    <div><small class="text-white text-opacity-50">49.3m share</small></div>
-                                                                </div>
-                                                                <div class="list-group-item px-3">
-                                                                    <div class="text-white text-opacity-50"><small><strong>Trending in New York</strong></small></div>
-                                                                    <div class="fw-bold mb-2">#CoronavirusPandemic</div>
-                                                                    <a href="#" class="card mb-1 text-white text-decoration-none">
-                                                                        <div class="card-body">
-                                                                            <div class="row no-gutters">
-                                                                                <div class="col-md-8">
-                                                                                    <div class="fs-12px text-white text-opacity-50 mt-n1">Coronavirus</div>
-                                                                                    <div class="h-40px fs-13px overflow-hidden mb-n1">Coronavirus: US suspends travel from Europe</div>
-                                                                                </div>
-                                                                                <div class="col-md-4 d-flex">
-                                                                                    <div class="h-100 w-100" style="background: url(assets/img/gallery/news-2.jpg) center; background-size: cover;"></div>
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-                                                                        <div class="card-arrow">
-                                                                            <div class="card-arrow-top-left"></div>
-                                                                            <div class="card-arrow-top-right"></div>
-                                                                            <div class="card-arrow-bottom-left"></div>
-                                                                            <div class="card-arrow-bottom-right"></div>
-                                                                        </div>
-                                                                    </a>
-                                                                    <div><small class="text-white text-opacity-50">821k share</small></div>
-                                                                </div>
-                                                                <a href="#" class="list-group-item list-group-action text-center">
-                                                                    Show more
-                                                                </a>
-                                                            </div>
-                                                            <div class="card-arrow">
-                                                                <div class="card-arrow-top-left"></div>
-                                                                <div class="card-arrow-top-right"></div>
-                                                                <div class="card-arrow-bottom-left"></div>
-                                                                <div class="card-arrow-bottom-right"></div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
                                             </div>
                                         </div>
                                     </div>
-
                                 </div>
-
                             </div>
-
                         </div>
                         <div class="card-arrow">
                             <div class="card-arrow-top-left"></div>
