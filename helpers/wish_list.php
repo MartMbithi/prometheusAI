@@ -140,6 +140,7 @@ if (isset($_POST['Add_To_Asset'])) {
     $add_sql = "INSERT INTO assets(asset_category_id, asset_name, asset_details, asset_cost, asset_date_purchased, asset_status, asset_user_id)
     VALUES('{$asset_category_id}', '{$asset_name}', '{$asset_details}', '{$asset_cost}', '{$asset_date_purchased}', '{$asset_status}', '{$asset_user_id}')";
 
+    /* Register That Expenditure On Expenses Row */
     $purchase_sql = "INSERT INTO purchases(purchase_user_id, purchase_item, purchase_quantity, purchase_amount,  purchase_date_made, purchase_details)
     VALUES('{$asset_user_id}', '{$asset_name}', '1', '{$asset_cost}', '{$asset_date_purchased}', '{$asset_details}')";
 
