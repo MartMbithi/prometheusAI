@@ -44,6 +44,7 @@
                 </div>
             </a>
             <div class="dropdown-menu dropdown-menu-end me-lg-3 fs-11px mt-1">
+                <a class="dropdown-item d-flex align-items-center" href="profile_settings">Settings <i class="bi bi-person  ms-auto text-lime fs-16px my-n1"></i></a>
                 <button class="dropdown-item d-flex align-items-center" data-bs-toggle="modal" data-bs-target="#logout_modal">End Session <i class="bi bi-lock  ms-auto text-lime fs-16px my-n1"></i></button>
             </div>
         </div>
