@@ -97,10 +97,8 @@ if (isset($_POST['Update_Password'])) {
             /* Check If Old Password Match */
             if ($user_password['user_password'] != $old_password) {
                 $err = "Old password does not match";
-                exit;
             } else if ($confirm_password != $new_password) {
                 $err = "Confirm password does not match";
-                exit;
             } else {
                 /* Perist */
                 $update_password_sql = "UPDATE user SET user_password = '{$confirm_password}' WHERE user_id = '{$user_id}'";
