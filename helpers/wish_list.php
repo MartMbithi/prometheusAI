@@ -142,10 +142,10 @@ if (isset($_POST['Add_To_Asset'])) {
 
     $purchase_sql = "INSERT INTO purchases(purchase_user_id, purchase_item, purchase_quantity, purchase_amount,  purchase_date_made, purchase_details)
     VALUES('{$asset_user_id}', '{$asset_name}', '1', '{$asset_cost}', '{$asset_date_purchased}', '{$asset_details}')";
-    
+
     /* Delete It From Wishlist */
     $move_sql = "DELETE FROM wishlists WHERE wishlist_id = '{$wishlist_id}'";
-    if (mysqli_query($mysqli, $add_sql) && mysqli_query($mysqli, $move_sql)) {
+    if (mysqli_query($mysqli, $add_sql) && mysqli_query($mysqli, $move_sql) && mysqli_query($mysqli, $purchase_sql)) {
         $success = "Asset added";
     } else {
         $err = "Failed, please try again";
