@@ -65,29 +65,21 @@
  *
  */
 
- /* Update Profile */
- if (isset($_POST['Update_Profile'])) {
-    $user_email = mysqli_real_escape_string($mysqli, $_SESSION['user_email']);
-    $reset_code = mysqli_real_escape_string($mysqli, $_POST['reset_code']);
+/* Update Profile */
+if (isset($_POST['Update_Profile'])) {
+    $user_name = mysqli_real_escape_string($mysqli, $_POST['user_name']);
+    $user_phone = mysqli_real_escape_string($mysqli, $_POST['user_phone']);
+    $user_email = mysqli_real_escape_string($mysqli, $_POST['user_email']);
+    $user_id = mysqli_real_escape_string($mysqli, $_SESSION['user_id']);
 
-    /* Check If This Reset Code Exists */
-    $sql = "SELECT * FROM  user WHERE user_reset_token = '{$reset_code}'";
-    $res = mysqli_query($mysqli, $sql);
-    if (mysqli_num_rows($res) > 0) {
-        /* Update User Password Reset Token */
-        $reset_token_sql  = "UPDATE user SET user_reset_token = '' WHERE user_email = '{$user_email}'";
-        if (mysqli_query($mysqli, $reset_token_sql)) {
-            $_SESSION['success'] = 'Code confirmed, proceed to reset password';
-            $_SESSION['user_email'] = $user_email;
-            header('Location: confirm_password');
-            exit;
-        } else {
-            $err = "Please try again";
-        }
+    /* Persist */
+    $update_sql = "UPDATE user SET user_name = '{$user_name}', user_phone = '{$user_phone}', user_email = '{$user_email}'
+    WHERE user_id = '{$user_id}'";
+
+    if (mysqli_query($mysqli, $update_sql)) {
+        $success = "Profile updated";
     } else {
-        $_SESSION['err'] = 'Code does not exist, please resent again';
-        header('Location: reset_password');
-        exit;
+        $err = "Failed, Please try again";
     }
 }
  /* Update Password */
