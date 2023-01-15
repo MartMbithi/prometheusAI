@@ -82,4 +82,38 @@ if (isset($_POST['Update_Profile'])) {
         $err = "Failed, Please try again";
     }
 }
- /* Update Password */
+
+/* Update Password */
+if (isset($_POST['Update_Password'])) {
+    $old_password = sha1(md5(mysqli_real_escape_string($mysqli, $_POST['old_password'])));
+    $new_password = sha1(md5(mysqli_real_escape_string($mysqli, $_POST['new_password'])));
+    $confirm_password = sha1(md5(mysqli_real_escape_string($mysqli, $_POST['confirm_password'])));
+    $user_id = mysqli_real_escape_string($mysqli, $_SESSION['user_id']);
+
+    /* Check If Old Passwords Match */
+    $password_checker_sql = mysqli_query($mysqli, "SELECT * FROM user WHERE user_id = '{$user_id}'");
+    if (mysqli_num_rows($password_checker_sql) > 0) {
+        while ($user_password = mysqli_fetch_array($password_checker_sql)) {
+            /* Check If Old Password Match */
+            if ($user_password['user_password'] != $old_password) {
+                $err = "Old password does not match";
+                exit;
+            } else if ($confirm_password != $new_password) {
+                $err = "Confirm password does not match";
+                exit;
+            } else {
+                /* Perist */
+                $update_password_sql = "UPDATE user SET user_password = '{$confirm_password}' WHERE user_id = '{$user_id}'";
+                if (mysqli_query($mysqli, $update_password_sql)) {
+                    $success = "Password updated";
+                } else {
+                    $err = "Failed, please try again";
+                }
+            }
+        }
+    } else {
+        /* You have bypassed auth */
+        header('Location: logout');
+        exit;
+    }
+}
