@@ -137,7 +137,29 @@ require_once('../partials/head.php');
                                                                             <div class="fw-bold">
                                                                                 Profile Settings
                                                                             </div>
+                                                                            <form method="post" enctype="multipart/form-data" role="form">
+                                                                                <div class="modal-body">
+                                                                                    <div class="row">
+                                                                                        <div class="form-group col-md-6 mb-3">
+                                                                                            <label for="">Full Name</label>
+                                                                                            <input type="text" required name="user_name" value="<?php echo $user['user_name']; ?>" class="form-control">
+                                                                                        </div>
+                                                                                        <div class="form-group col-md-6 mb-3">
+                                                                                            <label for="">Phone Number</label>
+                                                                                            <input type="text" required name="user_phone" value="<?php echo $user['user_phone']; ?>" class="form-control">
+                                                                                        </div>
+                                                                                        <div class="form-group col-md-12 mb-3">
+                                                                                            <label for="">Email Address</label>
+                                                                                            <input type="email" required name="user_email" value="<?php echo $user['user_email']; ?>" class="form-control">
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div class="modal-footer">
+                                                                                    <button type="submit" name="Update_Profile" class="btn btn-outline-lime">Update </button>
+                                                                                </div>
+                                                                            </form>
                                                                         </div>
+
                                                                     </div>
                                                                 </div>
                                                                 <div class="card-arrow">
