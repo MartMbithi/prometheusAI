@@ -169,6 +169,46 @@ require_once('../partials/head.php');
                                                                     <div class="card-arrow-bottom-right"></div>
                                                                 </div>
                                                             </div>
+
+                                                            <div class="card mb-3">
+                                                                <div class="card-body">
+                                                                    <div class="d-flex align-items-center mb-3">
+                                                                        <div class="flex-fill ps-2">
+                                                                            <div class="fw-bold">
+                                                                                Password Settings
+                                                                            </div>
+                                                                            <form method="post" enctype="multipart/form-data" role="form">
+                                                                                <div class="modal-body">
+                                                                                    <div class="row">
+                                                                                        <div class="form-group col-md-6 mb-3">
+                                                                                            <label for="">Old Password</label>
+                                                                                            <input type="password" required name="old_password" class="form-control">
+                                                                                        </div>
+                                                                                        <div class="form-group col-md-6 mb-3">
+                                                                                            <label for="">New Password</label>
+                                                                                            <input type="password" required name="new_password" class="form-control">
+                                                                                        </div>
+                                                                                        <div class="form-group col-md-12 mb-3">
+                                                                                            <label for="">Confirm Password</label>
+                                                                                            <input type="password" required name="confirm_password" class="form-control">
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div class="modal-footer">
+                                                                                    <button type="submit" name="Update_Password" class="btn btn-outline-lime">Update</button>
+                                                                                </div>
+                                                                            </form>
+                                                                        </div>
+
+                                                                    </div>
+                                                                </div>
+                                                                <div class="card-arrow">
+                                                                    <div class="card-arrow-top-left"></div>
+                                                                    <div class="card-arrow-top-right"></div>
+                                                                    <div class="card-arrow-bottom-left"></div>
+                                                                    <div class="card-arrow-bottom-right"></div>
+                                                                </div>
+                                                            </div>
                                                         </div>
                                                     </div>
                                                 </div>
