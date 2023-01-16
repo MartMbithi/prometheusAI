@@ -181,8 +181,6 @@ require_once('../partials/head.php');
                     </div>
                 </div>
 
-
-
                 <!-- My Current Financial Status -->
                 <div class="col-xl-3 col-lg-6">
                     <div class="card mb-3">
@@ -205,6 +203,10 @@ require_once('../partials/head.php');
                         </div>
                     </div>
                 </div>
+
+                <!-- Start Widgets  -->
+                <?php include('../partials/sudo_dashboard_recents.php'); ?>
+                <!-- End Dashboard -->
             </div>
         </div>
     </div>
