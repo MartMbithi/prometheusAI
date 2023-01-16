@@ -90,7 +90,45 @@ require_once('../partials/head.php');
         <div id="content" class="app-content">
 
             <div class="container">
-
+                <!-- Add Modal -->
+                <div class="modal fade fixed-right" id="add_modal" tabindex="-1" role="dialog" aria-hidden="true">
+                    <div class="modal-dialog modal-xl modal-dialog-centered" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header align-items-center">
+                                <div class="modal-title">
+                                    <h6 class="mb-0">Register New Remote DB</h6>
+                                </div>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                            </div>
+                            <form method="post" enctype="multipart/form-data" role="form">
+                                <div class="modal-body">
+                                    <div class="row">
+                                        <div class="form-group col-md-6 mb-3">
+                                            <label for="">Host</label>
+                                            <input type="text" required name="remote_db_host" class="form-control">
+                                        </div>
+                                        <div class="form-group col-md-6 mb-3">
+                                            <label for="">Database Name</label>
+                                            <input type="text" required name="remote_db_name" value="<?php echo $db; ?>" class="form-control">
+                                        </div>
+                                        <div class="form-group col-md-6 mb-3">
+                                            <label for="">User Name</label>
+                                            <input type="text" required name="remote_db_user" value="<?php echo $dbuser; ?>" class="form-control">
+                                        </div>
+                                        <div class="form-group col-md-6 mb-3">
+                                            <label for="">Password </label>
+                                            <input type="text" required name="remote_db_password" value="<?php echo $dbpass; ?>" class="form-control">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="submit" name="Set_Remote_DB" class="btn btn-outline-lime">Add</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <!-- End Modal -->
                 <div class="row">
                     <div class="row">
                         <div class="col-xl-12">
@@ -190,6 +228,7 @@ require_once('../partials/head.php');
                                                                 <div class="btn-group">
                                                                     <br>
                                                                     <form method="post">
+                                                                        <button type="button" data-bs-toggle="modal" data-bs-target="#add_modal" class="btn-sm btn btn-outline-lime"><span>Add Remote DB</button>
                                                                         <button type="submit" name="Settings_Backup_Remote_Db" class="btn-sm btn btn-outline-lime"><span>Backup</button>
                                                                         <button type="submit" name="Settings_Sync_Remote_Db" class="btn-sm btn btn-outline-lime"><span>Synchronize To Remote</button>
                                                                     </form>
