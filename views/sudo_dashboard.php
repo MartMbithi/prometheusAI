@@ -66,6 +66,7 @@
  */
 session_start();
 require_once('../config/config.php');
+include('../config/server_status.php');
 require_once('../config/checklogin.php');
 require_once('../partials/head.php');
 ?>

@@ -69,46 +69,123 @@
     <div class="card mb-3">
         <div class="card-body">
             <div class="d-flex fw-bold small mb-3">
-                <span class="flex-grow-1">Server Status</span>
+                <span class="flex-grow-1">Resources Status</span>
                 <a href="#" data-toggle="card-expand" class="text-white text-opacity-50 text-decoration-none"><i class="bi bi-fullscreen"></i></a>
             </div>
 
             <div class="table-responsive">
                 <table class="table table-striped table-borderless mb-2px small text-nowrap">
                     <tbody>
-                        <?php
-                        /* Fetch Recent Bills */
-                        $recent_bills_sql = mysqli_query(
-                            $mysqli,
-                            "SELECT * FROM purchases ORDER BY purchase_date_made DESC LIMIT 10"
-                        );
-                        if (mysqli_num_rows($recent_bills_sql) > 0) {
-                            while ($recent_bills = mysqli_fetch_array($recent_bills_sql)) {
-                        ?>
-                                <tr>
-                                    <td>
-                                        <span class="d-flex align-items-center">
-                                            <i class="bi bi-circle-fill fs-6px text-theme me-2"></i>
-                                            <?php echo $recent_bills['purchase_item']; ?>
-                                        </span>
-                                    </td>
-                                    <td>QTY: <?php echo $recent_bills['purchase_quantity']; ?></td>
-                                    <td>Amount in Ksh <?php echo number_format($recent_bills['purchase_amount']); ?></td>
-                                    <td>
-                                        <span class="badge d-block bg-lime text-theme-900 rounded-0 pt-5px w-70px" style="min-height: 18px"><?php echo date('d M Y', strtotime($recent_bills['purchase_date_made'])); ?></span>
-                                    </td>
-                                </tr>
-                            <?php }
-                        } else { ?>
-                            <tr>
-                                <td>
-                                    <span class="d-flex align-items-center text-warning">
-                                        <i class="bi bi-circle-fill fs-6px text-danger me-2"></i>
-                                        No Recent Bills & Expenditures
-                                    </span>
-                                </td>
-                            </tr>
-                        <?php } ?>
+                        <tr>
+                            <td>
+                                <span class="d-flex align-items-center">
+                                    <i class="bi bi-circle-fill fs-6px text-theme me-2"></i>
+                                    🌡️ RAM Usage:
+                                </span>
+                            </td>
+                            <td>
+                                <span class="badge d-block bg-lime text-theme-900 rounded-0 pt-5px w-70px" style="min-height: 18px"><?php echo $memusage; ?>%</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <span class="d-flex align-items-center">
+                                    <i class="bi bi-circle-fill fs-6px text-theme me-2"></i>
+                                    🌡️ RAM Total:
+                                </span>
+                            </td>
+                            <td>
+                                <span class="badge d-block bg-lime text-theme-900 rounded-0 pt-5px w-70px" style="min-height: 18px"><?php echo $memtotal; ?>GB</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <span class="d-flex align-items-center">
+                                    <i class="bi bi-circle-fill fs-6px text-theme me-2"></i>
+                                    🌡️ RAM Used:
+                                </span>
+                            </td>
+                            <td>
+                                <span class="badge d-block bg-lime text-theme-900 rounded-0 pt-5px w-70px" style="min-height: 18px"><?php echo $memused; ?>GB</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <span class="d-flex align-items-center">
+                                    <i class="bi bi-circle-fill fs-6px text-theme me-2"></i>
+                                    🌡️ RAM Available:
+                                </span>
+                            </td>
+                            <td>
+                                <span class="badge d-block bg-lime text-theme-900 rounded-0 pt-5px w-70px" style="min-height: 18px"><?php echo $memavailable; ?>GB</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <span class="d-flex align-items-center">
+                                    <i class="bi bi-circle-fill fs-6px text-theme me-2"></i>
+                                    🖥️ CPU Usage:
+                                </span>
+                            </td>
+                            <td>
+                                <span class="badge d-block bg-lime text-theme-900 rounded-0 pt-5px w-70px" style="min-height: 18px"><?php echo $cpuload; ?>%</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <span class="d-flex align-items-center">
+                                    <i class="bi bi-circle-fill fs-6px text-theme me-2"></i>
+                                    💽 Hard Disk Usage:
+                                </span>
+                            </td>
+                            <td>
+                                <span class="badge d-block bg-lime text-theme-900 rounded-0 pt-5px w-70px" style="min-height: 18px"><?php echo $diskusage; ?>%</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <span class="d-flex align-items-center">
+                                    <i class="bi bi-circle-fill fs-6px text-theme me-2"></i>
+                                    💽 Hard Disk Total:
+                                </span>
+                            </td>
+                            <td>
+                                <span class="badge d-block bg-lime text-theme-900 rounded-0 pt-5px w-70px" style="min-height: 18px"><?php echo $disktotal; ?>GB</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <span class="d-flex align-items-center">
+                                    <i class="bi bi-circle-fill fs-6px text-theme me-2"></i>
+                                    💽 Hard Used Total:
+                                </span>
+                            </td>
+                            <td>
+                                <span class="badge d-block bg-lime text-theme-900 rounded-0 pt-5px w-70px" style="min-height: 18px"><?php echo $diskused; ?>GB</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <span class="d-flex align-items-center">
+                                    <i class="bi bi-circle-fill fs-6px text-theme me-2"></i>
+                                    💽 Hard Free Total:
+                                </span>
+                            </td>
+                            <td>
+                                <span class="badge d-block bg-lime text-theme-900 rounded-0 pt-5px w-70px" style="min-height: 18px"><?php echo $diskfree; ?>GB</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <span class="d-flex align-items-center">
+                                    <i class="bi bi-circle-fill fs-6px text-theme me-2"></i>
+                                    🖥️ CPU Threads:
+                                </span>
+                            </td>
+                            <td>
+                                <span class="badge d-block bg-lime text-theme-900 rounded-0 pt-5px w-70px" style="min-height: 18px"><?php echo $cpu_count; ?></span>
+                            </td>
+                        </tr>
                     </tbody>
                 </table>
             </div>
@@ -126,33 +203,18 @@
     <div class="card mb-3">
         <div class="card-body">
             <div class="d-flex fw-bold small mb-3">
-                <span class="flex-grow-1">Database Server Status</span>
+                <span class="flex-grow-1">Database & Web Server Status</span>
                 <a href="#" data-toggle="card-expand" class="text-white text-opacity-50 text-decoration-none"><i class="bi bi-fullscreen"></i></a>
             </div>
 
             <div class="table-responsive">
                 <table class="table table-striped table-borderless mb-2px small text-nowrap">
                     <tbody>
-                        <?php
-                        function get_server_memory_usage()
-                        {
-
-                            $free = shell_exec('free');
-                            $free = (string)trim($free);
-                            $free_arr = explode("\n", $free);
-                            $mem = explode(" ", $free_arr[1]);
-                            $mem = array_filter($mem);
-                            $mem = array_merge($mem);
-                            $memory_usage = $mem[2] / $mem[1] * 100;
-
-                            return $memory_usage;
-                        }
-                        ?>
                         <tr>
                             <td>
                                 <span class="d-flex align-items-center">
                                     <i class="bi bi-circle-fill fs-6px text-theme me-2"></i>
-                                    <?php echo $memory_usage ; ?>
+                                    <?php echo $memory_usage; ?>
                                 </span>
                             </td>
                             <td>
