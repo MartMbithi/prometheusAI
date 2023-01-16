@@ -100,7 +100,7 @@ if (isset($_POST['Filter_Dashboard'])) {
     $stmt->close();
 
     /* Registered Users */
-    $query = "SELECT COUNT(*) FROM users  
+    $query = "SELECT COUNT(*) FROM user
     WHERE user_access_level = 'User' AND user_date_joined
     BETWEEN '$start_date' AND '$end_date'";
     $stmt = $mysqli->prepare($query);
@@ -138,7 +138,7 @@ if (isset($_POST['Filter_Dashboard'])) {
     $stmt->close();
 
     /* Number Of Sign Ups */
-    $query = "SELECT COUNT(*) FROM users  
+    $query = "SELECT COUNT(*) FROM user  
     WHERE user_access_level = 'User'";
     $stmt = $mysqli->prepare($query);
     $stmt->execute();
