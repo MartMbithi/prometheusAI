@@ -128,7 +128,7 @@ require_once('../partials/head.php');
                                                 <div class="card-body">
                                                     <h5 class="card-title"><?php echo $users['user_name']; ?></h5>
                                                     <h6 class="card-subtitle mb-3 text-white text-opacity-50">
-                                                        Phone Number: <?php echo $users['user_number']; ?> <br>
+                                                        Phone Number: <?php echo $users['user_phone']; ?> <br>
                                                         Email: <?php echo $users['user_email']; ?><br>
                                                         Date Joined: <?php echo date('d M Y', strtotime($users['user_date_joined'])); ?>
                                                     </h6>
@@ -157,7 +157,7 @@ require_once('../partials/head.php');
                             </div>
                         </div>
                     </div>
-                    <?php include('../paginations/assets.php'); ?>
+                    <?php include('../paginations/users.php'); ?>
                 </div>
             </div>
         </div>
