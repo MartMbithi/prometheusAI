@@ -70,7 +70,7 @@
     <nav aria-label="Page navigation example">
         <ul class="pagination">
             <?php
-            $pagination_sql = "SELECT COUNT(*) FROM user";
+            $pagination_sql = "SELECT COUNT(*) FROM user WHERE user_access_level = 'User'";
             $rs_result = mysqli_query($mysqli, $pagination_sql);
             $row = mysqli_fetch_row($rs_result);
             $total_records = $row[0];
@@ -94,9 +94,7 @@
             if ($page < $total_pages) {
                 echo "<li class='page-item'><a class='page-link'  href='sudo_users?page=" . ($page + 1) . "'>  Next </a></li>";
             }
-
             ?>
-
         </ul>
     </nav>
 </div>

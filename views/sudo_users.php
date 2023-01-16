@@ -116,7 +116,9 @@ require_once('../partials/head.php');
                                 $start_from = ($page - 1) * $per_page_record;
                                 $users_sql = mysqli_query(
                                     $mysqli,
-                                    "SELECT * FROM user ORDER BY  user_name ASC LIMIT $start_from, $per_page_record"
+                                    "SELECT * FROM user 
+                                    WHERE user_access_level = 'User'
+                                    ORDER BY  user_name ASC LIMIT $start_from, $per_page_record"
                                 );
                                 $cnt = 1;
                                 if (mysqli_num_rows($users_sql) > 0) {
