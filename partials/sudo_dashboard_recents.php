@@ -135,6 +135,17 @@
                             <td>
                                 <span class="d-flex align-items-center">
                                     <i class="bi bi-circle-fill fs-6px text-theme me-2"></i>
+                                    🖥️ CPU Threads:
+                                </span>
+                            </td>
+                            <td>
+                                <span class="badge d-block bg-lime text-theme-900 rounded-0 pt-5px w-70px" style="min-height: 18px"><?php echo $cpu_count; ?></span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <span class="d-flex align-items-center">
+                                    <i class="bi bi-circle-fill fs-6px text-theme me-2"></i>
                                     💽 Hard Disk Usage:
                                 </span>
                             </td>
@@ -175,17 +186,6 @@
                                 <span class="badge d-block bg-lime text-theme-900 rounded-0 pt-5px w-70px" style="min-height: 18px"><?php echo $diskfree; ?>GB</span>
                             </td>
                         </tr>
-                        <tr>
-                            <td>
-                                <span class="d-flex align-items-center">
-                                    <i class="bi bi-circle-fill fs-6px text-theme me-2"></i>
-                                    🖥️ CPU Threads:
-                                </span>
-                            </td>
-                            <td>
-                                <span class="badge d-block bg-lime text-theme-900 rounded-0 pt-5px w-70px" style="min-height: 18px"><?php echo $cpu_count; ?></span>
-                            </td>
-                        </tr>
                     </tbody>
                 </table>
             </div>
@@ -214,10 +214,55 @@
                             <td>
                                 <span class="d-flex align-items-center">
                                     <i class="bi bi-circle-fill fs-6px text-theme me-2"></i>
-                                    <?php echo $memory_usage; ?>
+                                    📟 Server Name:
                                 </span>
                             </td>
                             <td>
+                                <span class="badge d-block bg-lime text-theme-900 rounded-0 pt-5px w-70px" style="min-height: 18px"><?php echo $_SERVER['SERVER_NAME']; ?></span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <span class="d-flex align-items-center">
+                                    <i class="bi bi-circle-fill fs-6px text-theme me-2"></i>
+                                    📟 Server Address:
+                                </span>
+                            </td>
+                            <td>
+                                <span class="badge d-block bg-lime text-theme-900 rounded-0 pt-5px w-70px" style="min-height: 18px"><?php echo $_SERVER['SERVER_ADDR']; ?></span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <span class="d-flex align-items-center">
+                                    <i class="bi bi-circle-fill fs-6px text-theme me-2"></i>
+                                    🌀 PHP Version:
+                                </span>
+                            </td>
+                            <td>
+                                <span class="badge d-block bg-lime text-theme-900 rounded-0 pt-5px w-70px" style="min-height: 18px"><?php echo phpversion(); ?></span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <span class="d-flex align-items-center">
+                                    <i class="bi bi-circle-fill fs-6px text-theme me-2"></i>
+                                    🏋️ PHP Load:
+                                </span>
+                            </td>
+                            <td>
+                                <span class="badge d-block bg-lime text-theme-900 rounded-0 pt-5px w-70px" style="min-height: 18px"><?php echo $phpload; ?> GB</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <span class="d-flex align-items-center">
+                                    <i class="bi bi-circle-fill fs-6px text-theme me-2"></i>
+                                    ⏱️ Load Time:
+                                </span>
+                            </td>
+                            <td>
+                                <span class="badge d-block bg-lime text-theme-900 rounded-0 pt-5px w-70px" style="min-height: 18px"><?php echo $total_time; ?> sec</span>
                             </td>
                         </tr>
                     </tbody>
