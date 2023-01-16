@@ -100,7 +100,7 @@ require_once('../partials/head.php');
                             <div class="d-flex justify-content-center">
                                 <div class="row g-3 align-items-center">
                                     <div class="col-auto">
-                                        <input class="form-control" type="text" id="Asset_Category_Search" onkeyup="FilterFunction()" placeholder="Search Asset">
+                                        <input class="form-control" type="text" id="Asset_Category_Search" onkeyup="FilterFunction()" placeholder="Search Users">
                                     </div>
                                 </div>
                             </div>
@@ -135,8 +135,7 @@ require_once('../partials/head.php');
                                                         Date Joined: <?php echo date('d M Y', strtotime($users['user_date_joined'])); ?>
                                                     </h6>
                                                     <div class="card-footer">
-                                                        <button data-bs-toggle="modal" data-bs-target="#details_<?php echo $user['user_id']; ?>" class="btn btn-sm btn-outline-lime"><i class="fas fa-eye"></i> Details</button>
-                                                        <button data-bs-toggle="modal" data-bs-target="#delete_<?php echo $user['user_id']; ?>" class="btn btn-sm btn-outline-danger"><i class="fas fa-trash"></i> Delete</button>
+                                                        <button data-bs-toggle="modal" data-bs-target="#delete_<?php echo $users['user_id']; ?>" class="btn btn-sm btn-outline-danger"><i class="fas fa-trash"></i> Delete</button>
                                                     </div>
                                                 </div>
                                                 <div class="card-arrow">
