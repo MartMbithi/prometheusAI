@@ -98,79 +98,90 @@ require_once('../partials/head.php');
                             </h1>
 
                             <br>
-                            <div class="row row-cols-1 row-cols-md-2 g-3">
-                                <!-- Users -->
-                                <div class="col-sm-12 col-lg-12 col-xl-12">
-                                    <div class="card">
-                                        <div class="card-body">
-                                            <ul class="nav nav-tabs" id="myTab" role="tablist">
-                                                <li class="nav-item" role="presentation">
-                                                    <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home-tab-pane" type="button" role="tab" aria-controls="home-tab-pane" aria-selected="true">STMP Mailer</button>
-                                                </li>
-                                                <li class="nav-item" role="presentation">
-                                                    <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile-tab-pane" type="button" role="tab" aria-controls="profile-tab-pane" aria-selected="false">Database Settings</button>
-                                                </li>
-                                            </ul>
-                                            <div class="tab-content" id="myTabContent">
-                                                <div class="tab-pane fade show active" id="home-tab-pane" role="tabpanel" aria-labelledby="home-tab" tabindex="0">
-                                                    <form method="post" enctype="multipart/form-data" role="form">
-                                                        <div class="modal-body">
-                                                            <div class="row">
-                                                                <div class="form-group col-md-8 mb-3">
-                                                                    <label for="">Host</label>
-                                                                    <input type="text" required name="mailer_host" value="<?php echo $sys_configs['mailer_host']; ?>" class="form-control">
+                            <?php
+                            /* Fetch System Settings */
+                            $settings_sql = mysqli_query(
+                                $mysqli,
+                                "SELECT * FROM mailer_settings"
+                            );
+                            if (mysqli_num_rows($settings_sql) > 0) {
+                                while ($sys_configs = mysqli_fetch_array($settings_sql)) {
+                            ?>
+                                    <div class="row row-cols-1 row-cols-md-2 g-3">
+                                        <!-- Users -->
+                                        <div class="col-sm-12 col-lg-12 col-xl-12">
+                                            <div class="card">
+                                                <div class="card-body">
+                                                    <ul class="nav nav-tabs" id="myTab" role="tablist">
+                                                        <li class="nav-item" role="presentation">
+                                                            <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home-tab-pane" type="button" role="tab" aria-controls="home-tab-pane" aria-selected="true">STMP Mailer</button>
+                                                        </li>
+                                                        <li class="nav-item" role="presentation">
+                                                            <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile-tab-pane" type="button" role="tab" aria-controls="profile-tab-pane" aria-selected="false">Database Settings</button>
+                                                        </li>
+                                                    </ul>
+                                                    <div class="tab-content" id="myTabContent">
+                                                        <div class="tab-pane fade show active" id="home-tab-pane" role="tabpanel" aria-labelledby="home-tab" tabindex="0">
+                                                            <form method="post" enctype="multipart/form-data" role="form">
+                                                                <div class="modal-body">
+                                                                    <div class="row">
+                                                                        <div class="form-group col-md-8 mb-3">
+                                                                            <label for="">Host</label>
+                                                                            <input type="text" required name="mailer_host" value="<?php echo $sys_configs['mailer_host']; ?>" class="form-control">
+                                                                        </div>
+                                                                        <div class="form-group col-md-4 mb-3">
+                                                                            <label for="">Port</label>
+                                                                            <select type="text" required name="mailer_port" value="<?php echo $sys_configs['mailer_port']; ?>" class="form-control">
+                                                                                <option>465</option>
+                                                                                <option>586</option>
+                                                                            </select>
+                                                                        </div>
+                                                                        <div class="form-group col-md-4 mb-3">
+                                                                            <label for="">Protocol</label>
+                                                                            <select type="text" required name="mailer_protocol" value="<?php echo $sys_configs['mailer_protocol']; ?>" class="form-control">
+                                                                                <option>ssl</option>
+                                                                                <option>tls</option>
+                                                                            </select>
+                                                                        </div>
+                                                                        <div class="form-group col-md-8 mb-3">
+                                                                            <label for="">Mail Username</label>
+                                                                            <input type="text" required name="mailer_username" value="<?php echo $sys_configs['mailer_username']; ?>" class="form-control">
+                                                                        </div>
+                                                                        <div class="form-group col-md-4 mb-3">
+                                                                            <label for="">Mail Password</label>
+                                                                            <input type="password" required name="mailer_password" value="<?php echo $sys_configs['mailer_password']; ?>" class="form-control">
+                                                                        </div>
+                                                                        <div class="form-group col-md-4 mb-3">
+                                                                            <label for="">Mail From Email</label>
+                                                                            <input type="text" required name="mailer_mail_from_email" value="<?php echo $sys_configs['mailer_mail_from_email']; ?>" class="form-control">
+                                                                        </div>
+                                                                        <div class="form-group col-md-4 mb-3">
+                                                                            <label for="">Mail From Name</label>
+                                                                            <input type="text" required name="mailer_mail_from_name" value="<?php echo $sys_configs['mailer_mail_from_name']; ?>" class="form-control">
+                                                                        </div>
+                                                                    </div>
                                                                 </div>
-                                                                <div class="form-group col-md-4 mb-3">
-                                                                    <label for="">Port</label>
-                                                                    <select type="text" required name="mailer_port" value="<?php echo $sys_configs['mailer_port']; ?>" class="form-control">
-                                                                        <option>465</option>
-                                                                        <option>586</option>
-                                                                    </select>
+                                                                <div class="modal-footer">
+                                                                    <button type="submit" name="Update_Mailer_Settings" class="btn btn-outline-lime">Update</button>
                                                                 </div>
-                                                                <div class="form-group col-md-4 mb-3">
-                                                                    <label for="">Protocol</label>
-                                                                    <select type="text" required name="mailer_protocol" value="<?php echo $sys_configs['mailer_protocol']; ?>" class="form-control">
-                                                                        <option>ssl</option>
-                                                                        <option>tls</option>
-                                                                    </select>
-                                                                </div>
-                                                                <div class="form-group col-md-8 mb-3">
-                                                                    <label for="">Mail Username</label>
-                                                                    <input type="text" required name="mailer_username" value="<?php echo $sys_configs['mailer_username']; ?>" class="form-control">
-                                                                </div>
-                                                                <div class="form-group col-md-8 mb-3">
-                                                                    <label for="">Mail Password</label>
-                                                                    <input type="password" required name="mailer_password" value="<?php echo $sys_configs['mailer_password']; ?>" class="form-control">
-                                                                </div>
-                                                                <div class="form-group col-md-8 mb-3">
-                                                                    <label for="">Mail From Email</label>
-                                                                    <input type="text" required name="mailer_mail_from_email" value="<?php echo $sys_configs['mailer_mail_from_email']; ?>" class="form-control">
-                                                                </div>
-                                                                <div class="form-group col-md-8 mb-3">
-                                                                    <label for="">Mail From Name</label>
-                                                                    <input type="text" required name="mailer_mail_from_name" value="<?php echo $sys_configs['mailer_mail_from_name']; ?>" class="form-control">
-                                                                </div>
-                                                            </div>
+                                                            </form>
                                                         </div>
-                                                        <div class="modal-footer">
-                                                            <button type="submit" name="Update_Mailer_Settings" class="btn btn-outline-lime">Update</button>
-                                                        </div>
-                                                    </form>
-                                                </div>
-                                                <div class="tab-pane fade" id="profile-tab-pane" role="tabpanel" aria-labelledby="profile-tab" tabindex="0">
+                                                        <div class="tab-pane fade" id="profile-tab-pane" role="tabpanel" aria-labelledby="profile-tab" tabindex="0">
 
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="card-arrow">
+                                                    <div class="card-arrow-top-left "></div>
+                                                    <div class="card-arrow-top-right"></div>
+                                                    <div class="card-arrow-bottom-left"></div>
+                                                    <div class="card-arrow-bottom-right"></div>
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="card-arrow">
-                                            <div class="card-arrow-top-left "></div>
-                                            <div class="card-arrow-top-right"></div>
-                                            <div class="card-arrow-bottom-left"></div>
-                                            <div class="card-arrow-bottom-right"></div>
-                                        </div>
                                     </div>
-                                </div>
-                            </div>
+                            <?php }
+                            } ?>
                         </div>
                     </div>
                 </div>
