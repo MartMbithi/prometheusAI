@@ -113,8 +113,8 @@ require_once('../partials/head.php');
                                         <div class="card-body">
                                             <h5 class="card-title">Registered Users</h5>
                                             <div class="card-footer">
-                                                <a href="sudo_reports?module=users&type=PDF" class="text-center btn btn-outline-lime">PDF</a>
-                                                <a href="sudo_reports?module=user&type=CSV" class="text-center btn btn-outline-lime">CSV</a>
+                                                <a href="sudo_reports_generate?module=users&type=PDF" class="text-center btn btn-outline-lime">PDF</a>
+                                                <a href="sudo_reports_generate?module=user&type=CSV" class="text-center btn btn-outline-lime">CSV</a>
                                             </div>
                                         </div>
                                         <div class="card-arrow">
@@ -133,8 +133,8 @@ require_once('../partials/head.php');
                                         <div class="card-body">
                                             <h5 class="card-title">Expenses & Bills</h5>
                                             <div class="card-footer">
-                                                <a href="sudo_reports?module=bills&type=PDF" class="text-center btn btn-outline-lime">PDF</a>
-                                                <a href="sudo_reports?module=bills&type=CSV" class="text-center btn btn-outline-lime">CSV</a>
+                                                <a href="sudo_reports_generate?module=bills&type=PDF" class="text-center btn btn-outline-lime">PDF</a>
+                                                <a href="sudo_reports_generate?module=bills&type=CSV" class="text-center btn btn-outline-lime">CSV</a>
                                             </div>
                                         </div>
                                         <div class="card-arrow">
@@ -153,8 +153,8 @@ require_once('../partials/head.php');
                                         <div class="card-body">
                                             <h5 class="card-title">Savings & Revenues</h5>
                                             <div class="card-footer">
-                                                <a href="sudo_reports?module=savings&type=PDF" class="text-center btn btn-outline-lime">PDF</a>
-                                                <a href="sudo_reports?module=savings&type=CSV" class="text-center btn btn-outline-lime">CSV</a>
+                                                <a href="sudo_reports_generate?module=savings&type=PDF" class="text-center btn btn-outline-lime">PDF</a>
+                                                <a href="sudo_reports_generate?module=savings&type=CSV" class="text-center btn btn-outline-lime">CSV</a>
                                             </div>
                                         </div>
                                         <div class="card-arrow">
@@ -173,8 +173,8 @@ require_once('../partials/head.php');
                                         <div class="card-body">
                                             <h5 class="card-title">Assets</h5>
                                             <div class="card-footer">
-                                                <a href="sudo_reports?module=assets&type=PDF" class="text-center btn btn-outline-lime">PDF</a>
-                                                <a href="sudo_reports?module=assets&type=CSV" class="text-center btn btn-outline-lime">CSV</a>
+                                                <a href="sudo_reports_generate?module=assets&type=PDF" class="text-center btn btn-outline-lime">PDF</a>
+                                                <a href="sudo_reports_generate?module=assets&type=CSV" class="text-center btn btn-outline-lime">CSV</a>
                                             </div>
                                         </div>
                                         <div class="card-arrow">
