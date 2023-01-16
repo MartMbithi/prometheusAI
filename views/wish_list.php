@@ -226,6 +226,9 @@ require_once('../partials/head.php');
                                         /* Modals  */
                                         include('../modals/wish_list.php');
                                     }
+                                } else {
+                                    /* 404 */
+                                    include('../errors/wishlist_404.php');
                                 } ?>
                             </div>
                         </div>

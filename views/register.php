@@ -76,18 +76,43 @@ require_once('../partials/head.php');
 
         <div class="login">
             <div class="login-content">
-                <form method="POST" name="login_form" autocomplete="off">
-                    <h1 class="text-center">Financial-AI <br>Confirm Password Reset Code</h1>
-                    <div class="text-white text-opacity-50 text-center mb-4">
-                        Enter the password reset code sent to your email.
+                <form method="POST">
+                    <h1 class="text-center">PrometheusAI<br>Sign Up</h1>
+                    <p class="text-white text-opacity-50 text-center">
+                        Sign up is all you need to access all the exquisite services.
+                    </p>
+                    <div class="mb-3">
+                        <label class="form-label">Full Name <span class="text-danger">*</span></label>
+                        <input required type="text" name="user_name" class="form-control form-control-lg bg-white bg-opacity-5" />
                     </div>
                     <div class="mb-3">
-                        <div class="d-flex">
-                            <label class="form-label">Reset Code <span class="text-danger">*</span></label>
-                        </div>
-                        <input type="text" class="form-control form-control-lg bg-white bg-opacity-5" name="reset_code" required />
+                        <label class="form-label">Phone Number <span class="text-danger">*</span></label>
+                        <input required type="text" name="user_phone" class="form-control form-control-lg bg-white bg-opacity-5" />
                     </div>
-                    <button type="submit" name="Reset_Password_Confirm_Code" class="btn btn-outline-lime btn-lg d-block w-100 fw-500 mb-3">Reset</button>
+                    <div class="mb-3">
+                        <label class="form-label">Email Address <span class="text-danger">*</span></label>
+                        <input required type="email" name="user_email" class="form-control form-control-lg bg-white bg-opacity-5" />
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Password <span class="text-danger">*</span></label>
+                        <input required type="password" name="new_password" class="form-control form-control-lg bg-white bg-opacity-5" />
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Confirm Password <span class="text-danger">*</span></label>
+                        <input required type="password" name="confirm_password" class="form-control form-control-lg bg-white bg-opacity-5" />
+                    </div>
+                    <div class="mb-3">
+                        <div class="form-check">
+                            <input class="form-check-input" required type="checkbox" value="" id="customCheck1" />
+                            <label class="form-check-label" for="customCheck1">I have read and agree to the <a href="#">Terms of Use</a> and <a href="#">Privacy Policy</a>.</label>
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <button type="submit" name="Sign_Up" class="btn btn-outline-lime btn-lg d-block w-100">Sign Up</button>
+                    </div>
+                    <div class="text-white text-opacity-50 text-center">
+                        Already have an account? <a href="../">Sign In</a>
+                    </div>
                 </form>
             </div>
 

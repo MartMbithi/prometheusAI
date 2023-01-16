@@ -95,6 +95,8 @@ if (isset($_POST['Login'])) {
     }
 }
 
+
+/* Password Resets */
 switch (connection_status()) {
     case CONNECTION_NORMAL:
         /* This Will Trigger Mailer To Send Email Address */
@@ -278,4 +280,40 @@ switch (connection_status()) {
             }
         }
         break;
+}
+
+
+/* Sign Up */
+if (isset($_POST['Sign_Up'])) {
+    $user_name = mysqli_real_escape_string($mysqli, $_POST['user_name']);
+    $user_email = mysqli_real_escape_string($mysqli, $_POST['user_email']);
+    $user_phone = mysqli_real_escape_string($mysqli, $_POST['user_phone']);
+    $new_password = sha1(md5(mysqli_real_escape_string($mysqli, $_POST['new_password'])));
+    $confirm_password = sha1(md5(mysqli_real_escape_string($mysqli, $_POST['confirm_password'])));
+    $user_access_level = mysqli_real_escape_string($mysqli, 'User');
+    $user_date_joined = mysqli_real_escape_string($mysqli, date('Y-m-d'));
+
+    /* Check If Passwords Match */
+    if ($confirm_password != $new_password) {
+        $err = "Passwords does not match";
+    } else {
+        /* Check If User Details Already Exist */
+        $duplication_sql = "SELECT * FROM  user WHERE user_email = '{$user_email}' || user_phone = '{$user_phone}'";
+        $res = mysqli_query($mysqli, $duplication_sql);
+        if (mysqli_num_rows($res) > 0) {
+            $err = "An account with this email and user phone already exists";
+        } else {
+            /* Process Sign Up */
+            $sign_up_sql = "INSERT INTO user (user_name, user_email, user_phone, user_password, user_access_level, user_date_joined)
+            VALUES('{$user_name}', '{$user_email}', '{$user_phone}', '{$confirm_password}', '{$user_access_level}', '{$user_date_joined}')";
+
+            if (mysqli_query($mysqli, $sign_up_sql)) {
+                $_SESSION['success'] = 'Account created successfully, proceed to login';
+                header('Location: login');
+                exit;
+            } else {
+                $err = "Failed, please try again";
+            }
+        }
+    }
 }

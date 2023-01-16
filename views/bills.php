@@ -223,6 +223,9 @@ require_once('../partials/head.php');
                                         /* Modals  */
                                         include('../modals/bills.php');
                                     }
+                                } else {
+                                    /* 404 */
+                                    include('../errors/bills_404.php');
                                 } ?>
                             </div>
                         </div>

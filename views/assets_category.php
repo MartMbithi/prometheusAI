@@ -185,6 +185,9 @@ require_once('../partials/head.php');
                                         /* Modals  */
                                         include('../modals/assets_category.php');
                                     }
+                                } else {
+                                    /* 404 */
+                                    include('../errors/asset_categories_404.php');
                                 } ?>
                             </div>
                         </div>

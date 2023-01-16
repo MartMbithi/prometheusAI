@@ -1,6 +1,6 @@
 <?php
 /*
- *   Crafted On Fri Dec 16 2022
+ *   Crafted On Sun Jan 15 2023
  *
  * 
  *   www.devlan.co.ke
@@ -64,39 +64,54 @@
  *   TORT OR ANY OTHER THEORY OF LIABILITY, EXCEED THE LICENSE FEE PAID BY YOU, IF ANY.
  *
  */
-session_start();
-require_once('../config/config.php');
-require_once('../helpers/authentication.php');
-require_once('../partials/head.php');
-?>
 
-<body class='pace-top'>
+/* Update Profile */
+if (isset($_POST['Update_Profile'])) {
+    $user_name = mysqli_real_escape_string($mysqli, $_POST['user_name']);
+    $user_phone = mysqli_real_escape_string($mysqli, $_POST['user_phone']);
+    $user_email = mysqli_real_escape_string($mysqli, $_POST['user_email']);
+    $user_id = mysqli_real_escape_string($mysqli, $_SESSION['user_id']);
 
-    <div id="app" class="app app-full-height app-without-header">
+    /* Persist */
+    $update_sql = "UPDATE user SET user_name = '{$user_name}', user_phone = '{$user_phone}', user_email = '{$user_email}'
+    WHERE user_id = '{$user_id}'";
 
-        <div class="login">
-            <div class="login-content">
-                <form method="POST" name="login_form" autocomplete="off">
-                    <h1 class="text-center">Financial-AI <br>Confirm Password Reset Code</h1>
-                    <div class="text-white text-opacity-50 text-center mb-4">
-                        Enter the password reset code sent to your email.
-                    </div>
-                    <div class="mb-3">
-                        <div class="d-flex">
-                            <label class="form-label">Reset Code <span class="text-danger">*</span></label>
-                        </div>
-                        <input type="text" class="form-control form-control-lg bg-white bg-opacity-5" name="reset_code" required />
-                    </div>
-                    <button type="submit" name="Reset_Password_Confirm_Code" class="btn btn-outline-lime btn-lg d-block w-100 fw-500 mb-3">Reset</button>
-                </form>
-            </div>
+    if (mysqli_query($mysqli, $update_sql)) {
+        $success = "Profile updated";
+    } else {
+        $err = "Failed, Please try again";
+    }
+}
 
-        </div>
-    </div>
-    <!-- Scripts -->
-    <?php require_once('../partials/scripts.php'); ?>
-    <!-- End Scripts -->
-</body>
+/* Update Password */
+if (isset($_POST['Update_Password'])) {
+    $old_password = sha1(md5(mysqli_real_escape_string($mysqli, $_POST['old_password'])));
+    $new_password = sha1(md5(mysqli_real_escape_string($mysqli, $_POST['new_password'])));
+    $confirm_password = sha1(md5(mysqli_real_escape_string($mysqli, $_POST['confirm_password'])));
+    $user_id = mysqli_real_escape_string($mysqli, $_SESSION['user_id']);
 
-
-</html>
+    /* Check If Old Passwords Match */
+    $password_checker_sql = mysqli_query($mysqli, "SELECT * FROM user WHERE user_id = '{$user_id}'");
+    if (mysqli_num_rows($password_checker_sql) > 0) {
+        while ($user_password = mysqli_fetch_array($password_checker_sql)) {
+            /* Check If Old Password Match */
+            if ($user_password['user_password'] != $old_password) {
+                $err = "Old password does not match";
+            } else if ($confirm_password != $new_password) {
+                $err = "Confirm password does not match";
+            } else {
+                /* Perist */
+                $update_password_sql = "UPDATE user SET user_password = '{$confirm_password}' WHERE user_id = '{$user_id}'";
+                if (mysqli_query($mysqli, $update_password_sql)) {
+                    $success = "Password updated";
+                } else {
+                    $err = "Failed, please try again";
+                }
+            }
+        }
+    } else {
+        /* You have bypassed auth */
+        header('Location: logout');
+        exit;
+    }
+}

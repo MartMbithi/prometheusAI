@@ -1,6 +1,6 @@
 <?php
 /*
- *   Crafted On Fri Dec 16 2022
+ *   Crafted On Mon Jan 16 2023
  *
  * 
  *   www.devlan.co.ke
@@ -64,39 +64,85 @@
  *   TORT OR ANY OTHER THEORY OF LIABILITY, EXCEED THE LICENSE FEE PAID BY YOU, IF ANY.
  *
  */
-session_start();
-require_once('../config/config.php');
-require_once('../helpers/authentication.php');
-require_once('../partials/head.php');
-?>
+if (isset($_POST['Filter_Dashboard'])) {
 
-<body class='pace-top'>
+    /* Date Variables */
+    $start_date = mysqli_real_escape_string($mysqli, date('Y-m-d', strtotime($_POST['from_date'])));
+    $end_date = mysqli_real_escape_string($mysqli, date('Y-m-d', strtotime($_POST['to_date'])));
 
-    <div id="app" class="app app-full-height app-without-header">
-
-        <div class="login">
-            <div class="login-content">
-                <form method="POST" name="login_form" autocomplete="off">
-                    <h1 class="text-center">Financial-AI <br>Confirm Password Reset Code</h1>
-                    <div class="text-white text-opacity-50 text-center mb-4">
-                        Enter the password reset code sent to your email.
-                    </div>
-                    <div class="mb-3">
-                        <div class="d-flex">
-                            <label class="form-label">Reset Code <span class="text-danger">*</span></label>
-                        </div>
-                        <input type="text" class="form-control form-control-lg bg-white bg-opacity-5" name="reset_code" required />
-                    </div>
-                    <button type="submit" name="Reset_Password_Confirm_Code" class="btn btn-outline-lime btn-lg d-block w-100 fw-500 mb-3">Reset</button>
-                </form>
-            </div>
-
-        </div>
-    </div>
-    <!-- Scripts -->
-    <?php require_once('../partials/scripts.php'); ?>
-    <!-- End Scripts -->
-</body>
+    /* Total Assets Registered */
+    $query = "SELECT COUNT(*)  FROM assets 
+    WHERE (asset_date_purchased BETWEEN '$start_date' AND '$end_date')";
+    $stmt = $mysqli->prepare($query);
+    $stmt->execute();
+    $stmt->bind_result($assets);
+    $stmt->fetch();
+    $stmt->close();
 
 
-</html>
+    /* Current Expenditure  - Bills*/
+    $query = "SELECT SUM(purchase_amount)  FROM purchases 
+    WHERE  (purchase_date_made  BETWEEN  '$start_date' AND '$end_date')";
+    $stmt = $mysqli->prepare($query);
+    $stmt->execute();
+    $stmt->bind_result($expenditures);
+    $stmt->fetch();
+    $stmt->close();
+
+
+    /* Savings */
+    $query = "SELECT SUM(saving_amount)  FROM savings 
+    WHERE (saving_date BETWEEN  '$start_date' AND  '$end_date')";
+    $stmt = $mysqli->prepare($query);
+    $stmt->execute();
+    $stmt->bind_result($incomes);
+    $stmt->fetch();
+    $stmt->close();
+
+    /* Registered Users */
+    $query = "SELECT COUNT(*) FROM user
+    WHERE user_access_level = 'User' AND user_date_joined
+    BETWEEN '$start_date' AND '$end_date'";
+    $stmt = $mysqli->prepare($query);
+    $stmt->execute();
+    $stmt->bind_result($user_registrations);
+    $stmt->fetch();
+    $stmt->close();
+} else {
+    /* Load Normal Analytics With No FIlter */
+
+    /* Total Assets Registred */
+    $query = "SELECT COUNT(*)  FROM assets  ";
+    $stmt = $mysqli->prepare($query);
+    $stmt->execute();
+    $stmt->bind_result($assets);
+    $stmt->fetch();
+    $stmt->close();
+
+
+    /* Current Expenditure  - Bills*/
+    $query = "SELECT SUM(purchase_amount)  FROM purchases";
+    $stmt = $mysqli->prepare($query);
+    $stmt->execute();
+    $stmt->bind_result($expenditures);
+    $stmt->fetch();
+    $stmt->close();
+
+
+    /* Savings */
+    $query = "SELECT SUM(saving_amount)  FROM savings";
+    $stmt = $mysqli->prepare($query);
+    $stmt->execute();
+    $stmt->bind_result($incomes);
+    $stmt->fetch();
+    $stmt->close();
+
+    /* Number Of Sign Ups */
+    $query = "SELECT COUNT(*) FROM user  
+    WHERE user_access_level = 'User'";
+    $stmt = $mysqli->prepare($query);
+    $stmt->execute();
+    $stmt->bind_result($user_registrations);
+    $stmt->fetch();
+    $stmt->close();
+}

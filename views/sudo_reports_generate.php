@@ -1,6 +1,6 @@
 <?php
 /*
- *   Crafted On Fri Dec 16 2022
+ *   Crafted On Mon Jan 16 2023
  *
  * 
  *   www.devlan.co.ke
@@ -64,39 +64,71 @@
  *   TORT OR ANY OTHER THEORY OF LIABILITY, EXCEED THE LICENSE FEE PAID BY YOU, IF ANY.
  *
  */
+
 session_start();
 require_once('../config/config.php');
-require_once('../helpers/authentication.php');
-require_once('../partials/head.php');
-?>
+require_once('../config/codeGen.php');
+require_once('../config/checklogin.php');
 
-<body class='pace-top'>
+/* Global Variables */
+$report_module = mysqli_real_escape_string($mysqli, $_GET['module']);
+$report_type = mysqli_real_escape_string($mysqli, $_GET['type']);
 
-    <div id="app" class="app app-full-height app-without-header">
-
-        <div class="login">
-            <div class="login-content">
-                <form method="POST" name="login_form" autocomplete="off">
-                    <h1 class="text-center">Financial-AI <br>Confirm Password Reset Code</h1>
-                    <div class="text-white text-opacity-50 text-center mb-4">
-                        Enter the password reset code sent to your email.
-                    </div>
-                    <div class="mb-3">
-                        <div class="d-flex">
-                            <label class="form-label">Reset Code <span class="text-danger">*</span></label>
-                        </div>
-                        <input type="text" class="form-control form-control-lg bg-white bg-opacity-5" name="reset_code" required />
-                    </div>
-                    <button type="submit" name="Reset_Password_Confirm_Code" class="btn btn-outline-lime btn-lg d-block w-100 fw-500 mb-3">Reset</button>
-                </form>
-            </div>
-
-        </div>
-    </div>
-    <!-- Scripts -->
-    <?php require_once('../partials/scripts.php'); ?>
-    <!-- End Scripts -->
-</body>
-
-
-</html>
+if ($report_module == 'assets') {
+    if ($report_type == 'CSV') {
+        /* Generate CSV Reort */
+        include('../reports/csv/sudo_assets.php');
+    } else if ($report_type == 'PDF') {
+        /* Generate PDF Report */
+        include('../reports/pdf/sudo_assets.php');
+    } else {
+        /* Error */
+        $_SESSION['err'] = 'System error, please reload your session';
+        header('Location: sudo_reports');
+        exit;
+    }
+} else if ($report_module == 'bills') {
+    if ($report_type == 'CSV') {
+        /* Generate CSV Reort */
+        include('../reports/csv/sudo_bill.php');
+    } else if ($report_type == 'PDF') {
+        /* Generate PDF Report */
+        include('../reports/pdf/sudo_bill.php');
+    } else {
+        /* Error */
+        $_SESSION['err'] = 'System error, please reload your session';
+        header('Location: sudo_reports');
+        exit;
+    }
+} else if ($report_module == 'savings') {
+    if ($report_type == 'CSV') {
+        /* Generate CSV Reort */
+        include('../reports/csv/sudo_savings.php');
+    } else if ($report_type == 'PDF') {
+        /* Generate PDF Report */
+        include('../reports/pdf/sudo_savings.php');
+    } else {
+        /* Error */
+        $_SESSION['err'] = 'System error, please reload your session';
+        header('Location: sudo_reports');
+        exit;
+    }
+} else if ($report_module == 'users') {
+    if ($report_type == 'CSV') {
+        /* Generate CSV Reort */
+        include('../reports/csv/sudo_users.php');
+    } else if ($report_type == 'PDF') {
+        /* Generate PDF Report */
+        include('../reports/pdf/sudo_users.php');
+    } else {
+        /* Error */
+        $_SESSION['err'] = 'System error, please reload your session';
+        header('Location: sudo_reports');
+        exit;
+    }
+} else {
+    /* Default Error */
+    $_SESSION['err'] = 'System error, please reload your session';
+    header('Location: sudo_dashboard');
+    exit;
+}

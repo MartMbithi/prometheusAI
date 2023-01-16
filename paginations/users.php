@@ -1,6 +1,6 @@
 <?php
 /*
- *   Crafted On Fri Dec 16 2022
+ *   Crafted On Mon Jan 16 2023
  *
  * 
  *   www.devlan.co.ke
@@ -64,39 +64,37 @@
  *   TORT OR ANY OTHER THEORY OF LIABILITY, EXCEED THE LICENSE FEE PAID BY YOU, IF ANY.
  *
  */
-session_start();
-require_once('../config/config.php');
-require_once('../helpers/authentication.php');
-require_once('../partials/head.php');
 ?>
+<h1></h1>
+<div class="d-flex justify-content-center">
+    <nav aria-label="Page navigation example">
+        <ul class="pagination">
+            <?php
+            $pagination_sql = "SELECT COUNT(*) FROM user WHERE user_access_level = 'User'";
+            $rs_result = mysqli_query($mysqli, $pagination_sql);
+            $row = mysqli_fetch_row($rs_result);
+            $total_records = $row[0];
 
-<body class='pace-top'>
+            $total_pages = ceil($total_records / $per_page_record);
+            $pagLink = "";
 
-    <div id="app" class="app app-full-height app-without-header">
+            if ($page >= 2) {
+                echo "<li class='page-item'><a class='page-link' href='sudo_users?page=" . ($page - 1) . "'>Previous</a></li>";
+            }
 
-        <div class="login">
-            <div class="login-content">
-                <form method="POST" name="login_form" autocomplete="off">
-                    <h1 class="text-center">Financial-AI <br>Confirm Password Reset Code</h1>
-                    <div class="text-white text-opacity-50 text-center mb-4">
-                        Enter the password reset code sent to your email.
-                    </div>
-                    <div class="mb-3">
-                        <div class="d-flex">
-                            <label class="form-label">Reset Code <span class="text-danger">*</span></label>
-                        </div>
-                        <input type="text" class="form-control form-control-lg bg-white bg-opacity-5" name="reset_code" required />
-                    </div>
-                    <button type="submit" name="Reset_Password_Confirm_Code" class="btn btn-outline-lime btn-lg d-block w-100 fw-500 mb-3">Reset</button>
-                </form>
-            </div>
+            for ($i = 1; $i <= $total_pages; $i++) {
+                if ($i == $page) {
+                    $pagLink .= "<li class='page-item active'><a class = 'active page-link' href='sudo_users?page=" . $i . "'>" . $i . " </a></li>";
+                } else {
+                    $pagLink .= "<li class='page-item'><a class='page-link' href='sudo_users?page=" . $i . "'>" . $i . " </a></li>";
+                }
+            };
+            echo $pagLink;
 
-        </div>
-    </div>
-    <!-- Scripts -->
-    <?php require_once('../partials/scripts.php'); ?>
-    <!-- End Scripts -->
-</body>
-
-
-</html>
+            if ($page < $total_pages) {
+                echo "<li class='page-item'><a class='page-link'  href='sudo_users?page=" . ($page + 1) . "'>  Next </a></li>";
+            }
+            ?>
+        </ul>
+    </nav>
+</div>

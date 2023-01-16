@@ -66,6 +66,7 @@
  */
 session_start();
 require_once('../config/config.php');
+include('../config/server_status.php');
 require_once('../config/checklogin.php');
 require_once('../partials/head.php');
 ?>
@@ -79,7 +80,7 @@ require_once('../partials/head.php');
         <!-- End Header -->
 
         <!-- Side Navigation Bar -->
-        <?php require_once('../partials/sidenavigation.php'); ?>
+        <?php require_once('../partials/sudo_navigation.php'); ?>
         <!-- End Side Navigatio Bar -->
 
 
@@ -110,7 +111,7 @@ require_once('../partials/head.php');
                 </div>
                 <?php
                 /* Inline Analytics */
-                require_once('../functions/analytics.php');
+                require_once('../functions/sudo_analytics.php');
                 ?>
                 <!-- My Assets -->
                 <div class="col-xl-3 col-lg-6">
@@ -122,7 +123,7 @@ require_once('../partials/head.php');
                             </div>
                             <div class="row align-items-center mb-2">
                                 <div class="col-12">
-                                    <h4 class="mb-0"><?php echo $my_assets; ?></h4>
+                                    <h4 class="mb-0"><?php echo $assets; ?></h4>
                                 </div>
                             </div>
                         </div>
@@ -145,7 +146,7 @@ require_once('../partials/head.php');
                             </div>
                             <div class="row align-items-center mb-2">
                                 <div class="col-12">
-                                    <h4 class="mb-0">Ksh <?php echo number_format($my_saving_amount, 2); ?></h4>
+                                    <h4 class="mb-0">Ksh <?php echo number_format($incomes, 2); ?></h4>
                                 </div>
                             </div>
                         </div>
@@ -163,12 +164,12 @@ require_once('../partials/head.php');
                     <div class="card mb-3">
                         <div class="card-body">
                             <div class="d-flex fw-bold small mb-3">
-                                <span class="flex-grow-1">BILLS</span>
+                                <span class="flex-grow-1">EXPENDITURES</span>
                                 <a href="#" data-toggle="card-expand" class="text-white text-opacity-50 text-decoration-none"><i class="bi bi-fullscreen"></i></a>
                             </div>
                             <div class="row align-items-center mb-2">
                                 <div class="col-12">
-                                    <h4 class="mb-0">Ksh <?php echo number_format($my_purchases, 2); ?></h4>
+                                    <h4 class="mb-0">Ksh <?php echo number_format($expenditures, 2); ?></h4>
                                 </div>
                             </div>
                         </div>
@@ -180,32 +181,18 @@ require_once('../partials/head.php');
                         </div>
                     </div>
                 </div>
-
-
 
                 <!-- My Current Financial Status -->
                 <div class="col-xl-3 col-lg-6">
                     <div class="card mb-3">
                         <div class="card-body">
                             <div class="d-flex fw-bold small mb-3">
-                                <span class="flex-grow-1">FINANCIAL STATUS</span>
+                                <span class="flex-grow-1">USERS</span>
                                 <a href="#" data-toggle="card-expand" class="text-white text-opacity-50 text-decoration-none"><i class="bi bi-fullscreen"></i></a>
                             </div>
                             <div class="row align-items-center mb-2">
                                 <div class="col-12">
-                                    <?php if ($my_saving_amount >= $my_purchases) { ?>
-                                        <h4 class="mb-0 text-lime">
-                                            Ksh <?php echo number_format($my_curent_financial_status); ?>
-                                        </h4>
-
-                                    <?php } else if ($my_saving_amount <= $my_purchases) { ?>
-                                        <h4 class="mb-0 text-warning">
-                                            Ksh <?php echo number_format($my_curent_financial_status); ?>
-                                        </h4>
-
-                                    <?php } else { ?>
-                                        <h4 class="mb-0 text-danger">Please Audit Your Finances</h4>
-                                    <?php } ?>
+                                    <h4 class="mb-0"><?php echo $user_registrations; ?></h4>
                                 </div>
                             </div>
                         </div>
@@ -217,7 +204,10 @@ require_once('../partials/head.php');
                         </div>
                     </div>
                 </div>
-                <?php require_once('../partials/dashboard_recents.php'); ?>
+
+                <!-- Start Widgets  -->
+                <?php include('../partials/sudo_dashboard_recents.php'); ?>
+                <!-- End Dashboard -->
             </div>
         </div>
     </div>

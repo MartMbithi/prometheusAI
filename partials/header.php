@@ -21,7 +21,7 @@
     <div class="brand">
         <a href="dashboard" class="brand-logo">
             <span class="brand-img">
-                <span class="brand-img-text text-theme">P</span>
+                <span class="brand-img-text text-lime">P</span>
             </span>
             <span class="brand-text">PrometheusAI</span>
         </a>
@@ -44,7 +44,8 @@
                 </div>
             </a>
             <div class="dropdown-menu dropdown-menu-end me-lg-3 fs-11px mt-1">
-                <button class="dropdown-item d-flex align-items-center" data-bs-toggle="modal" data-bs-target="#logout_modal">End Session <i class="bi bi-lock  ms-auto text-theme fs-16px my-n1"></i></button>
+                <a class="dropdown-item d-flex align-items-center" href="profile_settings">Settings <i class="bi bi-person  ms-auto text-lime fs-16px my-n1"></i></a>
+                <button class="dropdown-item d-flex align-items-center" data-bs-toggle="modal" data-bs-target="#logout_modal">End Session <i class="bi bi-lock  ms-auto text-lime fs-16px my-n1"></i></button>
             </div>
         </div>
     </div>
@@ -59,7 +60,7 @@
                         Heads Up😉! <br><br>
                         Are You Sure You Want To Terminate This Session?
                     </h4>
-                    <button type="button" class="text-center btn btn-success" data-bs-dismiss="modal">No</button>
+                    <button type="button" class="text-center btn btn-lime" data-bs-dismiss="modal">No</button>
                     <input type="submit" value="Yes, Terminate" class="text-center btn btn-danger">
                 </div>
             </form>

@@ -68,7 +68,7 @@ session_start();
 require_once('../config/config.php');
 require_once('../config/codeGen.php');
 require_once('../config/checklogin.php');
-require_once('../helpers/savings.php');
+require_once('../helpers/users.php');
 require_once('../partials/head.php');
 ?>
 
@@ -81,7 +81,7 @@ require_once('../partials/head.php');
         <!-- End Header -->
 
         <!-- Side Navigation Bar -->
-        <?php require_once('../partials/sidenavigation.php'); ?>
+        <?php require_once('../partials/sudo_navigation.php'); ?>
         <!-- End Side Navigatio Bar -->
 
         <button class="app-sidebar-mobile-backdrop" data-toggle-target=".app" data-toggle-class="app-sidebar-mobile-toggled"></button>
@@ -95,74 +95,13 @@ require_once('../partials/head.php');
                     <div class="row">
                         <div class="col-xl-12">
                             <h1 class="page-header">
-                                My Savings / Revenues.
+                                Registered Users
                             </h1>
-                            <div class="d-flex justify-content-end">
-                                <div class="btn-group">
-                                    <button type="button" data-bs-toggle="modal" data-bs-target="#add_modal" class="btn-sm btn btn-outline-lime"><span>Register New Saving</button>
-                                    <button type="button" data-bs-toggle="modal" data-bs-target="#download_savings" class="btn-sm btn btn-outline-lime"><span>Download</button>
-                                </div>
-                            </div>
-
-                            <!-- Add Savings -->
-                            <div class="modal fade fixed-right" id="add_modal" tabindex="-1" role="dialog" aria-hidden="true">
-                                <div class="modal-dialog modal-xl modal-dialog-centered" role="document">
-                                    <div class="modal-content">
-                                        <div class="modal-header align-items-center">
-                                            <div class="modal-title">
-                                                <h6 class="mb-0">Register New Bill</h6>
-                                            </div>
-                                            <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-                                        </div>
-                                        <form method="post" enctype="multipart/form-data" role="form">
-                                            <div class="modal-body">
-                                                <div class="row">
-                                                    <div class="form-group col-md-12 mb-3">
-                                                        <label for="">Account</label>
-                                                        <input type="text" required name="saving_account" class="form-control">
-                                                    </div>
-                                                    <div class="form-group col-md-6 mb-3">
-                                                        <label for="">Amount</label>
-                                                        <input type="text" required name="saving_amount" class="form-control">
-                                                    </div>
-                                                    <div class="form-group col-md-6 mb-3">
-                                                        <label for="">Date Posted</label>
-                                                        <input type="date" required name="saving_date" class="form-control">
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="modal-footer">
-                                                <button type="submit" name="Add_Savings" class="btn btn-outline-lime">Add</button>
-                                            </div>
-                                        </form>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- End Savings -->
-
-                            <!-- Download Savings -->
-                            <div class="modal fade" id="download_savings" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" data-backdrop="false" style="background-color: rgba(0, 0, 0, 0.5);">
-                                <div class="modal-dialog modal-dialog-centered" role="document">
-                                    <div class="modal-content">
-                                        <div class="modal-body text-center text-danger">
-                                            <h4>
-                                                Heads Up!
-                                                <br>
-                                                Export Savings Records As
-                                                <br>
-                                            </h4>
-                                            <a href="reports?module=savings&type=PDF" class="text-center btn btn-outline-lime">PDF</a>
-                                            <a href="reports?module=savings&type=CSV" class="text-center btn btn-outline-lime">CSV</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- End Savings -->
                             <hr class="mb-4" />
                             <div class="d-flex justify-content-center">
                                 <div class="row g-3 align-items-center">
                                     <div class="col-auto">
-                                        <input class="form-control" type="text" id="Asset_Category_Search" onkeyup="FilterFunction()" placeholder="Search Savings">
+                                        <input class="form-control" type="text" id="Asset_Category_Search" onkeyup="FilterFunction()" placeholder="Search Users">
                                     </div>
                                 </div>
                             </div>
@@ -176,28 +115,28 @@ require_once('../partials/head.php');
                                     $page = 1;
                                 }
                                 $start_from = ($page - 1) * $per_page_record;
-                                $saving_sql = mysqli_query(
+                                $users_sql = mysqli_query(
                                     $mysqli,
-                                    "SELECT * FROM savings 
-                                    WHERE saving_user_id = '{$_SESSION['user_id']}'
-                                    ORDER BY  saving_date DESC LIMIT $start_from, $per_page_record"
+                                    "SELECT * FROM user 
+                                    WHERE user_access_level = 'User'
+                                    ORDER BY  user_name ASC LIMIT $start_from, $per_page_record"
                                 );
                                 $cnt = 1;
-                                if (mysqli_num_rows($saving_sql) > 0) {
-                                    while ($savings = mysqli_fetch_array($saving_sql)) {
+                                if (mysqli_num_rows($users_sql) > 0) {
+                                    while ($users = mysqli_fetch_array($users_sql)) {
                                 ?>
                                         <div class="col-sm-12 col-lg-4 col-xl-4">
                                             <div class="card Asset_Category_Name">
                                                 <div class="card-header fw-bold small"><?php echo $cnt; ?></div>
                                                 <div class="card-body">
-                                                    <h5 class="card-title"><?php echo $savings['saving_account']; ?></h5>
+                                                    <h5 class="card-title"><?php echo $users['user_name']; ?></h5>
                                                     <h6 class="card-subtitle mb-3 text-white text-opacity-50">
-                                                        Amount: Ksh <?php echo number_format($savings['saving_amount']); ?> <br>
-                                                        Date Posted: <?php echo date('d M Y', strtotime($savings['saving_date'])); ?><br>
+                                                        Phone Number: <?php echo $users['user_phone']; ?> <br>
+                                                        Email: <?php echo $users['user_email']; ?><br>
+                                                        Date Joined: <?php echo date('d M Y', strtotime($users['user_date_joined'])); ?>
                                                     </h6>
                                                     <div class="card-footer">
-                                                        <button data-bs-toggle="modal" data-bs-target="#update_<?php echo $savings['saving_id']; ?>" class="btn btn-sm btn-outline-warning"><i class="fas fa-edit"></i> Edit</button>
-                                                        <button data-bs-toggle="modal" data-bs-target="#delete_<?php echo $savings['saving_id']; ?>" class="btn btn-sm btn-outline-danger"><i class="fas fa-trash"></i> Delete</button>
+                                                        <button data-bs-toggle="modal" data-bs-target="#delete_<?php echo $users['user_id']; ?>" class="btn btn-sm btn-outline-danger"><i class="fas fa-trash"></i> Delete</button>
                                                     </div>
                                                 </div>
                                                 <div class="card-arrow">
@@ -211,16 +150,16 @@ require_once('../partials/head.php');
                                 <?php
                                         $cnt = $cnt + 1;
                                         /* Modals  */
-                                        include('../modals/savings.php');
+                                        include('../modals/users.php');
                                     }
                                 } else {
                                     /* 404 */
-                                    include('../errors/savings_404.php');
+                                    include('../errors/users_404.php');
                                 } ?>
                             </div>
                         </div>
                     </div>
-                    <?php include('../paginations/savings.php'); ?>
+                    <?php include('../paginations/users.php'); ?>
                 </div>
             </div>
         </div>

@@ -1,6 +1,6 @@
 <?php
 /*
- *   Crafted On Fri Dec 16 2022
+ *   Crafted On Mon Jan 09 2023
  *
  * 
  *   www.devlan.co.ke
@@ -64,39 +64,56 @@
  *   TORT OR ANY OTHER THEORY OF LIABILITY, EXCEED THE LICENSE FEE PAID BY YOU, IF ANY.
  *
  */
-session_start();
-require_once('../config/config.php');
-require_once('../helpers/authentication.php');
-require_once('../partials/head.php');
-?>
+function filterData(&$str)
+{
+    $str = preg_replace("/\t/", "\\t", $str);
+    $str = preg_replace("/\r?\n/", "\\n", $str);
+    if (strstr($str, '"')) $str = '"' . str_replace('"', '""', $str) . '"';
+}
 
-<body class='pace-top'>
+/* Excel File Name */
+$fileName = 'Assets Reports' . 'xls';
 
-    <div id="app" class="app app-full-height app-without-header">
-
-        <div class="login">
-            <div class="login-content">
-                <form method="POST" name="login_form" autocomplete="off">
-                    <h1 class="text-center">Financial-AI <br>Confirm Password Reset Code</h1>
-                    <div class="text-white text-opacity-50 text-center mb-4">
-                        Enter the password reset code sent to your email.
-                    </div>
-                    <div class="mb-3">
-                        <div class="d-flex">
-                            <label class="form-label">Reset Code <span class="text-danger">*</span></label>
-                        </div>
-                        <input type="text" class="form-control form-control-lg bg-white bg-opacity-5" name="reset_code" required />
-                    </div>
-                    <button type="submit" name="Reset_Password_Confirm_Code" class="btn btn-outline-lime btn-lg d-block w-100 fw-500 mb-3">Reset</button>
-                </form>
-            </div>
-
-        </div>
-    </div>
-    <!-- Scripts -->
-    <?php require_once('../partials/scripts.php'); ?>
-    <!-- End Scripts -->
-</body>
+/* Excel Column Name */
+$fields = array('#', 'User Name', 'Phone Number', 'Asset Category', 'Asset Name', 'Asset Cost (Ksh)', 'Asset Status', 'Asset Date Purchased');
 
 
-</html>
+/* Implode Excel Data */
+$excelData = implode("\t", array_values($fields)) . "\n";
+
+/* Fetch All Records From The Database */
+$query = $mysqli->query("SELECT * FROM assets a INNER JOIN 
+assets_category ac ON a.asset_category_id = ac.category_id
+INNER JOIN user u ON u.user_id = a.asset_user_id
+ORDER BY  asset_name ASC");
+if ($query->num_rows > 0) {
+    /* Load All Fetched Rows */
+    $cnt = 1;
+    while ($row = $query->fetch_assoc()) {
+        /* Hardwire This Data Into .xls File */
+        $lineData = array(
+            $cnt,
+            $row['user_name'],
+            $row['user_phone'],
+            $row['category_name'],
+            $row['asset_name'],
+            $row['asset_cost'],
+            $row['asset_status'],
+            date('d M Y', strtotime($row['asset_date_purchased']))
+        );
+        $cnt = $cnt + 1;/* Auto increment asset number */
+        array_walk($lineData, 'filterData');
+        $excelData .= implode("\t", array_values($lineData)) . "\n";
+    }
+} else {
+    $excelData .= 'No Asset Records Available...' . "\n";
+}
+
+/* Generate Header File Encodings For Download */
+header("Content-Type: application/vnd.ms-excel");
+header("Content-Disposition: attachment; filename=\"$fileName\"");
+
+/* Render  Excel Data For Download */
+echo $excelData;
+
+exit;
