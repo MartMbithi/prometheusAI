@@ -265,6 +265,17 @@
                                 <span class="badge d-block bg-lime text-theme-900 rounded-0 pt-5px w-70px" style="min-height: 18px"><?php echo $total_time; ?> sec</span>
                             </td>
                         </tr>
+                        <tr>
+                            <td>
+                                <span class="d-flex align-items-center">
+                                    <i class="bi bi-circle-fill fs-6px text-theme me-2"></i>
+                                    ⏱️ Database Version:
+                                </span>
+                            </td>
+                            <td>
+                                <span class="badge d-block bg-lime text-theme-900 rounded-0 pt-5px w-90px" style="min-height: 18px"><?php echo $db_version; ?></span>
+                            </td>
+                        </tr>
                     </tbody>
                 </table>
             </div>

@@ -143,3 +143,6 @@ if (isset($_GET['json'])) {
     echo '{"ram":' . $memusage . ',"cpu":' . $cpuload . ',"disk":' . $diskusage . ',"connections":' . $totalconnections . '}';
     exit;
 }
+
+/* Mysql Database Server Status */
+$db_version = mysqli_get_server_info($mysqli);
