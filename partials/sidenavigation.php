@@ -40,13 +40,22 @@
                     <span class="menu-text">Savings</span>
                 </a>
             </div>
-            <div class="menu-header">Super User Module</div>
-            <div class="menu-item">
-                <a href="sudo_dashboard" class="menu-link">
-                    <span class="menu-icon"><i class="bi bi-bar-chart"></i></span>
-                    <span class="menu-text">Analytics</span>
-                </a>
-            </div>
+            <?php
+            /* 
+            Only Show This Link If User Has
+            Super Powers
+             */
+            $super_powers = mysqli_real_escape_string($mysqli, $_SESSION['user_access_level']);
+            if ($user_access_level == 'Sudo') {
+            ?>
+                <div class="menu-header">Super User Module</div>
+                <div class="menu-item">
+                    <a href="sudo_dashboard" class="menu-link">
+                        <span class="menu-icon"><i class="bi bi-bar-chart"></i></span>
+                        <span class="menu-text">Analytics</span>
+                    </a>
+                </div>
+            <?php  } ?>
         </div>
     </div>
 </div>
