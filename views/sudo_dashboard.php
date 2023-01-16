@@ -79,7 +79,7 @@ require_once('../partials/head.php');
         <!-- End Header -->
 
         <!-- Side Navigation Bar -->
-        <?php require_once('../partials/sidenavigation.php'); ?>
+        <?php require_once('../partials/sudo_navigation.php'); ?>
         <!-- End Side Navigatio Bar -->
 
 
