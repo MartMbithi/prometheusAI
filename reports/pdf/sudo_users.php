@@ -179,8 +179,8 @@ $html =
                             ';
                             $users_sql = mysqli_query(
                                 $mysqli,
-                                "SELECT * FROM users
-                                ORDER BY user_date_joines DESC"
+                                "SELECT * FROM user
+                                ORDER BY user_date_joined DESC"
                             );
                             if (mysqli_num_rows($users_sql) > 0) {
                                 while ($users = mysqli_fetch_array($users_sql)) {
