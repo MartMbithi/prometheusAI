@@ -183,7 +183,7 @@ $html =
                                 $mysqli,
                                 "SELECT * FROM assets a INNER JOIN 
                                 assets_category ac ON a.asset_category_id = ac.category_id
-                                INNER JOIN users u ON u.user_id = a.asset_user_id
+                                INNER JOIN user u ON u.user_id = a.asset_user_id
                                 ORDER BY  asset_name ASC"
                             );
                             $cumulative_assets_cost = 0;
@@ -206,7 +206,7 @@ $html =
                             }
                             $html .= '
                             <tr>
-                                <td  colspan="4"><b>Total Net Worth Amount: </b></td>
+                                <td  colspan="5"><b>Total Net Worth Amount: </b></td>
                                 <td><b>' . "Ksh " . number_format($cumulative_assets_cost) . '</b></td>
                             </tr>
                         </tbody>
