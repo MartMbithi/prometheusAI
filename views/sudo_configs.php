@@ -117,7 +117,7 @@ require_once('../partials/head.php');
                                         </div>
                                         <div class="form-group col-md-6 mb-3">
                                             <label for="">Password </label>
-                                            <input type="text" required name="remote_db_password" value="<?php echo $dbpass; ?>" class="form-control">
+                                            <input type="text" name="remote_db_password" value="<?php echo $dbpass; ?>" class="form-control">
                                         </div>
                                     </div>
                                 </div>
