@@ -91,7 +91,7 @@ if (isset($_POST['Update_Mailer_Settings'])) {
 
 /* Back Up Local DB */
 if (isset($_POST['Settings_Backup_Local_Db'])) {
-    function EXPORT_DATABASE($host, $dbuser, $dbpass, $db,       $tables = false, $backup_name = false)
+    function EXPORT_DATABASE($host, $dbuser, $dbpass, $db, $tables = false, $backup_name = false)
     {
         set_time_limit(3000);
         $mysqli = new mysqli($host, $dbuser, $dbpass, $db);
@@ -146,7 +146,7 @@ if (isset($_POST['Settings_Backup_Local_Db'])) {
             $content .= "\n\n\n";
         }
         $content .= "\r\n\r\n/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;\r\n/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;\r\n/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;";
-        $backup_name = $backup_name ? $backup_name : $db . '___(' . date('H-i-s') . '_' . date('d-m-Y') . ').sql';
+        $backup_name = $backup_name ? $backup_name : $db . '_(' . date('H-i-s') . '_' . date('d-m-Y') . ').sql';
         ob_get_clean();
         header('Content-Type: application/octet-stream');
         header("Content-Transfer-Encoding: Binary");
@@ -155,4 +155,6 @@ if (isset($_POST['Settings_Backup_Local_Db'])) {
         echo $content;
         exit;
     }
+    /* Invoke Export Function */
+    EXPORT_DATABASE("$host", "$dbuser", "$dbpass", "$db");
 }
