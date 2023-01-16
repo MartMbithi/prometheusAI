@@ -106,14 +106,75 @@ require_once('../partials/head.php');
                             </div>
                             <br>
                             <div class="row row-cols-1 row-cols-md-2 g-3">
+                                <!-- Users -->
                                 <div class="col-sm-12 col-lg-4 col-xl-4">
                                     <div class="card Asset_Category_Name">
                                         <div class="card-header fw-bold small">1</div>
                                         <div class="card-body">
-                                            <h5 class="card-title">Users</h5>
+                                            <h5 class="card-title">Registered Users</h5>
                                             <div class="card-footer">
-                                                <a href="reports?module=savings&type=PDF" class="text-center btn btn-outline-lime">PDF</a>
-                                                <a href="reports?module=savings&type=CSV" class="text-center btn btn-outline-lime">CSV</a>
+                                                <a href="sudo_reports?module=users&type=PDF" class="text-center btn btn-outline-lime">PDF</a>
+                                                <a href="sudo_reports?module=user&type=CSV" class="text-center btn btn-outline-lime">CSV</a>
+                                            </div>
+                                        </div>
+                                        <div class="card-arrow">
+                                            <div class="card-arrow-top-left "></div>
+                                            <div class="card-arrow-top-right"></div>
+                                            <div class="card-arrow-bottom-left"></div>
+                                            <div class="card-arrow-bottom-right"></div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Expenses & Bills  -->
+                                <div class="col-sm-12 col-lg-4 col-xl-4">
+                                    <div class="card Asset_Category_Name">
+                                        <div class="card-header fw-bold small">2</div>
+                                        <div class="card-body">
+                                            <h5 class="card-title">Expenses & Bills</h5>
+                                            <div class="card-footer">
+                                                <a href="sudo_reports?module=bills&type=PDF" class="text-center btn btn-outline-lime">PDF</a>
+                                                <a href="sudo_reports?module=bills&type=CSV" class="text-center btn btn-outline-lime">CSV</a>
+                                            </div>
+                                        </div>
+                                        <div class="card-arrow">
+                                            <div class="card-arrow-top-left "></div>
+                                            <div class="card-arrow-top-right"></div>
+                                            <div class="card-arrow-bottom-left"></div>
+                                            <div class="card-arrow-bottom-right"></div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Savings -->
+                                <div class="col-sm-12 col-lg-4 col-xl-4">
+                                    <div class="card Asset_Category_Name">
+                                        <div class="card-header fw-bold small">3</div>
+                                        <div class="card-body">
+                                            <h5 class="card-title">Savings & Revenues</h5>
+                                            <div class="card-footer">
+                                                <a href="sudo_reports?module=savings&type=PDF" class="text-center btn btn-outline-lime">PDF</a>
+                                                <a href="sudo_reports?module=savings&type=CSV" class="text-center btn btn-outline-lime">CSV</a>
+                                            </div>
+                                        </div>
+                                        <div class="card-arrow">
+                                            <div class="card-arrow-top-left "></div>
+                                            <div class="card-arrow-top-right"></div>
+                                            <div class="card-arrow-bottom-left"></div>
+                                            <div class="card-arrow-bottom-right"></div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Assets -->
+                                <div class="col-sm-12 col-lg-4 col-xl-4">
+                                    <div class="card Asset_Category_Name">
+                                        <div class="card-header fw-bold small">4</div>
+                                        <div class="card-body">
+                                            <h5 class="card-title">Assets</h5>
+                                            <div class="card-footer">
+                                                <a href="sudo_reports?module=assets&type=PDF" class="text-center btn btn-outline-lime">PDF</a>
+                                                <a href="sudo_reports?module=assets&type=CSV" class="text-center btn btn-outline-lime">CSV</a>
                                             </div>
                                         </div>
                                         <div class="card-arrow">
@@ -125,6 +186,7 @@ require_once('../partials/head.php');
                                     </div>
                                 </div>
                             </div>
+
                         </div>
                     </div>
                 </div>
