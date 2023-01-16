@@ -134,37 +134,30 @@
                 <table class="table table-striped table-borderless mb-2px small text-nowrap">
                     <tbody>
                         <?php
-                        /* Fetch Recent Bills */
-                        $recent_incomes_sql = mysqli_query(
-                            $mysqli,
-                            "SELECT * FROM savings ORDER BY saving_date DESC LIMIT 10"
-                        );
-                        if (mysqli_num_rows($recent_incomes_sql) > 0) {
-                            while ($recent_income = mysqli_fetch_array($recent_incomes_sql)) {
+                        function get_server_memory_usage()
+                        {
+
+                            $free = shell_exec('free');
+                            $free = (string)trim($free);
+                            $free_arr = explode("\n", $free);
+                            $mem = explode(" ", $free_arr[1]);
+                            $mem = array_filter($mem);
+                            $mem = array_merge($mem);
+                            $memory_usage = $mem[2] / $mem[1] * 100;
+
+                            return $memory_usage;
+                        }
                         ?>
-                                <tr>
-                                    <td>
-                                        <span class="d-flex align-items-center">
-                                            <i class="bi bi-circle-fill fs-6px text-theme me-2"></i>
-                                            <?php echo $recent_income['saving_account']; ?>
-                                        </span>
-                                    </td>
-                                    <td>Total amount in Ksh<?php echo number_format($recent_income['saving_amount']); ?></td>
-                                    <td>
-                                        <span class="badge d-block bg-lime text-theme-900 rounded-0 pt-5px w-70px" style="min-height: 18px"><?php echo date('d M Y', strtotime($recent_income['saving_date'])); ?></span>
-                                    </td>
-                                </tr>
-                            <?php }
-                        } else { ?>
-                            <tr>
-                                <td>
-                                    <span class="d-flex align-items-center text-warning">
-                                        <i class="bi bi-circle-fill fs-6px text-danger me-2"></i>
-                                        No Savings & Expenditures Registered
-                                    </span>
-                                </td>
-                            </tr>
-                        <?php } ?>
+                        <tr>
+                            <td>
+                                <span class="d-flex align-items-center">
+                                    <i class="bi bi-circle-fill fs-6px text-theme me-2"></i>
+                                    <?php echo $memory_usage ; ?>
+                                </span>
+                            </td>
+                            <td>
+                            </td>
+                        </tr>
                     </tbody>
                 </table>
             </div>
