@@ -114,7 +114,7 @@ require_once('../partials/head.php');
                                             <h5 class="card-title">Registered Users</h5>
                                             <div class="card-footer">
                                                 <a href="sudo_reports_generate?module=users&type=PDF" class="text-center btn btn-outline-lime">PDF</a>
-                                                <a href="sudo_reports_generate?module=user&type=CSV" class="text-center btn btn-outline-lime">CSV</a>
+                                                <a href="sudo_reports_generate?module=users&type=CSV" class="text-center btn btn-outline-lime">CSV</a>
                                             </div>
                                         </div>
                                         <div class="card-arrow">
