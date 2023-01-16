@@ -113,6 +113,19 @@ if ($report_module == 'assets') {
         header('Location: sudo_reports');
         exit;
     }
+} else if ($report_module == 'users') {
+    if ($report_type == 'CSV') {
+        /* Generate CSV Reort */
+        include('../reports/csv/sudo_users.php');
+    } else if ($report_type == 'PDF') {
+        /* Generate PDF Report */
+        include('../reports/pdf/sudo_users.php');
+    } else {
+        /* Error */
+        $_SESSION['err'] = 'System error, please reload your session';
+        header('Location: sudo_reports');
+        exit;
+    }
 } else {
     /* Default Error */
     $_SESSION['err'] = 'System error, please reload your session';
