@@ -156,5 +156,9 @@ if (isset($_POST['Settings_Backup_Local_Db'])) {
         exit;
     }
     /* Invoke Export Function */
-    EXPORT_DATABASE("$host", "$dbuser", "$dbpass", "$db");
+    if (EXPORT_DATABASE("$host", "$dbuser", "$dbpass", "$db")) {
+        $success = "Database exported";
+    } else {
+        $err  =  "Failed, please try again";
+    }
 }
