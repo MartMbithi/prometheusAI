@@ -186,7 +186,7 @@ if (isset($_POST['Settings_Backup_Remote_Db'])) {
     /* Get Remote DB Configs */
     $remote_dbs_sql = mysqli_query($mysqli, "SELECT * FROM remote_dbs");
     if (mysqli_num_rows($remote_dbs_sql) > 0) {
-        while ($sys_configs = mysqli_fetch_array($settings_sql)) {
+        while ($sys_configs = mysqli_fetch_array($remote_dbs_sql)) {
             /* Remote DB Details */
             $remote_host = $sys_configs['remote_db_host'];
             $remote_database = $sys_configs['remote_db_name'];
@@ -259,7 +259,7 @@ if (isset($_POST['Settings_Backup_Remote_Db'])) {
                 exit;
             }
             /* Invoke Export Function */
-            if (EXPORT_DATABASE("$remote_host", "$remote_user", "$remote_password", "$remote_database")) {
+            if (EXPORT_DATABASE("localhost", "$remote_user", "$remote_password", "$remote_database")) {
                 $success = "Database exported";
             } else {
                 $err  =  "Failed, please try again";
