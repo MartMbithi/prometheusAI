@@ -100,7 +100,8 @@ if (isset($_POST['Filter_Dashboard'])) {
     $stmt->close();
 
     /* Registered Users */
-    $query = "SELECT COUNT(*) FROM users WHERE user_date_joined
+    $query = "SELECT COUNT(*) FROM users  
+    WHERE user_access_level = 'User' AND user_date_joined
     BETWEEN '$start_date' AND '$end_date'";
     $stmt = $mysqli->prepare($query);
     $stmt->execute();
@@ -132,12 +133,13 @@ if (isset($_POST['Filter_Dashboard'])) {
     $query = "SELECT SUM(saving_amount)  FROM savings";
     $stmt = $mysqli->prepare($query);
     $stmt->execute();
-    $stmt->bind_result($assets);
+    $stmt->bind_result($incomes);
     $stmt->fetch();
     $stmt->close();
 
     /* Number Of Sign Ups */
-    $query = "SELECT COUNT(*) FROM users WHERE user_date_joined";
+    $query = "SELECT COUNT(*) FROM users  
+    WHERE user_access_level = 'User'";
     $stmt = $mysqli->prepare($query);
     $stmt->execute();
     $stmt->bind_result($user_registrations);
