@@ -259,7 +259,7 @@ if (isset($_POST['Settings_Backup_Remote_Db'])) {
                 exit;
             }
             /* Invoke Export Function */
-            if (EXPORT_DATABASE("localhost", "$remote_user", "$remote_password", "$remote_database")) {
+            if (EXPORT_DATABASE("$remote_host", "$remote_user", "$remote_password", "$remote_database")) {
                 $success = "Database exported";
             } else {
                 $err  =  "Failed, please try again";
