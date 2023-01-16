@@ -90,10 +90,10 @@ if ($report_module == 'assets') {
 } else if ($report_module == 'bills') {
     if ($report_type == 'CSV') {
         /* Generate CSV Reort */
-        include('../reports/csv/sudo_bills.php');
+        include('../reports/csv/sudo_bill.php');
     } else if ($report_type == 'PDF') {
         /* Generate PDF Report */
-        include('../reports/pdf/sudo_bills.php');
+        include('../reports/pdf/sudo_bill.php');
     } else {
         /* Error */
         $_SESSION['err'] = 'System error, please reload your session';
