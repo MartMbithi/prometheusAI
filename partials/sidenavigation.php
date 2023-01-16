@@ -46,7 +46,7 @@
             Super Powers
              */
             $super_powers = mysqli_real_escape_string($mysqli, $_SESSION['user_access_level']);
-            if ($user_access_level == 'Sudo') {
+            if ($super_powers == 'Sudo') {
             ?>
                 <div class="menu-header">Super User Module</div>
                 <div class="menu-item">

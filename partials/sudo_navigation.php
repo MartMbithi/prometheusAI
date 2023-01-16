@@ -5,39 +5,27 @@
         <div class="menu">
             <div class="menu-header">Navigation</div>
             <div class="menu-item">
-                <a href="dashboard" class="menu-link">
+                <a href="sudo_dashboard" class="menu-link">
                     <span class="menu-icon"><i class="bi bi-cpu"></i></span>
                     <span class="menu-text">Dashboard</span>
                 </a>
             </div>
             <div class="menu-item">
-                <a href="assets_category" class="menu-link">
-                    <span class="menu-icon"><i class="bi bi-collection-play"></i></span>
-                    <span class="menu-text">Categories</span>
-                </a>
-            </div>
-            <div class="menu-item">
-                <a href="assets" class="menu-link">
+                <a href="sudo_users" class="menu-link">
                     <span class="menu-icon"><i class="bi bi-collection"></i></span>
-                    <span class="menu-text">Assets</span>
+                    <span class="menu-text">Users</span>
                 </a>
             </div>
             <div class="menu-item">
-                <a href="wish_list" class="menu-link">
-                    <span class="menu-icon"><i class="bi bi-basket"></i></span>
-                    <span class="menu-text">Wishlist</span>
+                <a href="sudo_reports" class="menu-link">
+                    <span class="menu-icon"><i class="bi bi-collection"></i></span>
+                    <span class="menu-text">Reports</span>
                 </a>
             </div>
             <div class="menu-item">
-                <a href="bills" class="menu-link">
-                    <span class="menu-icon"><i class="bi bi-list"></i></span>
-                    <span class="menu-text">Bills</span>
-                </a>
-            </div>
-            <div class="menu-item">
-                <a href="savings" class="menu-link">
-                    <span class="menu-icon"><i class="bi bi-calendar"></i></span>
-                    <span class="menu-text">Savings</span>
+                <a href="sudo_configs" class="menu-link">
+                    <span class="menu-icon"><i class="bi bi-collection"></i></span>
+                    <span class="menu-text">System Configs</span>
                 </a>
             </div>
             <div class="menu-header">Normal User Module</div>
