@@ -208,32 +208,17 @@ require_once('../partials/head.php');
                                                         <div class="tab-pane fade" id="profile-tab-pane" role="tabpanel" aria-labelledby="profile-tab" tabindex="0">
                                                             <br>
                                                             <h4 class="text-center">
-                                                                Local Database Configurations
+                                                                Database Configurations
                                                             </h4>
                                                             <div class="d-flex justify-content-center mb-3">
                                                                 <div class="btn-group">
                                                                     <br>
                                                                     <form method="post">
                                                                         <button type="submit" name="Settings_Backup_Local_Db" class="btn-sm btn btn-outline-lime"><span>Backup</button>
-                                                                        <button type="submit" name="Settings_Sync_Local_Db" class="btn-sm btn btn-outline-lime"><span>Synchronize To Remote</button>
                                                                     </form>
                                                                 </div>
                                                             </div>
                                                             <hr>
-                                                            <br>
-                                                            <h4 class="text-center">
-                                                                Remote Database Configurations
-                                                            </h4>
-                                                            <div class="d-flex justify-content-center mb-3">
-                                                                <div class="btn-group">
-                                                                    <br>
-                                                                    <form method="post">
-                                                                        <button type="button" data-bs-toggle="modal" data-bs-target="#add_modal" class="btn-sm btn btn-outline-lime"><span>Add Remote DB</button>
-                                                                        <button type="submit" name="Settings_Backup_Remote_Db" class="btn-sm btn btn-outline-lime"><span>Backup</button>
-                                                                        <button type="submit" name="Settings_Sync_Remote_Db" class="btn-sm btn btn-outline-lime"><span>Synchronize To Remote</button>
-                                                                    </form>
-                                                                </div>
-                                                            </div>
                                                         </div>
                                                     </div>
                                                 </div>
