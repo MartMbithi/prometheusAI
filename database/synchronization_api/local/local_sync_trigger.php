@@ -1,6 +1,6 @@
 <?php
 /*
- *   Crafted On Fri Dec 16 2022
+ *   Crafted On Tue Jan 17 2023
  *
  * 
  *   www.devlan.co.ke
@@ -65,11 +65,10 @@
  *
  */
 
+@include("class/server1.class.php");
+$server1 = new server1();
+$output = $server1->getdbupdate();
 
-/* Procedural Database Connecrions */
-$dbuser = "root"; /* Database Username */
-$dbpass = ""; /* Database Username Password */
-$host = "localhost"; /* Database Host */
-$db = "prometheusai";  /* Database Name */
-$db_sync_url = "http://192.168.1.116/prometheusAI/database/synchronization_api/remote/remote_sync_trigger.php";/* Sync Url For Remote DB */
-$mysqli = new mysqli($host, $dbuser, $dbpass, $db); /* Connection Function */
+echo "<pre>";
+print_r($output);
+echo "</pre>";

@@ -1,6 +1,6 @@
 <?php
 /*
- *   Crafted On Fri Dec 16 2022
+ *   Crafted On Tue Jan 17 2023
  *
  * 
  *   www.devlan.co.ke
@@ -66,10 +66,74 @@
  */
 
 
-/* Procedural Database Connecrions */
-$dbuser = "root"; /* Database Username */
-$dbpass = ""; /* Database Username Password */
-$host = "localhost"; /* Database Host */
-$db = "prometheusai";  /* Database Name */
-$db_sync_url = "http://192.168.1.116/prometheusAI/database/synchronization_api/remote/remote_sync_trigger.php";/* Sync Url For Remote DB */
-$mysqli = new mysqli($host, $dbuser, $dbpass, $db); /* Connection Function */
+@include("includes/config.php");
+class server2
+{
+
+	public function __construct()
+	{
+		$this->dbconnection();
+	}
+
+	private function dbconnection()
+	{
+		$this->con = mysqli_connect(HOST, DBUSER, DBPASSWORD, DBNAME) or mysqli_connect_error();
+	}
+
+	public function table_update(array $post_array)
+	{
+
+		$table_name = @$post_array['table_name'];
+		$table_structure = @$post_array['table_structure'];
+		$table_data = @$post_array['table_data'];
+
+		//DROP CURRENT TABLE
+		mysqli_query($this->con, "drop table `" . $table_name . "`");
+
+		//CREATE TABLE WITH NEW STRUCTURE
+		mysqli_query($this->con, $table_structure);
+
+		//INSERT TABALE DATA
+
+		if (count($table_data) > 0) {
+			$collumn_query = mysqli_query($this->con, "SHOW COLUMNS FROM `" . $table_name . "`");
+			if (mysqli_num_rows($collumn_query) > 0) {
+				$data_insert_query = "INSERT INTO `" . $table_name . "` ( ";
+
+				while ($collumn_data = mysqli_fetch_assoc($collumn_query)) {
+					$data_insert_query .= "`" . $collumn_data['Field'] . "`, ";
+				}
+				$data_insert_query = trim($data_insert_query, ", ") . " ) VALUES ";
+				$insert_query = $data_insert_query;
+
+				foreach ($table_data as $key => $value) {
+					$insert_query .= " ('" . implode("', '", $value) . "'),";
+
+					if ($key > 0 && $key % QUERY_LIMIT == 0) {
+						$insert_query = trim($insert_query, ",");
+						mysqli_query($this->con, $insert_query);
+						$insert_query = $data_insert_query;
+					}
+				}
+
+				if ($insert_query != "") {
+					$insert_query = trim($insert_query, ",");
+					mysqli_query($this->con, $insert_query);
+				}
+				return "Table Created. " . mysqli_affected_rows($this->con) . " Rows Inserted.";
+				exit;
+			} else {
+				return "Table Collumn Not Found.";
+				exit;
+			}
+		} else {
+			return "Table Created.";
+			exit;
+		}
+	}
+
+	public function __destruct()
+	{
+		mysqli_close($this->con);
+	}
+}

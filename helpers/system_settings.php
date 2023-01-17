@@ -89,22 +89,6 @@ if (isset($_POST['Update_Mailer_Settings'])) {
     }
 }
 
-/* Set Up Remote DB */
-if (isset($_POST['Set_Remote_DB'])) {
-    $remote_db_host = mysqli_real_escape_string($mysqli, $_POST['remote_db_host']);
-    $remote_db_name = mysqli_real_escape_string($mysqli, $_POST['remote_db_name']);
-    $remote_db_user = mysqli_real_escape_string($mysqli, $_POST['remote_db_user']);
-    $remote_db_password = mysqli_real_escape_string($mysqli, $_POST['remote_db_password']);
-
-    /* Persist Remote DB Configs */
-    $add_sql = "INSERT INTO remote_dbs (remote_db_host, remote_db_name, remote_db_user, remote_db_password)
-    VALUES('{$remote_db_host}', '{$remote_db_name}', '{$remote_db_user}', '{$remote_db_password}')";
-    if (mysqli_query($mysqli, $add_sql)) {
-        $success = "Remote database added";
-    } else {
-        $err = "Failed, please try again";
-    }
-}
 
 /* Back Up Local DB */
 if (isset($_POST['Settings_Backup_Local_Db'])) {
@@ -179,7 +163,6 @@ if (isset($_POST['Settings_Backup_Local_Db'])) {
         $err  =  "Failed, please try again";
     }
 }
-
 
 /* Back Up Remote DB */
 if (isset($_POST['Settings_Backup_Remote_Db'])) {
@@ -266,4 +249,10 @@ if (isset($_POST['Settings_Backup_Remote_Db'])) {
             }
         }
     }
+}
+
+/* Sync Scripts */
+if (isset($_POST['Settings_Synch_Local_db'])) {
+    /* This Will Trigger Local To Remote Synchronizations */
+    include('../database/synchronization_api/local/local_sync_trigger.php');
 }
