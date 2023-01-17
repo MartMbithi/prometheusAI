@@ -208,13 +208,14 @@ require_once('../partials/head.php');
                                                         <div class="tab-pane fade" id="profile-tab-pane" role="tabpanel" aria-labelledby="profile-tab" tabindex="0">
                                                             <br>
                                                             <h4 class="text-center">
-                                                                Database Configurations
+                                                                Database Configurations & Syncronizations
                                                             </h4>
                                                             <div class="d-flex justify-content-center mb-3">
                                                                 <div class="btn-group">
                                                                     <br>
                                                                     <form method="post">
                                                                         <button type="submit" name="Settings_Backup_Local_Db" class="btn-sm btn btn-outline-lime"><span>Backup</button>
+                                                                        <button type="submit" name="Settings_Synch_Local_db" class="btn-sm btn btn-outline-lime"><span>Synchronize</button>
                                                                     </form>
                                                                 </div>
                                                             </div>
