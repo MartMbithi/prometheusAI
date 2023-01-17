@@ -255,4 +255,9 @@ if (isset($_POST['Settings_Backup_Remote_Db'])) {
 if (isset($_POST['Settings_Synch_Local_db'])) {
     /* This Will Trigger Local To Remote Synchronizations */
     include('../database/synchronization_api/local/local_sync_trigger.php');
+    if ($response_array['status'] == "success") {
+        $success = "Database synchronized successfully";
+    } else {
+        $err = "Failed, please try again";
+    }
 }

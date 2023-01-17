@@ -208,8 +208,12 @@ require_once('../partials/head.php');
                                                         <div class="tab-pane fade" id="profile-tab-pane" role="tabpanel" aria-labelledby="profile-tab" tabindex="0">
                                                             <br>
                                                             <h4 class="text-center">
-                                                                Database Configurations & Syncronizations
+                                                                Database Configurations & Syncronizations <br>
                                                             </h4>
+                                                            <p class="text-center text-danger">
+                                                                This system will be your remote syncronization link: <br>
+                                                                <b><?php echo $synch_trigger; ?></b>
+                                                            </p>
                                                             <div class="d-flex justify-content-center mb-3">
                                                                 <div class="btn-group">
                                                                     <br>

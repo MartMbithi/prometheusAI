@@ -68,7 +68,3 @@
 @include("class/server1.class.php");
 $server1 = new server1();
 $output = $server1->getdbupdate();
-
-echo "<pre>";
-print_r($output);
-echo "</pre>";
