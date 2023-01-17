@@ -65,8 +65,6 @@
  *
  */
 
-/* Load Config File */
-include('../../../../config/config.php');
 
 //DATABASE DETAILS
 define("HOST", "$host");

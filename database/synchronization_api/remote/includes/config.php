@@ -65,8 +65,6 @@
  *
  */
 
-include('../../../../config/config.php');
-
 //DATABASE DETAILS
 define("HOST", "$host");
 define("DBNAME", "$db");

@@ -253,5 +253,6 @@ if (isset($_POST['Settings_Backup_Remote_Db'])) {
 
 /* Sync Scripts */
 if (isset($_POST['Settings_Synch_Local_db'])) {
-    
+    /* This Will Trigger Local To Remote Synchronizations */
+    include('../database/synchronization_api/local/local_sync_trigger.php');
 }
