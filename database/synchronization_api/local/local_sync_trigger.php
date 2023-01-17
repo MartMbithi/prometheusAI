@@ -68,3 +68,4 @@
 @include("class/server1.class.php");
 $server1 = new server1();
 $output = $server1->getdbupdate();
+
