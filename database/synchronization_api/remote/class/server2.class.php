@@ -65,8 +65,19 @@
  *
  */
 
+//DATABASE DETAILS
+define("HOST", "localhost");
+define("DBNAME", "prometheusai");
+define("DBUSER", "root");
+define("DBPASSWORD", "");
 
-@include("includes/config.php");
+
+define("QUERY_LIMIT", "500"); // MAX INSERT QUERY AT A TIME
+
+//SET TIMEZONE
+date_default_timezone_set("Africa/Nairobi");
+
+
 class server2
 {
 

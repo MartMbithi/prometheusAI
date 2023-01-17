@@ -68,7 +68,19 @@
 
 /* Run This File In Local Environment */
 
-@include("includes/config.php");
+//DATABASE DETAILS
+define("HOST", "localhost");
+define("DBNAME", "prometheusai");
+define("DBUSER", "root");
+define("DBPASSWORD", "");
+
+
+/* Define Yur */
+define("SYNC_URL", "http://192.168.1.116/prometheusAI/database/synchronization_api/remote/remote_sync_trigger.php");
+
+//SET TIMEZONE
+date_default_timezone_set("Africa/Nairobi");
+
 class server1
 {
 
