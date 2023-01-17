@@ -67,10 +67,10 @@
 
 
 //DATABASE DETAILS
-define("HOST", "$host");
-define("DBNAME", "$db");
-define("DBUSER", "$dbuser");
-define("DBPASSWORD", "$dbpass");
+define("HOST", "localhost");
+define("DBNAME", "prometheusai");
+define("DBUSER", "root");
+define("DBPASSWORD", "");
 
 
 /* Define Yur */
