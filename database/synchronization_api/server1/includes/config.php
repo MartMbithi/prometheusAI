@@ -12,13 +12,14 @@ CREATED DATE : 08-12-2016
 
 //DATABASE DETAILS
 define("HOST","localhost");
-define("DBNAME","bharat_syncdb2");
+define("DBNAME","prometheusai");
 define("DBUSER","root");
 define("DBPASSWORD","");
 
-//QUERY AND TIME TO SYNCHRONIZATION
-define("QUERY_LIMIT","500"); // MAX INSERT QUERY AT A TIME
+
+// SERVER URL WHERE YOU WANT TO SYCN DATABASE
+define("SYNC_URL","http://192.168.1.116/server2/example.php"); 
 
 //SET TIMEZONE
-date_default_timezone_set("Asia/Kolkata");
+date_default_timezone_set("Africa/Nairobi");
 ?>
