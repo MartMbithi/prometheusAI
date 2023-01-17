@@ -71,4 +71,5 @@ $dbuser = "root"; /* Database Username */
 $dbpass = ""; /* Database Username Password */
 $host = "localhost"; /* Database Host */
 $db = "prometheusai";  /* Database Name */
+$db_sync_url = "http://192.168.1.116/server2/example.php";/* Sync Url For Remote DB */
 $mysqli = new mysqli($host, $dbuser, $dbpass, $db); /* Connection Function */
