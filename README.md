@@ -1,6 +1,10 @@
 # PrometheusAI
 Tired of keeping track of your expenses, income, assets, purchases wishlists, and not knowing how messed up your finances are? This system is for you. Simply clone it, and set it up on a LAMPP stack, and you'll be up and running in no time. If you don't know what you're doing, don't use the Database Synchronization functionality, its unstable for non technical users.
 
+# Default Account:
+Email: sysadmin.com <br>
+Pasword: demo
+
 # To dos:
 
 1. Paginations on all items.✅
