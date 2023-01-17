@@ -69,14 +69,14 @@
 /* Run This File In Local Environment */
 
 //DATABASE DETAILS
-define("HOST", "localhost");
-define("DBNAME", "prometheusai");
-define("DBUSER", "root");
+define("HOST", "$host");
+define("DBNAME", "$db");
+define("DBUSER", "$dbuser");
 define("DBPASSWORD", "");
 
 
 /* Define Yur */
-define("SYNC_URL", "http://192.168.1.116/prometheusAI/database/synchronization_api/remote/remote_sync_trigger.php");
+define("SYNC_URL", "$synch_trigger");
 
 //SET TIMEZONE
 date_default_timezone_set("Africa/Nairobi");

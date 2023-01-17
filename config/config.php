@@ -72,3 +72,7 @@ $dbpass = ""; /* Database Username Password */
 $host = "localhost"; /* Database Host */
 $db = "prometheusai";  /* Database Name */
 $mysqli = new mysqli($host, $dbuser, $dbpass, $db); /* Connection Function */
+
+
+/* Remote DB Synch Trigger URL */
+$synch_trigger = "http://192.168.1.116/prometheusAI/database/synchronization_api/remote/remote_sync_trigger.php";
