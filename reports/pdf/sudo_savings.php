@@ -164,12 +164,12 @@ $html =
                             PrometheusAI 
                         </h3>                        
                         <hr style="width:100%" , color=black>
-                        <h5>Savings, Revenue & Income  Reports</h5>
+                        <h5>Savings, Revenue & Income  Reports From '. date('d M Y', strtotime($from_date)).' To '.date('d M Y', strtotime($to_date)).'</h5>
                     </div>
                     <table border="1" cellspacing="0" width="98%" style="font-size:9pt">
                         <thead>
                             <tr>
-                                <th style="width:100%">User Name</th>
+                                <th style="width:100%">Posted By</th>
                                 <th style="width:100%">Account Name</th>
                                 <th style="width:100%">Date Posted</th>
                                 <th style="width:100%">Amount</th>
@@ -181,6 +181,7 @@ $html =
                                 $mysqli,
                                 "SELECT * FROM savings s
                                 INNER JOIN user u ON u.user_id = s.saving_user_id
+                                WHERE s.saving_date BETWEEN '{$from_date}' AND '{$to_date}'
                                 ORDER BY  s.saving_date DESC"
                             );
                             $cumulative_revenue = 0;
