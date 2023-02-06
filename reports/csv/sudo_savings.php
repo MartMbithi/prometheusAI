@@ -84,7 +84,8 @@ $excelData = implode("\t", array_values($fields)) . "\n";
 /* Fetch All Records From The Database */
 $query = $mysqli->query("SELECT * FROM savings s
 INNER JOIN user u ON u.user_id = s.saving_user_id
-ORDER BY  saving_date DESC");
+WHERE s.saving_date BETWEEN '{$from_date}' AND '{$to_date}'
+ORDER BY  s.saving_date DESC");
 if ($query->num_rows > 0) {
     /* Load All Fetched Rows */
     $cnt = 1;
