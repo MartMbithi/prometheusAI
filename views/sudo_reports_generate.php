@@ -92,6 +92,9 @@ if ($report_module == 'assets') {
         /* Generate CSV Reort */
         include('../reports/csv/sudo_bill.php');
     } else if ($report_type == 'PDF') {
+        /* Date Filter */
+        $from_date = mysqli_real_escape_string($mysqli, $_POST['from_date']);
+        $to_date = mysqli_real_escape_string($mysqli, $_POST['to_date']);
         /* Generate PDF Report */
         include('../reports/pdf/sudo_bill.php');
     } else {

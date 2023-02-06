@@ -106,35 +106,16 @@ require_once('../partials/head.php');
                             </div>
                             <br>
                             <div class="row row-cols-1 row-cols-md-2 g-3">
-                                <!-- Users -->
-                                <div class="col-sm-12 col-lg-4 col-xl-4">
-                                    <div class="card Asset_Category_Name">
-                                        <div class="card-header fw-bold small">1</div>
-                                        <div class="card-body">
-                                            <h5 class="card-title">Registered Users</h5>
-                                            <div class="card-footer">
-                                                <a href="sudo_reports_generate?module=users&type=PDF" class="text-center btn btn-outline-lime">PDF</a>
-                                                <a href="sudo_reports_generate?module=users&type=CSV" class="text-center btn btn-outline-lime">CSV</a>
-                                            </div>
-                                        </div>
-                                        <div class="card-arrow">
-                                            <div class="card-arrow-top-left "></div>
-                                            <div class="card-arrow-top-right"></div>
-                                            <div class="card-arrow-bottom-left"></div>
-                                            <div class="card-arrow-bottom-right"></div>
-                                        </div>
-                                    </div>
-                                </div>
 
                                 <!-- Expenses & Bills  -->
                                 <div class="col-sm-12 col-lg-4 col-xl-4">
                                     <div class="card Asset_Category_Name">
-                                        <div class="card-header fw-bold small">2</div>
+                                        <div class="card-header fw-bold small">1</div>
                                         <div class="card-body">
                                             <h5 class="card-title">Expenses & Bills</h5>
                                             <div class="card-footer">
-                                                <a href="sudo_reports_generate?module=bills&type=PDF" class="text-center btn btn-outline-lime">PDF</a>
-                                                <a href="sudo_reports_generate?module=bills&type=CSV" class="text-center btn btn-outline-lime">CSV</a>
+                                                <a role="button" data-bs-toggle="modal" href="#expenses_filter_pdf" class="text-center btn btn-outline-lime">PDF</a>
+                                                <a role="button" data-bs-toggle="modal" href="#expenses_filter_csv" class="text-center btn btn-outline-lime">CSV</a>
                                             </div>
                                         </div>
                                         <div class="card-arrow">
@@ -146,10 +127,42 @@ require_once('../partials/head.php');
                                     </div>
                                 </div>
 
+                                <!-- Filter Expenses Modals -->
+                                <div class="modal fade fixed-right" id="expenses_filter_pdf" tabindex="-1" role="dialog" aria-hidden="true">
+                                    <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header align-items-center">
+                                                <div class="modal-title">
+                                                    <h6 class="mb-0">Filter Expenses & Bills As Per Date</h6>
+                                                </div>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                                            </div>
+                                            <form method="post" enctype="multipart/form-data" role="form" action="sudo_reports_generate?module=bills&type=PDF">
+                                                <div class="modal-body">
+                                                    <div class="row">
+                                                        <div class="form-group col-md-6 mb-3">
+                                                            <label for="">Expenses From Date</label>
+                                                            <input type="date" required name="from_date" class="form-control">
+                                                        </div>
+                                                        <div class="form-group col-md-6 mb-3">
+                                                            <label for="">Expenses To From Date</label>
+                                                            <input type="date" required name="to_date" class="form-control">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="submit" name="Filter_Exenses" class="btn btn-outline-lime">Filter</button>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- End Modal -->
+
                                 <!-- Savings -->
                                 <div class="col-sm-12 col-lg-4 col-xl-4">
                                     <div class="card Asset_Category_Name">
-                                        <div class="card-header fw-bold small">3</div>
+                                        <div class="card-header fw-bold small">2</div>
                                         <div class="card-body">
                                             <h5 class="card-title">Savings & Revenues</h5>
                                             <div class="card-footer">
@@ -169,7 +182,7 @@ require_once('../partials/head.php');
                                 <!-- Assets -->
                                 <div class="col-sm-12 col-lg-4 col-xl-4">
                                     <div class="card Asset_Category_Name">
-                                        <div class="card-header fw-bold small">4</div>
+                                        <div class="card-header fw-bold small">3</div>
                                         <div class="card-body">
                                             <h5 class="card-title">Assets</h5>
                                             <div class="card-footer">
