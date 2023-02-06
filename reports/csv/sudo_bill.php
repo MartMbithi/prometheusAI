@@ -83,8 +83,9 @@ $excelData = implode("\t", array_values($fields)) . "\n";
 
 /* Fetch All Records From The Database */
 $query = $mysqli->query("SELECT * FROM purchases p
-INNER JOIN user u ON u.user_id = p.purchase_user_id
-ORDER BY p.purchase_date_made DESC");
+INNER JOIN user u ON u.user_id = p.purchase_user_id 
+WHERE p.purchase_date_made BETWEEN '{$from_date}' AND '{$to_date}'
+ORDER BY purchase_date_made DESC");
 if ($query->num_rows > 0) {
     /* Load All Fetched Rows */
     $cnt = 1;
