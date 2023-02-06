@@ -156,7 +156,7 @@ $html =
                 <body style="margin:1px;">
                     <div class="footer">
                         <hr>
-                        <i>Bills Reports.</i>
+                        <i>Bills & Expenses  Reports.</i>
                     </div>
                     
                     <div class="list_header" align="center">
@@ -164,12 +164,12 @@ $html =
                             PrometheusAI 
                         </h3>                        
                         <hr style="width:100%" , color=black>
-                        <h5>Bills Reports</h5>
+                        <h5>Bills And Expenses Reports From '. date('d M Y', strtotime($from_date)).' To '.date('d M Y', strtotime($to_date)).'</h5>
                     </div>
                     <table border="1" cellspacing="0" width="98%" style="font-size:9pt">
                         <thead>
                             <tr>
-                                <th style="width:100%">User Name</th>
+                                <th style="width:100%">Posted By</th>
                                 <th style="width:100%">Expenditure Name</th>
                                 <th style="width:30%">QTY</th>
                                 <th style="width:100%">Date Posted</th>
