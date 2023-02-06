@@ -181,7 +181,8 @@ $html =
                             $bill_sql = mysqli_query(
                                 $mysqli,
                                 "SELECT * FROM purchases p
-                               INNER JOIN user u ON u.user_id = p.purchase_user_id 
+                                INNER JOIN user u ON u.user_id = p.purchase_user_id 
+                                WHERE p.purchase_date_made BETWEEN '{$from_date}' AND '{$to_date}'
                                 ORDER BY purchase_date_made DESC"
                             );
                             $cumulative_bill_cost = 0;
