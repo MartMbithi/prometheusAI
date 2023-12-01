@@ -95,9 +95,13 @@ require_once('../partials/head.php');
                 <div class="row">
                     <div class="row">
                         <div class="col-xl-12">
-                            <div class="d-flex justify-content-end">
-                                <button type="button" data-bs-toggle="modal" data-bs-target="#add_modal" class="btn btn-outline-lime"><span>Register Asset Category</button>
+                            <div class="d-flex justify-content-between">
+                                <h1 class="page-header">
+                                    Assets Categories
+                                </h1>
+                                <button type="button" data-bs-toggle="modal" data-bs-target="#add_modal" class="btn-sm btn btn-outline-lime"><span>Register Asset Category</button>
                             </div>
+
                             <div class="modal fade fixed-right" id="add_modal" tabindex="-1" role="dialog" aria-hidden="true">
                                 <div class="modal-dialog  modal-xl" role="document">
                                     <div class="modal-content">
@@ -128,7 +132,14 @@ require_once('../partials/head.php');
                                 </div>
                             </div>
                             <hr class="mb-4" />
-
+                            <div class="d-flex justify-content-center">
+                                <div class="row g-3 align-items-center">
+                                    <div class="col-auto">
+                                        <input class="form-control" type="text" id="Asset_Category_Search" onkeyup="FilterFunction()" placeholder="Search Asset Categories">
+                                    </div>
+                                </div>
+                            </div>
+                            <br>
                             <div class="card">
                                 <div class="card-body">
 
